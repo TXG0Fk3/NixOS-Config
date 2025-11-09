@@ -82,6 +82,9 @@
   };
 
   # Services
+    # Preload
+    services.preload.enable = true;
+    
     # OpenSSH.
     services.openssh.enable = false;
 
