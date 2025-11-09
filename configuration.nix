@@ -57,7 +57,7 @@
   # Users.
   users.users.TXG0Fk3 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
       tree
     ];
