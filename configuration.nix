@@ -16,8 +16,11 @@
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   # Network
-  networking.hostName = "TXGNixOS";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "TXGNixOS";
+    networkmanager.enable = true;
+    firewall.enable = true;
+  };
 
   # Time Zone.
   time.timeZone = "America/Maceio";
@@ -82,14 +85,10 @@
   };
 
   # Services
-    # Preload
-    services.preload.enable = true;
-    
-    # OpenSSH.
-    services.openssh.enable = false;
-
-    # Firewall
-    networking.firewall.enable = true;
+  services = {
+    preload.enable = true;
+    openssh.enable = false;
+  };
 
   system.stateVersion = "25.05";
 }
