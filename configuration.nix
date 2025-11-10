@@ -71,11 +71,15 @@
       loupe
       showtime
 
+      microsoft-edge
+      equibop
+
       morewaita-icon-theme
     ];
   };
 
   # System Packages.
+  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     gnomeExtensions.blur-my-shell
     gnomeExtensions.logo-menu
@@ -97,12 +101,6 @@
   ];
 
   programs = {
-    # Browser
-    firefox = {
-      enable = true;
-      languagePacks = ["pt-BR"];
-    };
-
     nano.enable = false;
   };
 
