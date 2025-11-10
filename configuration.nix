@@ -5,15 +5,15 @@
     ./hardware-configuration.nix
   ];
 
-  # Boot.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Tmpfs
-  boot.tmp.useTmpfs = true;
-
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  # Bootloader and Kernel
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    }; 
+    tmp.useTmpfs = true;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  };
 
   # Network
   networking = {
