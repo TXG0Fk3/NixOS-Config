@@ -78,6 +78,9 @@
     ];
   };
 
+  # Flatpaks
+  services.flatpak.enable = true;
+
   # System Packages.
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
