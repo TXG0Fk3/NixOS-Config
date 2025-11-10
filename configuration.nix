@@ -111,6 +111,7 @@
     gnomeExtensions.space-bar
     gnomeExtensions.appindicator
     gnomeExtensions.window-title-is-back
+    gnomeExtensions.logo-widget
     gnomeExtensions.rounded-window-corners-reborn
     
     gnome-console
