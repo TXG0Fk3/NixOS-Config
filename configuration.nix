@@ -88,6 +88,12 @@
       steam-run
       bottles
 
+      # Fonts
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      nerd-fonts.jetbrains-mono
+
       # Ricing
       morewaita-icon-theme
       adw-gtk3
