@@ -32,6 +32,12 @@
   # Configure keymap in X11
   services.xserver.xkb.layout = "br";
 
+  # Graphics
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # UI
   services = {
     xserver = {
