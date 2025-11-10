@@ -71,16 +71,26 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
+      # Gnome Stuff
       gnome-text-editor
       baobab
       decibels
       loupe
       showtime
 
+      # Network
       microsoft-edge
       equibop
+      spotify
+      
+      # Gaming && Wine
+      steam
+      steam-run
+      bottles
 
+      # Ricing
       morewaita-icon-theme
+      adw-gtk3
     ];
   };
 
