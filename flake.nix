@@ -21,7 +21,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { inherit inputs; };
-            users.TXG0Fk3 = import ./home.nix;
+            users.TXG0Fk3 = import ./home-manager/users/txg0fk3.nix;
           };
         }
       ];

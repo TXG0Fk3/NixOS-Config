@@ -1,12 +1,11 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
-
   home.username = "TXG0Fk3";
   home.homeDirectory = "/home/TXG0Fk3";
   home.stateVersion = "25.05";
 
+  # User Packages
   home.packages = with pkgs; [
     # Gnome Stuff
     gnome-text-editor
@@ -22,7 +21,6 @@
     # Gaming && Wine
     steam
     steam-run
-    prismlauncher
     bottles
     protonplus
     mangohud
@@ -42,16 +40,8 @@
     adw-gtk3
   ];
 
-  programs.spicetify =
-  let
-    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-  in
-  {
-    enable = true;
-
-    enabledExtensions = with spicePkgs.extensions; [
-      adblock
-      shuffle
-    ];
-  };
+  imports = [
+    ../modules/spotify.nix
+    ../modules/prismlauncher.nix
+  ];
 }
