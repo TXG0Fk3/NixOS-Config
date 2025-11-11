@@ -21,7 +21,6 @@
     # Gaming && Wine
     steam
     steam-run
-    bottles
     protonplus
     mangohud
 
@@ -43,5 +42,6 @@
   imports = [
     ../modules/spotify.nix
     ../modules/prismlauncher.nix
+    ../modules/bottles.nix
   ];
 }
