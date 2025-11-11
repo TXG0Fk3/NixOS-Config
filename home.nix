@@ -22,7 +22,10 @@
     # Gaming && Wine
     steam
     steam-run
+    prismlauncher
     bottles
+    protonplus
+    mangohud
 
     # Development
     git
