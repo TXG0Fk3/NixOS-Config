@@ -3,7 +3,11 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./local.nix
   ];
+  
+  # Flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader and Kernel
   boot = {
@@ -70,34 +74,6 @@
   users.users.TXG0Fk3 = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
-    packages = with pkgs; [
-      # Gnome Stuff
-      gnome-text-editor
-      baobab
-      decibels
-      loupe
-      showtime
-
-      # Network
-      microsoft-edge
-      equibop
-      spotify
-      
-      # Gaming && Wine
-      steam
-      steam-run
-      bottles
-
-      # Fonts
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      nerd-fonts.jetbrains-mono
-
-      # Ricing
-      morewaita-icon-theme
-      adw-gtk3
-    ];
   };
 
   # Flatpaks
