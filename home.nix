@@ -1,6 +1,8 @@
 { config, pkgs, inputs, ... }:
 
 {
+  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
+
   home.username = "TXG0Fk3";
   home.homeDirectory = "/home/TXG0Fk3";
   home.stateVersion = "25.05";
@@ -16,7 +18,6 @@
     # Network
     microsoft-edge
     equibop
-    spotify
       
     # Gaming && Wine
     steam
@@ -37,4 +38,17 @@
     morewaita-icon-theme
     adw-gtk3
   ];
+
+  programs.spicetify =
+  let
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  in
+  {
+    enable = true;
+
+    enabledExtensions = with spicePkgs.extensions; [
+      adblock
+      shuffle
+    ];
+  };
 }
