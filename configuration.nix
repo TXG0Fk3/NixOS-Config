@@ -80,6 +80,7 @@
   # System Packages.
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    # Gnome Extensions
     gnomeExtensions.blur-my-shell
     gnomeExtensions.logo-menu
     gnomeExtensions.space-bar
@@ -88,12 +89,17 @@
     gnomeExtensions.logo-widget
     gnomeExtensions.rounded-window-corners-reborn
     
+    # Gnome Stuff
     gnome-console
     gnome-disk-utility
     gnome-tweaks
     mission-center
     nautilus
 
+    # Virtualisation
+    distrobox
+
+    # Essentials
     vim
     btop
     fastfetch
@@ -102,6 +108,12 @@
 
   programs = {
     nano.enable = false;
+  };
+
+  # Virtualisation
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
   };
 
   # Services
