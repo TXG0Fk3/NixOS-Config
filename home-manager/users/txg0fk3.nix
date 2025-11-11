@@ -40,6 +40,7 @@
   ];
 
   imports = [
+    ../modules/flatpak.nix
     ../modules/spotify.nix
     ../modules/prismlauncher.nix
     ../modules/bottles.nix
