@@ -24,6 +24,9 @@
     protonplus
     mangohud
 
+    # Remote Access
+    remmina
+
     # Development
     git
     vscode
