@@ -15,8 +15,9 @@
     showtime
 
     # Network
-    microsoft-edge
+    firefox
     equibop
+    localsend
       
     # Gaming && Wine
     steam
