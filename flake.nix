@@ -12,11 +12,12 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ...}@inputs: {
-    nixosConfigurations.TXGNixOS = nixpkgs.lib.nixosSystem {
+    # Orion
+    nixosConfigurations.Orion = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
-        ./configuration.nix
+        ./system/hosts/orion
         home-manager.nixosModules.home-manager {
           home-manager = {
             useGlobalPkgs = true;
