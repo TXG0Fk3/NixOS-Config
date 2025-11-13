@@ -14,6 +14,19 @@
     }; 
     tmp.useTmpfs = true;
     kernelPackages = pkgs.linuxPackages_latest;
+    kernel.sysctl = { "vm.swappiness" = 10; };
+  };
+
+  # Swap
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 8*1024;
+  }];
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
+    algorithm = "lz4";
+    priority = 100;
   };
 
   # Network
