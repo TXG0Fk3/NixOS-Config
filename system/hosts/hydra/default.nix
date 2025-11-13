@@ -34,7 +34,11 @@
     hostName = "Hydra";
     firewall = {
       enable =  true;
-      allowedTCPPorts = [ 22 80 443 ];
+      allowedTCPPorts = [ 22 80 443 8443 ];
+      allowedUDPPorts = [ 19132 ];
+      allowedTCPPortRanges = [
+        { from = 25500; to = 25600; }
+      ];
     };
   };
 
