@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, home-modules, ... }:
 
 {
   home.username = "TXG0Fk3";
@@ -44,9 +44,9 @@
   ];
 
   imports = [
-    ../modules/flatpak.nix
-    ../modules/spotify.nix
-    ../modules/prismlauncher.nix
-    ../modules/bottles.nix
+    (home-modules + "/flatpak.nix")
+    (home-modules + "/spotify.nix")
+    (home-modules + "/prismlauncher.nix")
+    (home-modules + "/bottles.nix")
   ];
 }

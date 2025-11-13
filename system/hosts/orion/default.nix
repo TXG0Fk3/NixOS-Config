@@ -1,11 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, system-modules, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
     ./mounts.nix
-    ../../modules
-    ../../modules/ui/gnome.nix
+    system-modules
+    (system-modules + "/ui/gnome.nix")
   ];
   
   # Bootloader and Kernel
