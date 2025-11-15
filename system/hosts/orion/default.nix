@@ -65,6 +65,7 @@
   services = {
     preload.enable = true;
     openssh.enable = false;
+    tailscale.enable = true;
   };
 
   system.stateVersion = "25.05";
