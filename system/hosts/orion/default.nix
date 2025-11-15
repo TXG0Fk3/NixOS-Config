@@ -22,7 +22,10 @@
   # Network
   networking = {
     hostName = "Orion";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+    };
     firewall.enable = true;
   };
 
