@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./overlays.nix
     ./mounts.nix
     system-modules
     (system-modules + "/ui/gnome.nix")
@@ -13,10 +14,11 @@
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-    }; 
+    };
     tmp.useTmpfs = true;
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelModules = [ "ntsync" ];
+    extraModulePackages = with config.boot.kernelPackages; [ rtl8852cu ];
+    kernelModules = [ "8852cu" "ntsync" ];
   };
 
   # Network
