@@ -31,10 +31,13 @@
     firewall.enable = true;
   };
 
-  # Graphics
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  # Hardware
+  hardware = {
+    usb-modeswitch.enable = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
   };
 
   # Sound.
