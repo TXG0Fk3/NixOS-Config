@@ -7,6 +7,9 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # Overlays
+  nixpkgs.overlays = [ (import (home-modules + "/overlays/equibop.nix")) ];
+
   # User Packages
   home.packages = with pkgs; [
     # Gnome Stuff
