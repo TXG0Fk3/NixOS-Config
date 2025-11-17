@@ -16,7 +16,7 @@
     gnomeExtensions.space-bar
     gnomeExtensions.appindicator
     gnomeExtensions.window-title-is-back
-    gnomeExtensions.logo-widget
+    gnomeExtensions.background-logo
     gnomeExtensions.rounded-window-corners-reborn
 
     # Gnome Stuff
