@@ -23,6 +23,10 @@
     firefox
     equibop
     localsend
+
+    # Content Creation
+    obs-studio
+    shotcut
       
     # Gaming && Wine
     steam

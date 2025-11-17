@@ -11,6 +11,7 @@
     packages = [
       "io.mrarm.mcpelauncher"
       "org.vinegarhq.Sober"
+      "org.nickvision.tubeconverter"
     ];
   };
 
