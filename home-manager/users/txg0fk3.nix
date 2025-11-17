@@ -24,6 +24,9 @@
     equibop
     localsend
 
+    # Utils
+    parabolic
+
     # Content Creation
     obs-studio
     shotcut
