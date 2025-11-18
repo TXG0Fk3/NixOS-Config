@@ -10,6 +10,26 @@
   # Overlays
   nixpkgs.overlays = [ (import (home-modules + "/overlays/equibop.nix")) ];
 
+  # Shell
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    initContent = ''
+      bindkey "^[[H" beginning-of-line
+      bindkey "^[[F" end-of-line
+      bindkey "^[[3~" delete-char
+      
+      fastfetch -c minimal
+    '';
+  };
+  programs.oh-my-posh = {
+    enable = true;
+    enableZshIntegration = true;
+    useTheme = "catppuccin_mocha";
+  };
+
   # User Packages
   home.packages = with pkgs; [
     # Gnome Stuff

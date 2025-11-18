@@ -57,6 +57,10 @@
     extraGroups = [ "wheel" "networkmanager" ];
   };
 
+  # Shell
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   # Flatpaks
   services.flatpak.enable = true;
 
