@@ -81,4 +81,11 @@
     (home-modules + "/prismlauncher.nix")
     (home-modules + "/bottles.nix")
   ];
+
+  # Themes
+  gtk = {
+    enable = true;
+    iconTheme.name = "MoreWaita";
+    theme.name = "adw-gtk3-dark";
+  };
 }
