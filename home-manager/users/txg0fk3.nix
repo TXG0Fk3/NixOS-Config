@@ -34,8 +34,8 @@
   home.packages = with pkgs; [
     # Gnome Stuff
     gnome-text-editor
+    amberol
     baobab
-    decibels
     loupe
     showtime
 
