@@ -33,6 +33,7 @@
   # User Packages
   home.packages = with pkgs; [
     # Gnome Stuff
+    gnome-solanum
     gnome-text-editor
     amberol
     baobab
