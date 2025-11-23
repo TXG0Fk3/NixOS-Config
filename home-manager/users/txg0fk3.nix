@@ -57,6 +57,7 @@
     steam
     steam-run
     protonplus
+    gamescope
     mangohud
 
     # Remote Access
