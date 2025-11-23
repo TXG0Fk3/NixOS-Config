@@ -37,6 +37,7 @@
     gnome-text-editor
     amberol
     baobab
+    fragments
     loupe
     showtime
 
