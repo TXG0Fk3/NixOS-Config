@@ -58,6 +58,8 @@
     steam-run
     protonplus
     gamescope
+    lsfg-vk
+    lsfg-vk-ui
     mangohud
 
     # Remote Access
