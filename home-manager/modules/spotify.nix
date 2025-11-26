@@ -14,5 +14,7 @@
       adblock
       shuffle
     ];
+    theme = spicePkgs.themes.ziro;
+    colorScheme = "gray-dark";
   };
 }
