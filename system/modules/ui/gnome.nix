@@ -12,6 +12,7 @@
   environment.systemPackages = with pkgs; [
     # Gnome Extensions
     gnomeExtensions.blur-my-shell
+    gnomeExtensions.vertical-workspaces
     gnomeExtensions.logo-menu
     gnomeExtensions.space-bar
     gnomeExtensions.appindicator
