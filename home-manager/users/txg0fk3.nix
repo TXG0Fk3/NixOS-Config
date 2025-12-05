@@ -32,28 +32,30 @@
 
   # User Packages
   home.packages = with pkgs; [
-    # Gnome Stuff
-    gnome-solanum
-    gnome-text-editor
-    amberol
-    baobab
-    fragments
-    loupe
-    showtime
-
-    # Network
+    # Network & Sharing
     firefox
     equibop
     localsend
 
-    # Utils
-    parabolic
-    impression
-    eyedropper
-
-    # Productivity
+    # Productivity / Knowledge
+    gnome-feeds
     planify
     obsidian
+    gnome-solanum
+
+    # Media & Utilities
+    gnome-text-editor
+    amberol
+    eyedropper
+    fragments
+    loupe
+    parabolic
+    showtime
+
+    # System Tools
+    impression
+    baobab
+    pika-backup
 
     # Content Creation
     obs-studio
@@ -74,10 +76,7 @@
     # Development
     git
     vscode
-
-    # Backup & Recovery
-    pika-backup
-
+    
     # Fonts
     noto-fonts
     noto-fonts-cjk-sans
