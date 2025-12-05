@@ -48,6 +48,12 @@
 
     # Utils
     parabolic
+    impression
+    eyedropper
+
+    # Productivity
+    planify
+    obsidian
 
     # Content Creation
     obs-studio
@@ -68,6 +74,9 @@
     # Development
     git
     vscode
+
+    # Backup & Recovery
+    pika-backup
 
     # Fonts
     noto-fonts
