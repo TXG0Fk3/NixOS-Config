@@ -48,6 +48,7 @@
     amberol
     eyedropper
     fragments
+    gradia
     loupe
     parabolic
     showtime
