@@ -78,7 +78,6 @@
 
   # Services
   services = {
-    preload.enable = true;
     openssh.enable = false;
     tailscale.enable = true;
   };
