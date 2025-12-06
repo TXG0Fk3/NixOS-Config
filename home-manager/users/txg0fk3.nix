@@ -45,7 +45,7 @@
 
     # Media & Utilities
     gnome-text-editor
-    amberol
+    decibels
     eyedropper
     fragments
     gradia
