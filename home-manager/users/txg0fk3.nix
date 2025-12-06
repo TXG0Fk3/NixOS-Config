@@ -91,7 +91,6 @@
 
   imports = [
     (home-modules + "/flatpak.nix")
-    (home-modules + "/spotify.nix")
     (home-modules + "/prismlauncher.nix")
     (home-modules + "/bottles.nix")
   ];
