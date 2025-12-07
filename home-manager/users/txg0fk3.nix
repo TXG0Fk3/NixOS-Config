@@ -60,7 +60,7 @@
     # System Tools
     impression
     baobab
-    pika-backup
+    deja-dup
 
     # Content Creation
     obs-studio
