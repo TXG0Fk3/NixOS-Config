@@ -8,7 +8,10 @@
   nixpkgs.config.allowUnfree = true;
 
   # Overlays
-  nixpkgs.overlays = [ (import (home-modules + "/overlays/equibop.nix")) ];
+  nixpkgs.overlays = [
+    (import (home-modules + "/overlays/equibop.nix"))
+    (import (home-modules + "/overlays/high-tide.nix"))
+  ];
 
   # Shell
   programs.zsh = {
