@@ -11,7 +11,6 @@
     packages = [
       "io.mrarm.mcpelauncher"
       "org.vinegarhq.Sober"
-      "io.github.nokse22.high-tide"
     ];
   };
 

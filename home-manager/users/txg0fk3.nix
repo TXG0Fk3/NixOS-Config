@@ -35,9 +35,10 @@
 
   # User Packages
   home.packages = with pkgs; [
-    # Network & Sharing
+    # Network & Streaming & Sharing
     firefox
     equibop
+    high-tide
     localsend
 
     # Productivity / Knowledge
