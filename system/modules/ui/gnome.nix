@@ -15,8 +15,10 @@
     gnomeExtensions.background-logo
     gnomeExtensions.blur-my-shell
     gnomeExtensions.clipboard-indicator
+    gnomeExtensions.day-progress
     gnomeExtensions.just-perfection
     gnomeExtensions.logo-menu
+    gnomeExtensions.media-controls
     gnomeExtensions.rounded-window-corners-reborn
     gnomeExtensions.space-bar
     gnomeExtensions.user-themes
