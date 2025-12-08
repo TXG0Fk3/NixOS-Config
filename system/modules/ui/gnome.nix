@@ -11,6 +11,7 @@
 
   environment.systemPackages = with pkgs; [
     # Gnome Extensions
+    gnomeExtensions.just-perfection
     gnomeExtensions.blur-my-shell
     gnomeExtensions.vertical-workspaces
     gnomeExtensions.logo-menu
@@ -18,6 +19,7 @@
     gnomeExtensions.appindicator
     gnomeExtensions.window-title-is-back
     gnomeExtensions.vitals
+    gnomeExtensions.clipboard-indicator
     gnomeExtensions.background-logo
     gnomeExtensions.rounded-window-corners-reborn
 
