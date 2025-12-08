@@ -11,17 +11,18 @@
 
   environment.systemPackages = with pkgs; [
     # Gnome Extensions
-    gnomeExtensions.just-perfection
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.vertical-workspaces
-    gnomeExtensions.logo-menu
-    gnomeExtensions.space-bar
     gnomeExtensions.appindicator
-    gnomeExtensions.window-title-is-back
-    gnomeExtensions.vitals
-    gnomeExtensions.clipboard-indicator
     gnomeExtensions.background-logo
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.clipboard-indicator
+    gnomeExtensions.just-perfection
+    gnomeExtensions.logo-menu
     gnomeExtensions.rounded-window-corners-reborn
+    gnomeExtensions.space-bar
+    gnomeExtensions.user-themes
+    gnomeExtensions.vertical-workspaces
+    gnomeExtensions.vitals
+    gnomeExtensions.window-title-is-back
 
     # Gnome Stuff
     gnome-console
@@ -31,6 +32,7 @@
     nautilus
   ];
 
+  # Other
   environment.extraInit = ''
     export XDG_DATA_DIRS="${pkgs.gtk3}/share/gsettings-schemas/gtk+3-${pkgs.gtk3.version}:$XDG_DATA_DIRS"
     export GTK_IM_MODULE=simple
