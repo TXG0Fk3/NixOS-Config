@@ -88,8 +88,11 @@
     noto-fonts-color-emoji
     nerd-fonts.jetbrains-mono
 
-    # Ricing
+    # Icon Packs
     morewaita-icon-theme
+
+    # Themes
+    marble-shell-theme
     adw-gtk3
   ];
 
