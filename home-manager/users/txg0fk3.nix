@@ -81,6 +81,9 @@
     # Development
     git
     vscode
+    gnome-builder
+    python312
+    python312Packages.pygobject3
     
     # Fonts
     noto-fonts
