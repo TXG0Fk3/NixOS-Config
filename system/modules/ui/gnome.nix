@@ -16,6 +16,7 @@
     gnomeExtensions.blur-my-shell
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.day-progress
+    gnomeExtensions.gsconnect
     gnomeExtensions.just-perfection
     gnomeExtensions.logo-menu
     gnomeExtensions.media-controls
@@ -33,6 +34,14 @@
     mission-center
     nautilus
   ];
+
+  # Open Ports For GSConnect
+  networking = {
+    firewall = {
+      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+    };
+  };
 
   # Other
   environment.extraInit = ''
