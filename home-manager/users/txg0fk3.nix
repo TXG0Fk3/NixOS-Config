@@ -8,10 +8,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # Overlays
-  nixpkgs.overlays = [
-    (import (home-modules + "/overlays/equibop.nix"))
-    (import (home-modules + "/overlays/high-tide.nix"))
-  ];
+  nixpkgs.overlays = [ (import (home-modules + "/overlays/equibop.nix")) ];
 
   # Shell
   programs.zsh = {
@@ -38,7 +35,6 @@
     # Network & Streaming & Sharing
     firefox
     equibop
-    high-tide
     localsend
 
     # Productivity / Knowledge
@@ -100,9 +96,10 @@
   ];
 
   imports = [
+    (home-modules + "/bottles.nix")
     (home-modules + "/flatpak.nix")
     (home-modules + "/prismlauncher.nix")
-    (home-modules + "/bottles.nix")
+    (home-modules + /spotify.nix)
   ];
 
   # Themes
