@@ -21,6 +21,7 @@ self: super: {
       cp -r resources $out/opt/equibop
 
       makeWrapper ${super.electron}/bin/electron $out/bin/equibop \
+        --run "$out/opt/equibop/resources/arrpc/arrpc --port 6463 &" \
         --add-flags "$out/opt/equibop/resources/app.asar" \
         --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true}}"
 
