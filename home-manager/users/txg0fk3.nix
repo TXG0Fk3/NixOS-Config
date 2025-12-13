@@ -65,6 +65,7 @@
     # Gaming && Wine
     steam
     steam-run
+    openmw
     protonplus
     gamescope
     lsfg-vk
