@@ -99,7 +99,7 @@
     (home-modules + "/bottles.nix")
     (home-modules + "/flatpak.nix")
     (home-modules + "/prismlauncher.nix")
-    (home-modules + /spotify.nix)
+    (home-modules + "/spotify.nix")
   ];
 
   # Themes
