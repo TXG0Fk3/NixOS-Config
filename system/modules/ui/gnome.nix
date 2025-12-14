@@ -43,9 +43,14 @@
     };
   };
 
+  # Input
+  i18n.inputMethod = {
+    enable = true;
+    type = "ibus";
+  };
+
   # Other
   environment.extraInit = ''
     export XDG_DATA_DIRS="${pkgs.gtk3}/share/gsettings-schemas/gtk+3-${pkgs.gtk3.version}:$XDG_DATA_DIRS"
-    export GTK_IM_MODULE=simple
   '';
 }
