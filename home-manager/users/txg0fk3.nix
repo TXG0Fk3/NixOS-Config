@@ -44,6 +44,7 @@
     gnome-solanum
 
     # Media & Utilities
+    gnome-calculator
     gnome-text-editor
     decibels
     eyedropper
