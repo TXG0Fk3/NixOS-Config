@@ -13,9 +13,9 @@
 
 <div align="center">
     <h2>📖 Overview</h2>
-</div>
 
 This repository contains my personal NixOS configuration. The goal is to have a consistent, fast, and easy-to-replicate environment.
+</div>
 
 <div align="center">
     <h2>🗃️ Structure</h2>
@@ -38,9 +38,9 @@ This repository contains my personal NixOS configuration. The goal is to have a 
 
 <div align="center">
   <h3>🌠 Orion</h3>
-  <img src="https://github.com/user-attachments/assets/e5117a0e-336f-4a8c-b0e7-9435854d50ae" width="840"/>
+  <img src="https://github.com/user-attachments/assets/8bea1ea9-250d-4398-af57-0f52fe63afc0" width="840"/>
   <br>
-  <sub>GNOME • Adwaita</sub>
+  <sub>GNOME • Marble-Blue-Dark</sub>
 </div>
 
 
