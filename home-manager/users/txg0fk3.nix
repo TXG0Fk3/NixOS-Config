@@ -92,6 +92,8 @@
     # Themes
     marble-shell-theme
     adw-gtk3
+    adwaita-qt
+    adwaita-qt6
   ];
 
   imports = [
@@ -106,5 +108,9 @@
     enable = true;
     iconTheme.name = "MoreWaita";
     theme.name = "adw-gtk3-dark";
+  };
+  qt = {
+    enable = true;
+    style.name = "adwaita-dark";
   };
 }
