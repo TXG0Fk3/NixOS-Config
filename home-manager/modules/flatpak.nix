@@ -9,6 +9,7 @@
       onCalendar = "daily";
     };
     packages = [
+      "io.github.vikdevelop.SaveDesktop"
       "io.mrarm.mcpelauncher"
       "org.vinegarhq.Sober"
     ];
