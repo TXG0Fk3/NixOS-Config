@@ -14,6 +14,11 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ bc nukeReferences ] ++ kernel.moduleBuildDependencies;
   hardeningDisable = [ "pic" ];
 
+  prePatch = ''
+    substituteInPlace Makefile \
+      --replace /lib/modules/ "${kernel.dev}/lib/modules/"
+  '';
+
   makeFlags = [
     "KVER=${kernel.modDirVersion}"
     "KSRC=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
