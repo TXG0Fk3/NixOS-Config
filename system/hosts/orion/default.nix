@@ -17,8 +17,8 @@
     };
     tmp.useTmpfs = true;
     kernelPackages = pkgs.linuxPackages_zen;
-    extraModulePackages = with config.boot.kernelPackages; [ rtl8852cu ];
-    kernelModules = [ "8852cu" "ntsync" ];
+    extraModulePackages = with config.boot.kernelPackages; [ rtw89-morrownr ];
+    kernelModules = [ "rtw89_usb" "ntsync" ];
   };
 
   # Swap

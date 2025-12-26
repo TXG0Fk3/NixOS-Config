@@ -4,7 +4,7 @@
   nixpkgs.overlays = [
     (self: super: {
       linuxPackages_zen = super.linuxPackages_zen.extend (kself: ksuper: {
-        rtl8852cu = ksuper.callPackage (system-modules + "/packages/rtl8852cu.nix") { };
+        rtw89-morrownr = ksuper.callPackage (system-modules + "/packages/rtw89.nix") { };
       });
     })
   ];
