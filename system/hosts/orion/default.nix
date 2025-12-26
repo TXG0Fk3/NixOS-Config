@@ -16,7 +16,7 @@
       efi.canTouchEfiVariables = true;
     };
     tmp.useTmpfs = true;
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     extraModulePackages = with config.boot.kernelPackages; [ rtl8852cu ];
     kernelModules = [ "8852cu" "ntsync" ];
   };

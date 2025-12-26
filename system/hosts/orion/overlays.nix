@@ -3,7 +3,7 @@
 {
   nixpkgs.overlays = [
     (self: super: {
-      linuxPackages_xanmod_latest = super.linuxPackages_xanmod_latest.extend (kself: ksuper: {
+      linuxPackages_zen = super.linuxPackages_zen.extend (kself: ksuper: {
         rtl8852cu = ksuper.callPackage (system-modules + "/packages/rtl8852cu.nix") { };
       });
     })
