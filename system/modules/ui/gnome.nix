@@ -3,7 +3,10 @@
 {
   # UI
   services = {
-    displayManager.gdm.enable = true;
+    displayManager.gdm = {
+      enable = true;
+      autoSuspend = false;
+    };
     desktopManager.gnome.enable = true;
     gnome.core-apps.enable = false;
   };
@@ -33,6 +36,11 @@
     gnome-tweaks
     mission-center
     nautilus
+
+    # Thumbnailers
+    gdk-pixbuf
+    ffmpeg-headless
+    ffmpegthumbnailer
   ];
 
   # Open Ports For GSConnect
@@ -53,4 +61,7 @@
   environment.extraInit = ''
     export XDG_DATA_DIRS="${pkgs.gtk3}/share/gsettings-schemas/gtk+3-${pkgs.gtk3.version}:$XDG_DATA_DIRS"
   '';
+  environment.pathsToLink = [
+    "share/thumbnailers"
+  ];
 }
