@@ -18,7 +18,6 @@
     gnomeExtensions.background-logo
     gnomeExtensions.blur-my-shell
     gnomeExtensions.clipboard-indicator
-    gnomeExtensions.day-progress
     gnomeExtensions.gsconnect
     gnomeExtensions.just-perfection
     gnomeExtensions.logo-menu
@@ -28,7 +27,6 @@
     gnomeExtensions.user-themes
     gnomeExtensions.vertical-workspaces
     gnomeExtensions.vitals
-    gnomeExtensions.window-title-is-back
 
     # Gnome Stuff
     gnome-console
