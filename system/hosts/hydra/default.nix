@@ -50,8 +50,9 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
-    superfile
+    git
     podman-compose
+    superfile
   ];
 
   # Containers
