@@ -34,6 +34,22 @@
         ];
       };
 
+      # Phoenix
+      Phoenix = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs system-modules; };
+        modules = [
+          ./system/hosts/phoenix
+          home-manager.nixosModules.home-manager {
+            home-manager = {
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs home-modules; };
+              users.TXG0Fk3 = import ./home-manager/users/phoenix/txg0fk3.nix;
+            };
+          }
+        ];
+      };
+
       # Hydra
       Hydra = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
