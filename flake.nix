@@ -28,7 +28,7 @@
             home-manager = {
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs home-modules; };
-              users.TXG0Fk3 = import ./home-manager/users/txg0fk3.nix;
+              users.TXG0Fk3 = import ./home-manager/users/orion/txg0fk3.nix;
             };
           }
         ];
