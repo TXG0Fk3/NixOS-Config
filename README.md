@@ -25,12 +25,12 @@ This repository contains my personal NixOS configuration. The goal is to have a 
 - [🏠 home-manager](home-manager/) - HomeManager files
   - [🧩 modules](home-manager/modules/) - HomeManager modules
   - [👤 users](home-manager/users/) - Users configs
-    - [🧬 txg0fk3](home-manager/users/txg0fk3.nix) - My personal user
 - [🔧 system](system/) - System Files
   - [🧩 modules](system/modules/) - System modules
   - [🖥️ hosts](system/hosts/) - Hosts configs
     - [🐉 hydra](system/hosts/hydra/) - My homelab server
     - [🌠 orion](system/hosts/orion/) - My personal computer
+    - [🐦‍🔥 phoenix](system/hosts/phoenix) - Disposable virtual machine
 
 <div align="center">
     <h2>🖥️ Screenshots</h2>
