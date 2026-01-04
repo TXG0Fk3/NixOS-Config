@@ -48,6 +48,7 @@
     gnome-text-editor
     decibels
     eyedropper
+    file-roller
     fragments
     gradia
     loupe
