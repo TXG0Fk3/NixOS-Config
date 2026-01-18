@@ -50,9 +50,15 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
+    # Tools
     git
-    podman-compose
     superfile
+
+    # JRE
+    javaPackages.compiler.temurin-bin.jre-25
+
+    # Containers
+    podman-compose
   ];
 
   # Containers
