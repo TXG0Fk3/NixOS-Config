@@ -52,6 +52,7 @@
   environment.systemPackages = with pkgs; [
     # Tools
     git
+    tmux
     superfile
 
     # JRE
