@@ -35,7 +35,7 @@
     firewall = {
       enable =  true;
       allowedTCPPorts = [ 22 80 443 8443 ];
-      allowedUDPPorts = [ 19132 ];
+      allowedUDPPorts = [ 19132 5520 ];
       allowedTCPPortRanges = [
         { from = 25500; to = 25600; }
       ];
