@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ./mounts.nix
     system-modules
-    (system-modulse + "/containers/qbittorrent.nix")
+    (system-modules + "/containers/qbittorrent.nix")
   ];
 
   # Bootloader and Kernel
