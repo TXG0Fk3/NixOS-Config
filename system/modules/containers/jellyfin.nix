@@ -1,0 +1,53 @@
+{ config, lib, pkgs, ... }:
+
+with lib;
+
+let
+  cfg = config.services.homelab.jellyfin;
+in
+{
+  options.services.homelab.jellyfin = {
+    enable = mkEnableOption "Activate the Jellyfin Media Server.";
+
+    user = mkOption {
+      type = types.str;
+      default = "admin";
+      description = "Owner of the media and config files.";
+    };
+
+    mediaPath = mkOption {
+      type = types.str;
+      default = "/mnt/storage/media";
+      description = "Path to your media library.";
+    };
+  };
+
+  config = mkIf cfg.enable {
+    systemd.tmpfiles.rules = [
+      "d /var/lib/containers/jellyfin 0750 ${cfg.user} users -"
+      "d /var/lib/containers/jellyfin/config 0750 ${cfg.user} users -"
+      "d /var/lib/containers/jellyfin/cache 0750 ${cfg.user} users -"
+    ];
+
+    virtualisation.oci-containers.containers.jellyfin = {
+      image = "jellyfin/jellyfin:latest";
+      autoStart = false;
+      environment = {
+        TZ = "America/Maceio";
+      };
+      volumes = [
+        "/var/lib/containers/jellyfin/config:/config"
+        "/var/lib/containers/jellyfin/cache:/cache"
+        "${cfg.mediaPath}:/media"
+      ];
+      ports = [ "8096:8096/tcp" "7359:7359/udp" ];
+      extraOptions = [
+        "--device=/dev/dri/renderD128:/dev/dri/renderD128"
+        "--device=/dev/dri/card0:/dev/dri/card0"
+      ];
+    };
+
+    networking.firewall.allowedTCPPorts = [ 8096 ];
+    networking.firewall.allowedUDPPorts = [ 7359 ];
+  };
+}
