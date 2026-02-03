@@ -43,7 +43,7 @@ in
       ports = [ "8096:8096/tcp" "7359:7359/udp" ];
       extraOptions = [
         "--device=/dev/dri/renderD128:/dev/dri/renderD128"
-        "--device=/dev/dri/card0:/dev/dri/card0"
+        "--device=/dev/dri/card1:/dev/dri/card1"
       ];
     };
 
