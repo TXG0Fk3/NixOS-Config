@@ -22,7 +22,7 @@
   # SystemPackages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    vim
+    helix
     btop
     fastfetch
     wget
