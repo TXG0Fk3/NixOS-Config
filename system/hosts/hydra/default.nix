@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./mounts.nix
     system-modules
+    (system-modules + "/containers/filebrowser.nix")
     (system-modules + "/containers/qbittorrent.nix")
     (system-modules + "/containers/jellyfin.nix")
     (system-modules + "/containers/crafty.nix")
@@ -81,6 +82,11 @@
     fail2ban.enable = true;
 
     homelab = {
+      filebrowser = {
+        enable = true;
+        user = "admin";
+        storagePath = "/mnt/storage";
+      };
       qbittorrent = {
         enable = true;
         user = "admin";
