@@ -29,15 +29,21 @@ in
     virtualisation.oci-containers.containers.filebrowser = {
       image = "filebrowser/filebrowser:latest";
       user = "${userUID}:100";
+      cmd = [ 
+        "--port" "8080"
+        "--address" "0.0.0.0"
+        "--database" "/database/filebrowser.db"
+        "--root" "/srv"
+      ];
       volumes = [
         "/var/lib/containers/filebrowser/db:/database"
         "/var/lib/containers/filebrowser/conf:/config"
-        
+
         "${cfg.storagePath}:/srv/storage"
         "/var/lib/containers:/srv/configs"
         "/home/${cfg.user}:/srv/home-user"
       ];
-      ports = [ "8090:80" ];
+      ports = [ "8090:8080" ];
     };
 
     networking.firewall.allowedTCPPorts = [ 8090 ];
