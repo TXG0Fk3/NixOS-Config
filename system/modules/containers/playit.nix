@@ -17,6 +17,7 @@ in
 
     virtualisation.oci-containers.containers.playit = {
       image = "ghcr.io/playit-cloud/playit-agent:0.16";
+      autoStart = false;
       extraOptions = [ "--network=host" ];
       environmentFiles = [
         "/var/lib/playit/playit.env"
