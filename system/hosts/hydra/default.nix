@@ -35,10 +35,20 @@
     hostName = "Hydra";
     firewall = {
       enable =  true;
-      allowedTCPPorts = [ 22 80 443 8443 8080 6881 8096 ];
-      allowedUDPPorts = [ 19132 5520 6881 ];
+      allowedTCPPorts = [ 
+        22   # SSH
+        8443 # Crafty
+        8080 # QBitTorrent WebUI
+        6881 # Torrent TCP
+        8096 # Jellyfin
+      ];
+      allowedUDPPorts = [
+        19132 # MCBE Server
+        5520  # Hyale Server
+        6881  # Torrent UDP
+      ];
       allowedTCPPortRanges = [
-        { from = 25500; to = 25600; }
+        { from = 25500; to = 25600; } # Mine Java
       ];
     };
   };
