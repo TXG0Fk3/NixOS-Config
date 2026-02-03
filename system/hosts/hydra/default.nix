@@ -53,7 +53,7 @@
   environment.systemPackages = with pkgs; [
     # Tools
     git
-    tmux
+    zellij
     superfile
 
     # JRE
