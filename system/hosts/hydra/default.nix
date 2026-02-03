@@ -6,6 +6,9 @@
     ./mounts.nix
     system-modules
     (system-modules + "/containers/qbittorrent.nix")
+    (system-modules + "/containers/jellyfin.nix")
+    (system-modules + "/containers/crafty.nix")
+    (system-modules + "/containers/playit.nix")
   ];
 
   # Bootloader and Kernel
@@ -37,16 +40,10 @@
     firewall = {
       enable =  true;
       allowedTCPPorts = [ 
-        22   # SSH
-        8443 # Crafty
-        8096 # Jellyfin
+        22 # SSH
       ];
       allowedUDPPorts = [
-        19132 # MCBE Server
-        5520  # Hyale Server
-      ];
-      allowedTCPPortRanges = [
-        { from = 25500; to = 25600; } # Mine Java
+        5520 # Hyale Server
       ];
     };
   };
@@ -89,6 +86,16 @@
         user = "admin";
         storagePath = "/mnt/storage/downloads";
       };
+      jellyfin = {
+        enable = true;
+        user = "admin";
+        mediaPath = "/mnt/storage/media";
+      };
+      crafty = {
+        enable = true;
+        user = "admin";
+      };
+      playit.enable = true;
     };
   };
 
