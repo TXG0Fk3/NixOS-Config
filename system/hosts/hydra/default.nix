@@ -53,6 +53,7 @@
   environment.systemPackages = with pkgs; [
     # Tools
     git
+    curl
     zellij
     superfile
 
