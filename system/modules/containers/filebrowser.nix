@@ -4,6 +4,7 @@ with lib;
 
 let
   cfg = config.services.homelab.filebrowser;
+  userUID = toString config.users.users.${cfg.user}.uid;
 in
 {
   options.services.homelab.filebrowser = {
@@ -27,7 +28,7 @@ in
 
     virtualisation.oci-containers.containers.filebrowser = {
       image = "filebrowser/filebrowser:latest";
-      user = "1000:100";
+      user = "${userUID}:100";
       volumes = [
         "/var/lib/containers/filebrowser/db:/database"
         "/var/lib/containers/filebrowser/conf:/config"

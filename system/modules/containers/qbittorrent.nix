@@ -4,6 +4,7 @@ with lib;
 
 let
   cfg = config.services.homelab.qbittorrent;
+  userUID = toString config.users.users.${cfg.user}.uid;
 in
 {
   options.services.homelab.qbittorrent = {
@@ -33,7 +34,7 @@ in
       image = "lscr.io/linuxserver/qbittorrent:latest";
       autoStart = false;
       environment = {
-        PUID = "1000";
+        PUID = "{userUID}";
         PGID = "100";
         TZ = "America/Maceio";
         WEBUI_PORT = "8080";
