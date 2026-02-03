@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./mounts.nix
     system-modules
+    (system-modulse + "/containers/qbittorrent.nix")
   ];
 
   # Bootloader and Kernel
@@ -38,14 +39,11 @@
       allowedTCPPorts = [ 
         22   # SSH
         8443 # Crafty
-        8080 # QBitTorrent WebUI
-        6881 # Torrent TCP
         8096 # Jellyfin
       ];
       allowedUDPPorts = [
         19132 # MCBE Server
         5520  # Hyale Server
-        6881  # Torrent UDP
       ];
       allowedTCPPortRanges = [
         { from = 25500; to = 25600; } # Mine Java
@@ -84,6 +82,14 @@
   services = {
     openssh.enable = true;
     fail2ban.enable = true;
+
+    homelab = {
+      qbittorrent = {
+        enable = true;
+        user = "admin";
+        storagePath = "/mnt/storage/downloads";
+      }
+    }
   };
 
   system.stateVersion = "25.11";
