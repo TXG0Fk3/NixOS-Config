@@ -20,7 +20,7 @@
   # Swap
   swapDevices = [{
     device = "/var/lib/swapfile";
-    size = 8*1024;
+    size = 12*1024;
   }];
   zramSwap = {
     enable = true;
