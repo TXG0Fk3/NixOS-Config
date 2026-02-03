@@ -88,8 +88,8 @@
         enable = true;
         user = "admin";
         storagePath = "/mnt/storage/downloads";
-      }
-    }
+      };
+    };
   };
 
   system.stateVersion = "25.11";
