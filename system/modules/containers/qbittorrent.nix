@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.services.qbittorrent-docker;
+  cfg = config.services.homelab.qbittorrent;
 in
 {
-  options.services.qbittorrent-docker = {
+  options.services.homelab.qbittorrent = {
     enable = mkEnableOption "Activate the qBittorrent docker container.";
 
     user = mkOption {
@@ -23,6 +23,11 @@ in
   };
 
   config = mkIf cfg.enable {
+    systemd.tmpfiles.rules = [
+      "d /home/${cfg.user}/containers/qbittorrent/config 0755 ${cfg.user} users -"
+      "d ${cfg.storagePath} 0755 ${cfg.user} users -"
+    ];
+
     virtualisation.oci-containers.containers.qbittorrent = {
       image = "lscr.io/linuxserver/qbittorrent:latest";
       autoStart = false;
