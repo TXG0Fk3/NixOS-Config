@@ -23,9 +23,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = [
-      "d /var/lib/containers/qbittorrent 0750 ${cfg.user} users -"
-      "d /var/lib/containers/qbittorrent/config 0750 ${cfg.user} users -"
+    systemd.tmpfiles.rules = (map (subDir: 
+      "d /var/lib/containers/qbittorrent${subDir} 0750 ${cfg.user} users -"
+    ) [ "" "/config" ]) ++ [
       "d ${cfg.storagePath} 0755 ${cfg.user} users -"
     ];
 

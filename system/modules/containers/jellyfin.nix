@@ -23,11 +23,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = [
-      "d /var/lib/containers/jellyfin 0750 ${cfg.user} users -"
-      "d /var/lib/containers/jellyfin/config 0750 ${cfg.user} users -"
-      "d /var/lib/containers/jellyfin/cache 0750 ${cfg.user} users -"
-    ];
+    systemd.tmpfiles.rules = map (subDir: 
+      "d /var/lib/containers/jellyfin${subDir} 0750 ${cfg.user} users -"
+    ) [ "" "/config" "/cache" ];
 
     virtualisation.oci-containers.containers.jellyfin = {
       image = "jellyfin/jellyfin:latest";

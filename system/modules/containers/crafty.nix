@@ -17,15 +17,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = [
-      "d /var/lib/containers/crafty 0750 ${cfg.user} users -"
-      "d /var/lib/containers/crafty/backups 0750 ${cfg.user} users -"
-      "d /var/lib/containers/crafty/logs 0750 ${cfg.user} users -"
-      "d /var/lib/containers/crafty/servers 0750 ${cfg.user} users -"
-      "d /var/lib/containers/crafty/config 0750 ${cfg.user} users -"
-      "d /var/lib/containers/crafty/import 0750 ${cfg.user} users -"
-    ];
-    
+    systemd.tmpfiles.rules = map (subDir: 
+      "d /var/lib/containers/crafty${subDir} 0750 ${cfg.user} users -"
+    ) [ "" "/backups" "/logs" "/servers" "/config" "/import" ];
+
     virtualisation.oci-containers.containers.crafty = {
       image = "registry.gitlab.com/crafty-controller/crafty-4:latest";
       autoStart = false;
