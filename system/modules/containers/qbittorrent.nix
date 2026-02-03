@@ -7,7 +7,7 @@ let
 in
 {
   options.services.homelab.qbittorrent = {
-    enable = mkEnableOption "Activate the qBittorrent docker container.";
+    enable = mkEnableOption "Activate the qBittorrent service.";
 
     user = mkOption {
       type = types.str;
@@ -24,7 +24,8 @@ in
 
   config = mkIf cfg.enable {
     systemd.tmpfiles.rules = [
-      "d /home/${cfg.user}/containers/qbittorrent/config 0755 ${cfg.user} users -"
+      "d /var/lib/containers/qbittorrent 0750 ${cfg.user} users -"
+      "d /var/lib/containers/qbittorrent/config 0750 ${cfg.user} users -"
       "d ${cfg.storagePath} 0755 ${cfg.user} users -"
     ];
 
@@ -38,7 +39,7 @@ in
         WEBUI_PORT = "8080";
       };
       volumes = [
-        "/home/${cfg.user}/containers/qbittorrent/config:/config"
+        "/var/lib/containers/qbittorrent/config:/config"
         "${cfg.storagePath}:/downloads"
       ];
       ports = [ "8080:8080" "6881:6881" "6881:6881/udp" ];
