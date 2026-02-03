@@ -12,7 +12,7 @@ in
 
   config = mkIf cfg.enable {
     systemd.tmpfiles.rules = [
-      "d /var/lib/playit 0700 root root -"
+      "d /var/lib/containers/playit 0700 root root -"
     ];
 
     virtualisation.oci-containers.containers.playit = {
@@ -20,7 +20,7 @@ in
       autoStart = false;
       extraOptions = [ "--network=host" ];
       environmentFiles = [
-        "/var/lib/playit/playit.env"
+        "/var/lib/containers/playit/playit.env"
       ];
     };
   };
