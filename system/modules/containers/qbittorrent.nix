@@ -44,9 +44,7 @@ in
       ];
       ports = [ "8080:8080" "6881:6881" "6881:6881/udp" ];
     };
-
-    users.users.radarr.extraGroups = [ "users" ];
-
+    
     networking.firewall.allowedTCPPorts = [ 8080 6881 ];
     networking.firewall.allowedUDPPorts = [ 6881 ];
   };
