@@ -111,6 +111,16 @@
       user = "admin";
       openFirewall = true; # 7878
     };
+    sonarr = {
+      enable = true;
+      user = "admin";
+      openFirewall = true; # 8989
+    };
+    bazarr = {
+      enable = true;
+      user = "admin";
+      openFirewall = true; # 6767
+    };
     prowlarr = {
       enable = true;
       openFirewall = true; # 9696
