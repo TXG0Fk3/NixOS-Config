@@ -4,7 +4,6 @@ with lib;
 
 let
   cfg = config.services.homelab.filebrowser;
-  userUID = toString config.users.users.${cfg.user}.uid;
 in
 {
   options.services.homelab.filebrowser = {
@@ -29,7 +28,7 @@ in
     virtualisation.oci-containers.containers.filebrowser = {
       image = "filebrowser/filebrowser:latest";
       autoStart = true;
-      user = "${userUID}:100";
+      user = "${toString config.users.users.${cfg.user}.uid}:100";
       cmd = [ 
         "--port" "8080"
         "--address" "0.0.0.0"
