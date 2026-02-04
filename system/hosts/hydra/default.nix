@@ -11,8 +11,6 @@
     (system-modules + "/containers/jellyfin.nix")
     (system-modules + "/containers/crafty.nix")
     (system-modules + "/containers/playit.nix")
-    (system-modules + "/services/prowlarr.nix")
-    (system-modules + "/services/radarr.nix")
   ];
 
   # Bootloader and Kernel
@@ -96,11 +94,6 @@
         user = "admin";
         storagePath = "/mnt/storage/downloads";
       };
-      radarr = {
-        enable = true;
-        moviesPath = "/mnt/storage/media/movies";
-      };
-      prowlarr.enable = true;
       jellyfin = {
         enable = true;
         user = "admin";
@@ -111,6 +104,16 @@
         user = "admin";
       };
       playit.enable = true;
+    };
+
+    radarr = {
+      enable = true;
+      user = "admin";
+      openFirewall = true; # 7878
+    };
+    prowlarr = {
+      enable = true;
+      openFirewall = true; # 9696
     };
   };
 
