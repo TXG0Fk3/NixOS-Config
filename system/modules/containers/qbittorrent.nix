@@ -25,26 +25,28 @@ in
 
   config = mkIf cfg.enable {
     systemd.tmpfiles.rules = (map (subDir: 
-      "d /var/lib/containers/qbittorrent${subDir} 0750 ${cfg.user} users -"
+      "d /var/lib/containers/qbittorrent${subDir} 0755 ${cfg.user} users -"
     ) [ "" "/config" ]) ++ [
-      "d ${cfg.storagePath} 0755 ${cfg.user} users -"
+      "d ${cfg.storagePath} 0775 ${cfg.user} users -"
     ];
 
     virtualisation.oci-containers.containers.qbittorrent = {
       image = "lscr.io/linuxserver/qbittorrent:latest";
-      autoStart = false;
+      autoStart = true;
       environment = {
-        PUID = "{userUID}";
+        PUID = userUID;
         PGID = "100";
         TZ = "America/Maceio";
         WEBUI_PORT = "8080";
       };
       volumes = [
         "/var/lib/containers/qbittorrent/config:/config"
-        "${cfg.storagePath}:/downloads"
+        "${cfg.storagePath}:${cfg.storagePath}"
       ];
       ports = [ "8080:8080" "6881:6881" "6881:6881/udp" ];
     };
+
+    users.users.radarr.extraGroups = [ "users" ];
 
     networking.firewall.allowedTCPPorts = [ 8080 6881 ];
     networking.firewall.allowedUDPPorts = [ 6881 ];
