@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./mounts.nix
     system-modules
+    (system-modules + "/containers/cloudflared.nix")
     (system-modules + "/containers/filebrowser.nix")
     (system-modules + "/containers/qbittorrent.nix")
     (system-modules + "/containers/jellyfin.nix")
@@ -84,6 +85,7 @@
     fail2ban.enable = true;
 
     homelab = {
+      cloudflared.enable = true;
       filebrowser = {
         enable = true;
         user = "admin";
