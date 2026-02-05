@@ -37,15 +37,16 @@ in
         PGID = "100";
         TZ = "America/Maceio";
         WEBUI_PORT = "8080";
+        TORRENT_PORT = "50322"; # This variable serves no purpose, but it's included here for clarity
       };
       volumes = [
         "/var/lib/containers/qbittorrent/config:/config"
         "${cfg.storagePath}:${cfg.storagePath}"
       ];
-      ports = [ "8080:8080" "6881:6881" "6881:6881/udp" ];
+      extraOptions = [ "--network=host" ];
     };
     
-    networking.firewall.allowedTCPPorts = [ 8080 6881 ];
-    networking.firewall.allowedUDPPorts = [ 6881 ];
+    networking.firewall.allowedTCPPorts = [ 8080 50322 ];
+    networking.firewall.allowedUDPPorts = [ 50322 ];
   };
 }
