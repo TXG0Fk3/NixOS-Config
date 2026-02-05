@@ -50,6 +50,18 @@
     };
   };
 
+  # Hardware
+  hardware ={
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-vaapi-driver
+        libva
+      ];
+    };
+    enableRedistributableFirmware = true;
+  };
+
   # Users.
   users.users.admin = {
     isNormalUser = true;
