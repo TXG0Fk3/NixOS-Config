@@ -24,6 +24,7 @@ in
     virtualisation.oci-containers.containers.crafty = {
       image = "registry.gitlab.com/crafty-controller/crafty-4:latest";
       autoStart = false;
+      user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       environment = {
         TZ = "America/Maceio";
       };

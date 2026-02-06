@@ -32,9 +32,8 @@ in
     virtualisation.oci-containers.containers.qbittorrent = {
       image = "lscr.io/linuxserver/qbittorrent:latest";
       autoStart = true;
+      user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       environment = {
-        PUID = toString config.users.users.${cfg.user}.uid;
-        PGID = "100";
         TZ = "America/Maceio";
         WEBUI_PORT = "8080";
         TORRENT_PORT = "50322"; # This variable serves no purpose, but it's included here for clarity

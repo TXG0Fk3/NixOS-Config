@@ -28,7 +28,7 @@ in
     virtualisation.oci-containers.containers.filebrowser = {
       image = "filebrowser/filebrowser:latest";
       autoStart = true;
-      user = "${toString config.users.users.${cfg.user}.uid}:100";
+      user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       cmd = [ 
         "--port" "8080"
         "--address" "0.0.0.0"

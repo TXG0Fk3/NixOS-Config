@@ -30,6 +30,7 @@ in
     virtualisation.oci-containers.containers.jellyfin = {
       image = "jellyfin/jellyfin:latest";
       autoStart = false;
+      user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       environment = {
         TZ = "America/Maceio";
       };
