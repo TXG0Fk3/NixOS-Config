@@ -61,7 +61,7 @@
   # Users.
   users.users.TXG0Fk3 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "podman" ];
   };
 
   # Shell
