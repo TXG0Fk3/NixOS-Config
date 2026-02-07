@@ -1,11 +1,11 @@
 self: super: {
   equibop = super.stdenv.mkDerivation rec {
     pname = "equibop";
-    version = "3.1.5";
+    version = "3.1.8";
 
     src = super.fetchurl {
       url = "https://github.com/Equicord/Equibop/releases/download/v${version}/equibop-${version}.tar.gz";
-      sha256 = "daa2f300cf679728759ba01446f7d615dd146fac5ea45a9be2782782f7c03b98";
+      sha256 = "58b91351b9c3044ada50e93ee47a57c2edfa5a48c90527e7a6370dc2387e81eb";
     };
 
     nativeBuildInputs = [ super.makeWrapper super.autoPatchelfHook ];
