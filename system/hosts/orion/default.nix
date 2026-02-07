@@ -85,7 +85,7 @@
 
   # Services
   services = {
-    openssh.enable = false;
+    fstrim.enable = true;
     tailscale.enable = true;
   };
 
