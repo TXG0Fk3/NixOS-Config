@@ -20,16 +20,7 @@ self: super: {
       mkdir -p $out/opt/equibop
       cp -r resources $out/opt/equibop
 
-      cat > $out/opt/equibop/run-arrpc.sh <<EOF
-#!/bin/sh
-if ! pgrep -x arrpc >/dev/null; then
-  $out/opt/equibop/resources/arrpc/arrpc --port 6463 &
-fi
-EOF
-      chmod +x $out/opt/equibop/run-arrpc.sh
-
       makeWrapper ${super.electron}/bin/electron $out/bin/equibop \
-        --run "$out/opt/equibop/run-arrpc.sh" \
         --add-flags "$out/opt/equibop/resources/app.asar" \
         --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true}}"
 
