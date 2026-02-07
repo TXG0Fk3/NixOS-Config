@@ -36,6 +36,7 @@
     firefox
     equibop
     localsend
+    protonvpn-gui
 
     # Productivity / Knowledge
     gnome-feeds
