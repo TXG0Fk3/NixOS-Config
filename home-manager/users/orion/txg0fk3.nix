@@ -35,6 +35,7 @@
     # Network & Streaming & Sharing
     firefox
     equibop
+    telegram-desktop
     localsend
     protonvpn-gui
 
