@@ -62,6 +62,7 @@
     impression
     baobab
     deja-dup
+    winboat
 
     # Content Creation
     obs-studio
