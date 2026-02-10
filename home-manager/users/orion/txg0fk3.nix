@@ -43,8 +43,9 @@
     # Productivity / Knowledge
     gnome-feeds
     planify
-    obsidian
     gnome-solanum
+    iotas
+    
 
     # Media & Utilities
     gnome-calculator
