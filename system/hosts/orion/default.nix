@@ -36,7 +36,10 @@
       wifi = {
         backend = "iwd";
         powersave = false;
+        scanRandMacAddress = true;
+        macAddress = "random";
       };
+      ethernet.macAddress = "random";
     };
     firewall.enable = true;
   };
@@ -86,7 +89,7 @@
   # Services
   services = {
     fstrim.enable = true;
-    tailscale.enable = true;
+    tailscale.enable = false;
   };
 
   system.stateVersion = "25.11";
