@@ -62,7 +62,7 @@
     impression
     baobab
     deja-dup
-    winboat
+    usb-modeswitch
 
     # Content Creation
     obs-studio
