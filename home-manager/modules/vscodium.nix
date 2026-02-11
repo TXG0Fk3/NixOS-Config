@@ -61,4 +61,8 @@
       };
     };
   };
+
+  home.packages = with pkgs; [
+    nixfmt # For jnoortheen.nix-ide extension
+  ];
 }
