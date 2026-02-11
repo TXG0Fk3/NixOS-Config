@@ -1,39 +1,60 @@
-self: super: {
-  equibop = super.stdenv.mkDerivation rec {
+final: prev: {
+  equibop = prev.stdenv.mkDerivation rec {
     pname = "equibop";
     version = "3.1.8";
 
-    src = super.fetchurl {
+    src = prev.fetchurl {
       url = "https://github.com/Equicord/Equibop/releases/download/v${version}/equibop-${version}.tar.gz";
       sha256 = "58b91351b9c3044ada50e93ee47a57c2edfa5a48c90527e7a6370dc2387e81eb";
     };
 
-    nativeBuildInputs = [ super.makeWrapper super.autoPatchelfHook ];
+    nativeBuildInputs = [ 
+      prev.makeWrapper 
+      prev.autoPatchelfHook 
+      prev.copyDesktopItems
+    ];
+
     buildInputs = [
-      super.electron
-      super.pipewire
-      super.libpulseaudio
-      (super.lib.getLib super.stdenv.cc.cc)
+      prev.electron
+      prev.pipewire
+      prev.libpulseaudio
     ];
 
     installPhase = ''
+      runHook preInstall
+
       mkdir -p $out/opt/equibop
       cp -r resources $out/opt/equibop
 
-      makeWrapper ${super.electron}/bin/electron $out/bin/equibop \
+      makeWrapper ${prev.electron}/bin/electron $out/bin/equibop \
         --add-flags "$out/opt/equibop/resources/app.asar" \
-        --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true}}"
+        --add-flags "--ozone-platform-hint=auto" \
+        --add-flags "--enable-features=WaylandWindowDecorations" \
+        --add-flags "--enable-wayland-ime" \
+        --set-default MOZ_ENABLE_WAYLAND 1
 
-      mkdir -p $out/share/applications
-      cat > $out/share/applications/equibop.desktop <<EOF
-[Desktop Entry]
-Name=Discord
-Exec=equibop %U
-Terminal=false
-Type=Application
-Icon=discord
-Categories=Utility;
-EOF
+      runHook postInstall
     '';
+
+    desktopItems = [
+      (prev.makeDesktopItem {
+        name = "Equibop";
+        desktopName = "Equibop";
+        exec = "equibop %U";
+        icon = "discord";
+        startupWMClass = "equibop";
+        genericName = "Internet Messenger";
+        keywords = [ "discord" "equibop" "chat" ];
+        categories = [ "Network" "InstantMessaging" "Chat" ];
+      })
+    ];
+
+    meta = with prev.lib; {
+      description = "Equibop - A custom Discord client";
+      homepage = "https://github.com/Equicord/Equibop";
+      license = licenses.gpl3Only;
+      platforms = [ "x86_64-linux" ];
+      mainProgram = "equibop";
+    };
   };
 }
