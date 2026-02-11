@@ -1,12 +1,18 @@
-{ config, lib, pkgs, system-modules, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  system-modules,
+  ...
+}:
 
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
     system-modules
     (system-modules + "/ui/gnome.nix")
   ];
-  
+
   # Bootloader and Kernel
   boot = {
     loader = {
@@ -48,7 +54,10 @@
   # Users.
   users.users.TXG0Fk3 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
   };
 
   # Shell

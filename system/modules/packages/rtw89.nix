@@ -1,4 +1,11 @@
-{ lib, stdenv, fetchFromGitHub, kernel, bc, nukeReferences }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  kernel,
+  bc,
+  nukeReferences,
+}:
 
 stdenv.mkDerivation {
   pname = "rtw89-morrownr";
@@ -11,7 +18,11 @@ stdenv.mkDerivation {
     hash = "sha256-UoiiyiOtU12FzWx7KqWEiTbulHRBbhT7bd7L97NniHo=";
   };
 
-  nativeBuildInputs = [ bc nukeReferences ] ++ kernel.moduleBuildDependencies;
+  nativeBuildInputs = [
+    bc
+    nukeReferences
+  ]
+  ++ kernel.moduleBuildDependencies;
   hardeningDisable = [ "pic" ];
 
   prePatch = ''

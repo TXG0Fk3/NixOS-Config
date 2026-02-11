@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -14,7 +19,7 @@ in
       default = "admin";
       description = "The username that will own the config and downloads.";
     };
-    
+
     storagePath = mkOption {
       type = types.str;
       description = "The path where downloads will be saved (must be an absolute path string).";
@@ -23,11 +28,14 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = (map (subDir: 
-      "d /var/lib/containers/qbittorrent${subDir} 0755 ${cfg.user} users -"
-    ) [ "" "/config" ]) ++ [
-      "d ${cfg.storagePath} 0775 ${cfg.user} users -"
-    ];
+    systemd.tmpfiles.rules =
+      (map (subDir: "d /var/lib/containers/qbittorrent${subDir} 0755 ${cfg.user} users -") [
+        ""
+        "/config"
+      ])
+      ++ [
+        "d ${cfg.storagePath} 0775 ${cfg.user} users -"
+      ];
 
     virtualisation.oci-containers.containers.qbittorrent = {
       image = "lscr.io/linuxserver/qbittorrent:latest";
@@ -44,8 +52,11 @@ in
       ];
       extraOptions = [ "--network=host" ];
     };
-    
-    networking.firewall.allowedTCPPorts = [ 8080 50322 ];
+
+    networking.firewall.allowedTCPPorts = [
+      8080
+      50322
+    ];
     networking.firewall.allowedUDPPorts = [ 50322 ];
   };
 }

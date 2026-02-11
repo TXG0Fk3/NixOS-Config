@@ -1,4 +1,9 @@
-{ config, pkgs, home-modules, ... }:
+{
+  config,
+  pkgs,
+  home-modules,
+  ...
+}:
 
 {
   home.username = "TXG0Fk3";
@@ -28,7 +33,7 @@
       bindkey "^[[H" beginning-of-line
       bindkey "^[[F" end-of-line
       bindkey "^[[3~" delete-char
-      
+
       fastfetch -c minimal
     '';
   };
@@ -76,7 +81,7 @@
     # Content Creation
     obs-studio
     shotcut
-      
+
     # Gaming && Wine
     steam
     steam-run
@@ -92,7 +97,7 @@
 
     # Development
     git
-    
+
     # Fonts
     noto-fonts
     noto-fonts-cjk-sans

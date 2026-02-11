@@ -1,4 +1,11 @@
-{ lib, stdenv, fetchFromGitHub, kernel, bc, nukeReferences }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  kernel,
+  bc,
+  nukeReferences,
+}:
 
 stdenv.mkDerivation {
   pname = "rtl8852cu-morrownr";
@@ -11,10 +18,14 @@ stdenv.mkDerivation {
     hash = "sha256-yp5e2ijkqKji+dJ+XPMJJPhkjh5NYUiFEncQc4HdNEA=";
   };
 
-  nativeBuildInputs = [ bc nukeReferences ] ++ kernel.moduleBuildDependencies;
+  nativeBuildInputs = [
+    bc
+    nukeReferences
+  ]
+  ++ kernel.moduleBuildDependencies;
   hardeningDisable = [ "pic" ];
 
-   prePatch = ''
+  prePatch = ''
     substituteInPlace Makefile \
       --replace /lib/modules/ "${kernel.dev}/lib/modules/" \
       --replace /sbin/depmod \# \

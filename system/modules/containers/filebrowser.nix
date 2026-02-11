@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -9,7 +14,7 @@ in
   options.services.homelab.filebrowser = {
     enable = mkEnableOption "Activate FileBrowser Web UI.";
 
-    user = mkOption { 
+    user = mkOption {
       type = types.str;
       default = "admin";
     };
@@ -21,19 +26,27 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = map (subDir: 
-      "d /var/lib/containers/filebrowser${subDir} 0700 ${cfg.user} users -"
-    ) [ "" "/db" "/conf" ];
+    systemd.tmpfiles.rules =
+      map (subDir: "d /var/lib/containers/filebrowser${subDir} 0700 ${cfg.user} users -")
+        [
+          ""
+          "/db"
+          "/conf"
+        ];
 
     virtualisation.oci-containers.containers.filebrowser = {
       image = "filebrowser/filebrowser:latest";
       autoStart = true;
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
-      cmd = [ 
-        "--port" "8080"
-        "--address" "0.0.0.0"
-        "--database" "/database/filebrowser.db"
-        "--root" "/srv"
+      cmd = [
+        "--port"
+        "8080"
+        "--address"
+        "0.0.0.0"
+        "--database"
+        "/database/filebrowser.db"
+        "--root"
+        "/srv"
       ];
       volumes = [
         "/var/lib/containers/filebrowser/db:/database"

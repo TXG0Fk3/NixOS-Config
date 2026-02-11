@@ -1,11 +1,14 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 
 {
   # FileSystems
   fileSystems."/mnt/storage" = {
     device = "/dev/disk/by-label/STORAGE-SM";
     fsType = "xfs";
-    options = [ "noatime" "nofail" ];
+    options = [
+      "noatime"
+      "nofail"
+    ];
   };
 
   environment.systemPackages = [ pkgs.hdparm ];

@@ -8,9 +8,9 @@ final: prev: {
       sha256 = "58b91351b9c3044ada50e93ee47a57c2edfa5a48c90527e7a6370dc2387e81eb";
     };
 
-    nativeBuildInputs = [ 
-      prev.makeWrapper 
-      prev.autoPatchelfHook 
+    nativeBuildInputs = [
+      prev.makeWrapper
+      prev.autoPatchelfHook
       prev.copyDesktopItems
     ];
 
@@ -44,8 +44,16 @@ final: prev: {
         icon = "discord";
         startupWMClass = "equibop";
         genericName = "Internet Messenger";
-        keywords = [ "discord" "equibop" "chat" ];
-        categories = [ "Network" "InstantMessaging" "Chat" ];
+        keywords = [
+          "discord"
+          "equibop"
+          "chat"
+        ];
+        categories = [
+          "Network"
+          "InstantMessaging"
+          "Chat"
+        ];
       })
     ];
 

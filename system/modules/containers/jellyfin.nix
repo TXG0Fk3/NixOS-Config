@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -23,9 +28,13 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = map (subDir: 
-      "d /var/lib/containers/jellyfin${subDir} 0750 ${cfg.user} users -"
-    ) [ "" "/config" "/cache" ];
+    systemd.tmpfiles.rules =
+      map (subDir: "d /var/lib/containers/jellyfin${subDir} 0750 ${cfg.user} users -")
+        [
+          ""
+          "/config"
+          "/cache"
+        ];
 
     virtualisation.oci-containers.containers.jellyfin = {
       image = "jellyfin/jellyfin:latest";
@@ -39,7 +48,10 @@ in
         "/var/lib/containers/jellyfin/cache:/cache"
         "${cfg.mediaPath}:/media"
       ];
-      ports = [ "8096:8096/tcp" "7359:7359/udp" ];
+      ports = [
+        "8096:8096/tcp"
+        "7359:7359/udp"
+      ];
       extraOptions = [
         "--device=/dev/dri/renderD128:/dev/dri/renderD128"
         "--device=/dev/dri/card1:/dev/dri/card1"

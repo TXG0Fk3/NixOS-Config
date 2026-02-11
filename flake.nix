@@ -11,51 +11,59 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, ...}@inputs:
-  let
-    system-modules = ./system/modules;
-    home-modules = ./home-manager/modules;
-  in
-  {  
-    nixosConfigurations = {
-      # Orion
-      Orion = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs system-modules; };
-        modules = [
-          ./system/hosts/orion
-          home-manager.nixosModules.home-manager {
-            home-manager = {
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs home-modules; };
-              users.TXG0Fk3 = import ./home-manager/users/orion/txg0fk3.nix;
-            };
-          }
-        ];
-      };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      system-modules = ./system/modules;
+      home-modules = ./home-manager/modules;
+    in
+    {
+      nixosConfigurations = {
+        # Orion
+        Orion = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs system-modules; };
+          modules = [
+            ./system/hosts/orion
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs home-modules; };
+                users.TXG0Fk3 = import ./home-manager/users/orion/txg0fk3.nix;
+              };
+            }
+          ];
+        };
 
-      # Phoenix
-      Phoenix = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs system-modules; };
-        modules = [
-          ./system/hosts/phoenix
-          home-manager.nixosModules.home-manager {
-            home-manager = {
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs home-modules; };
-              users.TXG0Fk3 = import ./home-manager/users/phoenix/txg0fk3.nix;
-            };
-          }
-        ];
-      };
+        # Phoenix
+        Phoenix = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs system-modules; };
+          modules = [
+            ./system/hosts/phoenix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs home-modules; };
+                users.TXG0Fk3 = import ./home-manager/users/phoenix/txg0fk3.nix;
+              };
+            }
+          ];
+        };
 
-      # Hydra
-      Hydra = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs system-modules; };
-        modules = [ ./system/hosts/hydra ];
+        # Hydra
+        Hydra = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs system-modules; };
+          modules = [ ./system/hosts/hydra ];
+        };
       };
     };
-  };
 }

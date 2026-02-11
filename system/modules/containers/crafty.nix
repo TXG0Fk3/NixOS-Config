@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -17,9 +22,16 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = map (subDir: 
-      "d /var/lib/containers/crafty${subDir} 0750 ${cfg.user} users -"
-    ) [ "" "/backups" "/logs" "/servers" "/config" "/import" ];
+    systemd.tmpfiles.rules =
+      map (subDir: "d /var/lib/containers/crafty${subDir} 0750 ${cfg.user} users -")
+        [
+          ""
+          "/backups"
+          "/logs"
+          "/servers"
+          "/config"
+          "/import"
+        ];
 
     virtualisation.oci-containers.containers.crafty = {
       image = "registry.gitlab.com/crafty-controller/crafty-4:latest";
@@ -35,11 +47,21 @@ in
         "/var/lib/containers/crafty/config:/crafty/app/config"
         "/var/lib/containers/crafty/import:/crafty/import"
       ];
-      ports = [ "8443:8443" "8123:8123" "19132:19132/udp" "25500-25600:25500-25600" ];
+      ports = [
+        "8443:8443"
+        "8123:8123"
+        "19132:19132/udp"
+        "25500-25600:25500-25600"
+      ];
     };
 
     networking.firewall.allowedTCPPorts = [ 8443 ];
     networking.firewall.allowedUDPPorts = [ 19132 ];
-    networking.firewall.allowedTCPPortRanges = [ { from = 25500; to = 25600; } ];
+    networking.firewall.allowedTCPPortRanges = [
+      {
+        from = 25500;
+        to = 25600;
+      }
+    ];
   };
 }

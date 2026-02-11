@@ -1,4 +1,9 @@
-{ config, pkgs, home-modules, ... }:
+{
+  config,
+  pkgs,
+  home-modules,
+  ...
+}:
 
 {
   home.username = "TXG0Fk3";
@@ -42,7 +47,7 @@
 
     # Development
     git
-    
+
     # Fonts
     noto-fonts
     noto-fonts-cjk-sans

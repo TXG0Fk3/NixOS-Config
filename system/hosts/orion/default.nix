@@ -1,14 +1,20 @@
-{ config, lib, pkgs, system-modules, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  system-modules,
+  ...
+}:
 
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
     ./overlays.nix
     ./mounts.nix
     system-modules
     (system-modules + "/ui/gnome.nix")
   ];
-  
+
   # Bootloader and Kernel
   boot = {
     loader = {
@@ -18,7 +24,10 @@
     tmp.useTmpfs = true;
     kernelPackages = pkgs.linuxPackages_zen;
     extraModulePackages = with config.boot.kernelPackages; [ rtw89-morrownr ];
-    kernelModules = [ "rtw89_8852cu_git" "ntsync" ];
+    kernelModules = [
+      "rtw89_8852cu_git"
+      "ntsync"
+    ];
   };
 
   # Swap
@@ -64,7 +73,11 @@
   # Users.
   users.users.TXG0Fk3 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "podman" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "podman"
+    ];
   };
 
   # Shell

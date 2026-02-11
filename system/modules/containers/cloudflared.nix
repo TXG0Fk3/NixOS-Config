@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -18,7 +23,11 @@ in
     virtualisation.oci-containers.containers.cloudflared = {
       image = "cloudflare/cloudflared:latest";
       autoStart = true;
-      cmd = [ "tunnel" "--no-autoupdate" "run" ];
+      cmd = [
+        "tunnel"
+        "--no-autoupdate"
+        "run"
+      ];
       extraOptions = [ "--network=host" ];
       environmentFiles = [
         "/var/lib/containers/cloudflared/cloudflared.env"

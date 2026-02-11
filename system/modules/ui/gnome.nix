@@ -10,7 +10,10 @@
     desktopManager.gnome.enable = true;
     gnome.core-apps.enable = false;
   };
-  environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    gnome-user-docs
+  ];
 
   environment.systemPackages = with pkgs; [
     # Gnome Extensions
@@ -44,8 +47,18 @@
   # Open Ports For GSConnect
   networking = {
     firewall = {
-      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
     };
   };
 

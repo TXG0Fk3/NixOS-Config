@@ -8,7 +8,7 @@
     profiles.default = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
-      
+
       extensions = with pkgs.vscode-extensions; [
         bodil.blueprint-gtk
         bradlc.vscode-tailwindcss
@@ -25,7 +25,7 @@
         "window.titleBarStyle" = "custom";
         "window.customTitleBarVisibility" = "auto";
         "editor.fontSize" = 16;
-        
+
         "editor.fontFamily" = "'JetBrainsMono Nerd Font'";
         "editor.fontLigatures" = true;
         "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font'";
@@ -43,15 +43,24 @@
         "files.autoSave" = "afterDelay";
         "security.workspace.trust.untrustedFiles" = "open";
 
-        "[nix]" = { "editor.defaultFormatter" = "jnoortheen.nix-ide"; };
-        "[css]" = { "editor.defaultFormatter" = "vscode.css-language-features"; };
-        "[html]" = { "editor.defaultFormatter" = "vscode.html-language-features"; };
-        "[powershell]" = { "editor.defaultFormatter" = "ms-vscode.powershell"; };
+        "[nix]" = {
+          "editor.defaultFormatter" = "jnoortheen.nix-ide";
+        };
+        "[css]" = {
+          "editor.defaultFormatter" = "vscode.css-language-features";
+        };
+        "[html]" = {
+          "editor.defaultFormatter" = "vscode.html-language-features";
+        };
+        "[powershell]" = {
+          "editor.defaultFormatter" = "ms-vscode.powershell";
+        };
 
         "vscord.status.image.large.debugging.key" = "https://vscord.catppuccin.com/mocha/debugging.webp";
         "vscord.status.image.large.editing.key" = "https://vscord.catppuccin.com/mocha/{lang}.webp";
         "vscord.status.image.large.idle.key" = "https://vscord.catppuccin.com/mocha/idle-{app_id}.webp";
-        "vscord.status.image.large.notInFile.key" = "https://vscord.catppuccin.com/mocha/idle-{app_id}.webp";
+        "vscord.status.image.large.notInFile.key" =
+          "https://vscord.catppuccin.com/mocha/idle-{app_id}.webp";
         "vscord.status.image.large.viewing.key" = "https://vscord.catppuccin.com/mocha/{lang}.webp";
         "vscord.status.image.small.debugging.key" = "https://vscord.catppuccin.com/mocha/debugging.webp";
         "vscord.status.image.small.editing.key" = "https://vscord.catppuccin.com/mocha/{app_id}.webp";

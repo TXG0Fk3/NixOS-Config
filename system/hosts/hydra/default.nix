@@ -1,8 +1,13 @@
-{ config, pkgs, system-modules, ... }:
+{
+  config,
+  pkgs,
+  system-modules,
+  ...
+}:
 
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
     ./mounts.nix
     system-modules
     (system-modules + "/containers/cloudflared.nix")
@@ -18,17 +23,21 @@
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-    }; 
+    };
     tmp.useTmpfs = true;
     kernelPackages = pkgs.linuxPackages_latest;
-    kernel.sysctl = { "vm.swappiness" = 10; };
+    kernel.sysctl = {
+      "vm.swappiness" = 10;
+    };
   };
 
   # Swap
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 12*1024;
-  }];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 12 * 1024;
+    }
+  ];
   zramSwap = {
     enable = true;
     memoryPercent = 50;
@@ -40,8 +49,8 @@
   networking = {
     hostName = "Hydra";
     firewall = {
-      enable =  true;
-      allowedTCPPorts = [ 
+      enable = true;
+      allowedTCPPorts = [
         22 # SSH
       ];
       allowedUDPPorts = [
@@ -51,7 +60,7 @@
   };
 
   # Hardware
-  hardware ={
+  hardware = {
     graphics = {
       enable = true;
       extraPackages = with pkgs; [
@@ -66,7 +75,10 @@
   users.users.admin = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "podman" ];
+    extraGroups = [
+      "wheel"
+      "podman"
+    ];
   };
 
   # Packages
