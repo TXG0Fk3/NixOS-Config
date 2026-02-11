@@ -85,7 +85,6 @@
 
     # Development
     git
-    vscode
     
     # Fonts
     noto-fonts
@@ -102,6 +101,21 @@
     adwaita-qt
     adwaita-qt6
   ];
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions; [
+      bodil.blueprint-gtk
+      bradlc.vscode-tailwindcss
+      jnoortheen.nix-ide
+      leonardssh.vscord
+      mesonbuild.mesonbuild
+      ms-python.python
+      ms-vscode.powershell
+      piousdeer.adwaita-theme
+    ];
+  };
 
   imports = [
     (home-modules + "/bottles.nix")
