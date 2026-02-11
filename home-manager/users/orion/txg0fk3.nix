@@ -44,13 +44,12 @@
     gnome-feeds
     planify
     gnome-solanum
-    iotas
-    
 
     # Media & Utilities
     gnome-calculator
     gnome-text-editor
     decibels
+    eartag
     eyedropper
     file-roller
     fragments
