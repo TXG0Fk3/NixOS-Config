@@ -109,6 +109,13 @@
     adwaita-qt6
   ];
 
+  # Flatpaks
+  services.flatpak.packages = [
+    "io.github.vikdevelop.SaveDesktop"
+    "io.mrarm.mcpelauncher"
+    "org.vinegarhq.Sober"
+  ];
+
   # Themes
   gtk = {
     enable = true;
