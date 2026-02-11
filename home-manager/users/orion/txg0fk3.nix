@@ -16,6 +16,7 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    history.size = 10000;
     initContent = ''
       bindkey "^[[H" beginning-of-line
       bindkey "^[[F" end-of-line
