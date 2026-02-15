@@ -27,6 +27,26 @@
     };
   };
 
+  # Network
+  networking.nameservers = [
+    "9.9.9.9#dns.quad9.net"
+    "149.112.112.112#dns.quad9.net"
+    "2620:fe::fe#dns.quad9.net"
+    "2620:fe::9#dns.quad9.net"
+  ];
+  services.resolved = {
+    enable = true;
+    settings.Resolve = {
+      DNSSEC = "true";
+      Domains = [ "~." ];
+      FallbackDNS = [
+        "9.9.9.9#dns.quad9.net"
+        "149.112.112.112#dns.quad9.net"
+      ];
+      DNSOverTLS = "true";
+    };
+  };
+
   # SystemPackages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
