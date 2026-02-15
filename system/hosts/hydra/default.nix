@@ -112,17 +112,17 @@
       filebrowser = {
         enable = true;
         user = "admin";
-        storagePath = "/mnt/storage";
+        storagePath = "/mnt";
       };
       qbittorrent = {
         enable = true;
         user = "admin";
-        storagePath = "/mnt/storage/downloads";
+        storagePath = "/mnt/scratch/torrents";
       };
       jellyfin = {
         enable = true;
         user = "admin";
-        mediaPath = "/mnt/storage/media";
+        mediaPath = "/mnt/media";
       };
       crafty = {
         enable = true;
