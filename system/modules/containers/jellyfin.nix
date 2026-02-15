@@ -16,25 +16,33 @@ in
 
     user = mkOption {
       type = types.str;
-      default = "admin";
+      example = "admin";
       description = "Owner of the media and config files.";
     };
 
     mediaPath = mkOption {
       type = types.str;
-      default = "/mnt/storage/media";
+      example = "/mnt/storage/media";
       description = "Path to your media library.";
+    };
+
+    transcodePath = mkOption {
+      type = types.str;
+      default = "/var/lib/containers/jellyfin/cache/transcode";
+      description = "Path for temporary transcode files.";
     };
   };
 
   config = mkIf cfg.enable {
     systemd.tmpfiles.rules =
-      map (subDir: "d /var/lib/containers/jellyfin${subDir} 0750 ${cfg.user} users -")
-        [
-          ""
-          "/config"
-          "/cache"
-        ];
+      (map (subDir: "d /var/lib/containers/jellyfin${subDir} 0750 ${cfg.user} users -") [
+        ""
+        "/config"
+        "/cache"
+      ])
+      ++ [
+        "d ${cfg.transcodePath} 0750 ${cfg.user} users -"
+      ];
 
     virtualisation.oci-containers.containers.jellyfin = {
       image = "jellyfin/jellyfin:latest";
@@ -47,6 +55,7 @@ in
         "/var/lib/containers/jellyfin/config:/config"
         "/var/lib/containers/jellyfin/cache:/cache"
         "${cfg.mediaPath}:/media"
+        "${cfg.transcodePath}:/transcode"
       ];
       ports = [
         "8096:8096/tcp"
