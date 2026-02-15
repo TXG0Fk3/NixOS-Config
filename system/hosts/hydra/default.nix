@@ -123,6 +123,7 @@
         enable = true;
         user = "admin";
         mediaPath = "/mnt/media";
+        transcodePath = "/mnt/scratch/jellyfin/transcode";
       };
       crafty = {
         enable = true;
