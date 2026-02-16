@@ -36,6 +36,9 @@
 
       fastfetch -c minimal
     '';
+    shellAliases = {
+      brain-sync = "cd ~/Brain && git pull origin main --rebase && git add . && git commit -m \"🧠 Brain update: $(date +'%Y-%m-%d %H:%M')\" && git push origin main";
+    };
   };
   programs.oh-my-posh = {
     enable = true;
@@ -56,8 +59,10 @@
 
     # Productivity / Knowledge
     gnome-feeds
-    planify
     gnome-solanum
+    logseq
+    obsidian
+    planify
 
     # Media & Utilities
     gnome-calculator
