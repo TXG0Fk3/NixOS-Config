@@ -6,9 +6,9 @@
 
 <div align="center">
   
-  ![GitHub Repo stars](https://img.shields.io/github/stars/TXG0Fk3/NixOS-Config?style=for-the-badge&color=7ebae4)
-  ![GitHub last commit](https://img.shields.io/github/last-commit/TXG0Fk3/NixOS-Config?style=for-the-badge&color=5277c3)
-  ![GitHub repo size](https://img.shields.io/github/repo-size/TXG0Fk3/NixOS-Config?style=for-the-badge&color=7ebae4)
+  [![Codeberg](https://img.shields.io/badge/Hosted_at-Codeberg-2185d0?style=for-the-badge&logo=codeberg&logoColor=white)](https://codeberg.org/TXG0Fk3/NixOS-Config)
+  ![GitHub last commit (mirror)](https://img.shields.io/github/last-commit/TXG0Fk3/NixOS-Config?label=last%20mirror&style=for-the-badge&color=5277c3)
+  ![GitHub stars](https://img.shields.io/github/stars/TXG0Fk3/NixOS-Config?style=for-the-badge&color=7ebae4)
 </div>
 
 <div align="center">
