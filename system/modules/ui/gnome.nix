@@ -21,6 +21,7 @@
     gnomeExtensions.background-logo
     gnomeExtensions.blur-my-shell
     gnomeExtensions.clipboard-indicator
+    gnomeExtensions.emoji-copy
     gnomeExtensions.gsconnect
     gnomeExtensions.just-perfection
     gnomeExtensions.logo-menu
