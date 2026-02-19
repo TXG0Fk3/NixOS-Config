@@ -37,8 +37,7 @@
       fastfetch -c minimal
     '';
     shellAliases = {
-      brain-sync = "cd ~/Brain && git add . && git commit -m \"🧠 Brain update: $(date +'%Y-%m-%d %H:%M')\" && git pull origin main --rebase && git push origin main"
-;
+      brain-sync = "cd ~/Brain && git add . && git commit -m \"🧠 Brain update: $(date +'%Y-%m-%d %H:%M')\" && git pull origin main --rebase && git push origin main";
     };
   };
   programs.oh-my-posh = {
@@ -67,6 +66,7 @@
 
     # Media & Utilities
     gnome-calculator
+    gnome-podcasts
     gnome-text-editor
     decibels
     eartag
