@@ -77,6 +77,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "libvirtd"
       "podman"
     ];
   };
@@ -92,12 +93,20 @@
   environment.systemPackages = with pkgs; [
     # Virtualisation
     distrobox
+    virt-manager
   ];
 
   # Virtualisation
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
+  virtualisation = {
+    spiceUSBRedirection.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu.swtpm.enable = true;
+    };
+    podman = {
+      enable = true;
+      dockerCompat = true;
+    };
   };
 
   # Services
