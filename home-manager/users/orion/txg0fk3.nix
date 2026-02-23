@@ -51,7 +51,6 @@
     # Network & Streaming & Sharing
     firefox
     equibop
-    fractal
     telegram-desktop
     jellyfin-desktop
     localsend
