@@ -83,6 +83,7 @@
     baobab
     deja-dup
     usb-modeswitch
+    cryptomator
 
     # Content Creation
     obs-studio
