@@ -13,13 +13,14 @@ in
 {
   options.services.homelab.cloudflared = {
     enable = mkEnableOption "Enable Cloudflared service.";
+
+    tunnelTokenFile = mkOption {
+      type = types.str;
+      description = "Path to file containing TUNNEL_TOKEN environment variable";
+    };
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = [
-      "d /var/lib/containers/cloudflared 0700 root root -"
-    ];
-
     virtualisation.oci-containers.containers.cloudflared = {
       image = "cloudflare/cloudflared:latest";
       autoStart = true;
@@ -30,7 +31,7 @@ in
       ];
       extraOptions = [ "--network=host" ];
       environmentFiles = [
-        "/var/lib/containers/cloudflared/cloudflared.env"
+        cfg.tunnelTokenFile
       ];
     };
   };

@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  secreats,
   system-modules,
   ...
 }:
@@ -9,6 +10,7 @@
   imports = [
     ./hardware.nix
     ./mounts.nix
+    ./sops.nix
     system-modules
     (system-modules + "/containers/cloudflared.nix")
     (system-modules + "/containers/filebrowser.nix")
@@ -108,7 +110,10 @@
     fail2ban.enable = true;
 
     homelab = {
-      cloudflared.enable = true;
+      cloudflared = {
+        enable = true;
+        tunnelTokenFile = config.sops.secrets."cloudflared.env".path;
+      };
       filebrowser = {
         enable = true;
         user = "admin";
@@ -129,7 +134,10 @@
         enable = true;
         user = "admin";
       };
-      playit.enable = true;
+      playit = {
+        enable = true;
+        secretKeyFile = config.sops.secrets."playit.env".path;
+      };
     };
 
     radarr = {
