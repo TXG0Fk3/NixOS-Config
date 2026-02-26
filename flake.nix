@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
@@ -16,9 +20,11 @@
       self,
       nixpkgs,
       home-manager,
+      sops-nix,
       ...
     }@inputs:
     let
+      secrets = ./secrets;
       system-modules = ./system/modules;
       home-modules = ./home-manager/modules;
     in
@@ -34,7 +40,7 @@
             {
               home-manager = {
                 useUserPackages = true;
-                extraSpecialArgs = { inherit inputs home-modules; };
+                extraSpecialArgs = { inherit inputs secrets home-modules; };
                 users.TXG0Fk3 = import ./home-manager/users/orion/txg0fk3.nix;
               };
             }
@@ -61,8 +67,11 @@
         # Hydra
         Hydra = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs system-modules; };
-          modules = [ ./system/hosts/hydra ];
+          specialArgs = { inherit inputs secrets system-modules; };
+          modules = [
+            ./system/hosts/hydra
+            sops-nix.nixosModules.sops
+          ];
         };
       };
     };

@@ -1,0 +1,18 @@
+keys:
+  - &txg0fk3 age1f2tv3ymp5qa29ue0vs48a6g88vfaypn4fsngpdxp9zyklvqz690sahenr8
+
+  - &orion age19dg7d9382ujq8u5kec2rek9eyhrvex60f6xfu0ntetw8j2ng6edq3n3xdf
+  - &hydra age1arrhdr4vtn03c567rmdsuu96ppr9nmcy364uq08ygqelvqd2afcslg2jnc
+
+creation_rules:
+  - path_regex: secrets/orion\.(yaml|json)$
+    key_groups: 
+    - age: [ *txg0fk3, *orion ]
+
+  - path_regex: secrets/hydra\.(yaml|json)$ 
+    key_groups: 
+      - age: [ *txg0fk3, *hydra]
+
+  - path_regex: secrets/common\.(yaml|json)$
+    key_groups:
+      - age: [*txg0fk3, *orion, *hydra]
