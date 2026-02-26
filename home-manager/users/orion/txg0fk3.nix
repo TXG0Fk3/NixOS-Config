@@ -13,6 +13,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
+    ./sops.nix
     (home-modules + "/flatpak.nix")
     (home-modules + "/bottles.nix")
     (home-modules + "/prismlauncher.nix")
@@ -102,9 +103,6 @@
     # Remote Access
     remmina
 
-    # Development
-    git
-
     # Fonts
     noto-fonts
     noto-fonts-cjk-sans
@@ -127,6 +125,12 @@
     "io.mrarm.mcpelauncher"
     "org.vinegarhq.Sober"
   ];
+
+  # Git
+  programs.git = {
+    enable = true;
+    includes = [ { path = config.sops.templates."git-secrets".path; } ];
+  };
 
   # Themes
   gtk = {
