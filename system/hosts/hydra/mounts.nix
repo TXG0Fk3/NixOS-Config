@@ -30,7 +30,7 @@
     notifications.wall.enable = true;
   };
 
-  powerManagement.powerUpCommands = ''
-    ${pkgs.hdparm}/sbin/hdparm -B 254 -S 0 /dev/disk/by-id/ata-SAMSUNG_HM500JI_S227J56B710852
-  '';
+  #powerManagement.powerUpCommands = ''
+  #  ${pkgs.hdparm}/sbin/hdparm -B 254 -S 0 /dev/disk/by-id/ata-SAMSUNG_HM500JI_S227J56B710852
+  #'';
 }
