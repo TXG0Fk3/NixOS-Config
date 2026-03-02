@@ -25,7 +25,7 @@ This repository contains my personal NixOS configuration. The goal is to have a 
 - [🏠 home-manager](home-manager/) - HomeManager files
   - [🧩 modules](home-manager/modules/) - HomeManager modules
   - [👤 users](home-manager/users/) - Users configs
-- [🤫 secrets](secrets/) - Sops secrets
+- [🔑 secrets](secrets/) - Sops secrets
 - [🔧 system](system/) - System Files
   - [🧩 modules](system/modules/) - System modules
   - [🖥️ hosts](system/hosts/) - Hosts configs
