@@ -15,7 +15,7 @@ stdenv.mkDerivation {
     owner = "morrownr";
     repo = "rtw89";
     rev = "master";
-    hash = "sha256-UoiiyiOtU12FzWx7KqWEiTbulHRBbhT7bd7L97NniHo=";
+    hash = "sha256-eyP4aHur6snt/FpSPOstp8f4nkrOZ9llFbR6rSAkuvk=";
   };
 
   nativeBuildInputs = [
