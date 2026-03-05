@@ -54,6 +54,7 @@
     firefox
     equibop
     telegram-desktop
+    signal-desktop
     jellyfin-desktop
     localsend
     protonvpn-gui
