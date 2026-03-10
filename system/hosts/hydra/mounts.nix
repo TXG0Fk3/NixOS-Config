@@ -1,6 +1,31 @@
 { config, pkgs, ... }:
 
 {
+  fileSystems."/mnt/cloud" = {
+    device = "/dev/disk/by-label/CLOUD-WD";
+    fsType = "btrfs";
+    options = [
+      "subvol=@cloud"
+      "compress=zstd:3"
+      "noatime"
+      "nofail"
+      "space_cache=v2"
+    ];
+  };
+
+  fileSystems."/mnt/cloud/forgejo" = {
+    device = "/dev/disk/by-label/CLOUD-WD";
+    fsType = "btrfs";
+    options = [
+      "subvol=@forgejo"
+      "compress=zstd:3"
+      "noatime"
+      "nofail"
+      "space_cache=v2"
+      "autodefrag"
+    ];
+  };
+
   fileSystems."/mnt/media" = {
     device = "/dev/disk/by-label/MEDIA-SM";
     fsType = "xfs";
@@ -25,12 +50,15 @@
     idle3tools
   ];
 
-  services.smartd = {
-    enable = true;
-    notifications.wall.enable = true;
+  services = {
+    smartd = {
+      enable = true;
+      notifications.wall.enable = true;
+    };
+    btrfs.autoScrub = {
+      enable = true;
+      interval = "monthly";
+      fileSystems = [ "/mnt/cloud" ];
+    };
   };
-
-  #powerManagement.powerUpCommands = ''
-  #  ${pkgs.hdparm}/sbin/hdparm -B 254 -S 0 /dev/disk/by-id/ata-SAMSUNG_HM500JI_S227J56B710852
-  #'';
 }
