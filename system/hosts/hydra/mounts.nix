@@ -13,7 +13,7 @@
     ];
   };
 
-  fileSystems."/mnt/cloud/forgejo" = {
+  fileSystems."/mnt/forgejo" = {
     device = "/dev/disk/by-label/CLOUD-WD";
     fsType = "btrfs";
     options = [
