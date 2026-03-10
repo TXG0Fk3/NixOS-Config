@@ -14,6 +14,7 @@
     system-modules
     (system-modules + "/containers/cloudflared.nix")
     (system-modules + "/containers/filebrowser.nix")
+    (system-modules + "/containers/forgejo.nix")
     (system-modules + "/containers/qbittorrent.nix")
     (system-modules + "/containers/jellyfin.nix")
     (system-modules + "/containers/crafty.nix")
@@ -118,6 +119,11 @@
         enable = true;
         user = "admin";
         storagePath = "/mnt";
+      };
+      forgejo = {
+        enable = true;
+        user = "admin";
+        reposPath = "/mnt/forgejo";
       };
       qbittorrent = {
         enable = true;
