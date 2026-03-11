@@ -6,7 +6,7 @@
 
 <div align="center">
   
-  [![Codeberg](https://img.shields.io/badge/Hosted_at-Codeberg-2185d0?style=for-the-badge&logo=codeberg&logoColor=white)](https://codeberg.org/TXG0Fk3/NixOS-Config)
+  [![Forgejo](https://img.shields.io/badge/Hosted_at-Forgejo-7ebae4?style=for-the-badge&logo=forgejo&logoColor=white)](https://fgj.txgfk.xyz/TXG0Fk3/NixOS-Config)
   ![GitHub last commit (mirror)](https://img.shields.io/github/last-commit/TXG0Fk3/NixOS-Config?label=last%20mirror&style=for-the-badge&color=5277c3)
   ![GitHub stars](https://img.shields.io/github/stars/TXG0Fk3/NixOS-Config?style=for-the-badge&color=7ebae4)
 </div>
