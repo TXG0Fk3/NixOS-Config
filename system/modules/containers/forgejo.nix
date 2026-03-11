@@ -37,7 +37,7 @@ in
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       environment = {
         TZ = "America/Maceio";
-        FORGEJO____RUN_USER = cfg.user;
+        FORGEJO____RUN_USER = "git";
         FORGEJO__server__ROOT_URL = "https://fgj.txgfk.xyz/";
         FORGEJO__server__DOMAIN = "fgj.txgfk.xyz";
         FORGEJO__indexer__MAX_FILE_SIZE = "6291456";
