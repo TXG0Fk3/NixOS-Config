@@ -134,6 +134,11 @@
     includes = [ { path = config.sops.templates."git-secrets".path; } ];
   };
 
+  # Services
+  services = {
+    syncthing.enable = true;
+  };
+
   # Themes
   gtk = {
     enable = true;
