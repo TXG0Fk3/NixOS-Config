@@ -14,6 +14,7 @@
     system-modules
     (system-modules + "/containers/cloudflared.nix")
     (system-modules + "/containers/filebrowser.nix")
+    (system-modules + "/containers/syncthing.nix")
     (system-modules + "/containers/forgejo.nix")
     (system-modules + "/containers/qbittorrent.nix")
     (system-modules + "/containers/jellyfin.nix")
@@ -119,6 +120,11 @@
         enable = true;
         user = "admin";
         storagePath = "/mnt";
+      };
+      syncthing = {
+        enable = true;
+        user = "admin";
+        cloudPath = "/mnt/cloud";
       };
       forgejo = {
         enable = true;
