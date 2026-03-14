@@ -110,6 +110,10 @@
   services = {
     openssh.enable = true;
     fail2ban.enable = true;
+    tailscale = {
+      enable = true;
+      authKeyFile = config.sops.secrets."ts-key".path;
+    };
 
     homelab = {
       cloudflared = {
