@@ -22,10 +22,9 @@
       efi.canTouchEfiVariables = true;
     };
     tmp.useTmpfs = true;
-    kernelPackages = pkgs.linuxPackages_zen;
-    extraModulePackages = with config.boot.kernelPackages; [ rtw89-morrownr ];
+    kernelPackages = pkgs.linuxPackages_betelgeuse;
     kernelModules = [
-      "rtw89_8852cu_git"
+      "rtw89_8852cu"
       "ntsync"
     ];
   };

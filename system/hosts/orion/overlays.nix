@@ -7,12 +7,23 @@
 
 {
   nixpkgs.overlays = [
-    (self: super: {
-      linuxPackages_zen = super.linuxPackages_zen.extend (
-        kself: ksuper: {
-          rtw89-morrownr = ksuper.callPackage (system-modules + "/packages/rtw89.nix") { };
-        }
-      );
-    })
+    (
+      self: super:
+      let
+        linuxBetelgeuse = import (system-modules + "/packages/kernel/linuxBetelgeuse.nix") {
+          inherit (super)
+            pkgs
+            fetchurl
+            fetchFromGitHub
+            buildLinux
+            lib
+            ;
+        };
+        baseLinuxPackages = pkgs.linuxPackagesFor linuxBetelgeuse;
+      in
+      {
+        linuxPackages_betelgeuse = baseLinuxPackages;
+      }
+    )
   ];
 }
