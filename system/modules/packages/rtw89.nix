@@ -14,7 +14,7 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "morrownr";
     repo = "rtw89";
-    rev = "master";
+    rev = "d2f175eafa0a4ef9cc65e7073a77e60238cae614";
     hash = "sha256-2LMbwZP+esxooSowEdV+cpOjU+Zn6KWQhEVfftMW15s=";
   };
 
