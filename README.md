@@ -39,7 +39,7 @@ This repository contains my personal NixOS configuration. The goal is to have a 
 
 <div align="center">
   <h3>🌠 Orion</h3>
-  <img src="https://github.com/user-attachments/assets/8bea1ea9-250d-4398-af57-0f52fe63afc0" width="840"/>
+  <img src="assets/screenshots/orion.png" width="840"/>
   <br>
   <sub>GNOME • Marble-Blue-Dark</sub>
 </div>
