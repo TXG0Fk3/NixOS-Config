@@ -1,52 +1,43 @@
 {
   config,
   pkgs,
+  inputs,
+  secrets,
   home-modules,
   ...
 }:
 
 {
-  home.username = "TXG0Fk3";
-  home.homeDirectory = "/home/TXG0Fk3";
-  home.stateVersion = "25.11";
-
-  nixpkgs.config.allowUnfree = true;
-
   imports = [
-    ./sops.nix
+    ./common.nix
     (home-modules + "/flatpak.nix")
     (home-modules + "/bottles.nix")
     (home-modules + "/prismlauncher.nix")
     (home-modules + "/vscodium.nix")
+    inputs.sops-nix.homeManagerModules.sops
   ];
+
+  # Sops
+  sops = {
+    defaultSopsFile = (secrets + "/common.yaml");
+    age.keyFile = "/home/TXG0Fk3/.config/sops/age/keys.txt";
+
+    secrets = {
+      "git/userName" = { };
+      "git/userEmail" = { };
+    };
+
+    templates."git-secrets" = {
+      content = ''
+        [user]
+          name = ${config.sops.placeholder."git/userName"}
+          email = ${config.sops.placeholder."git/userEmail"}
+      '';
+    };
+  };
 
   # Overlays
   nixpkgs.overlays = [ (import (home-modules + "/overlays/equibop.nix")) ];
-
-  # Shell
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    history.size = 10000;
-    initContent = ''
-      bindkey "^[[H" beginning-of-line
-      bindkey "^[[F" end-of-line
-      bindkey "^[[3~" delete-char
-
-      fastfetch -c minimal
-    '';
-    shellAliases = {
-      brain-sync = "cd ~/Brain && git add . && git commit -m \"🧠 Brain update: $(date +'%Y-%m-%d %H:%M')\" && git pull origin main --rebase && git push origin main";
-      usbmds = "sudo usb_modeswitch -v 0bda -p 1a2b -K";
-    };
-  };
-  programs.oh-my-posh = {
-    enable = true;
-    enableZshIntegration = true;
-    useTheme = "catppuccin_mocha";
-  };
 
   # User Packages
   home.packages = with pkgs; [
