@@ -28,10 +28,6 @@ let
         sha256 = "0mqka8ii7bvmx9hvfjdiyva9ib0j7m390gxhh8gki3qb4nl7jc1h";
       };
 
-      patch = path: {
-        name = "patch-${path}";
-        patch = path;
-      };
       kernelPatchSrc = {
         name = "patch";
         patch = builtins.fetchurl {
