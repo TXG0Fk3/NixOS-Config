@@ -26,10 +26,6 @@
 
       fastfetch -c minimal
     '';
-    shellAliases = {
-      brain-sync = "cd ~/Brain && git add . && git commit -m \"🧠 Brain update: $(date +'%Y-%m-%d %H:%M')\" && git pull origin main --rebase && git push origin main";
-      usbmds = "sudo usb_modeswitch -v 0bda -p 1a2b -K";
-    };
   };
   programs.oh-my-posh = {
     enable = true;
