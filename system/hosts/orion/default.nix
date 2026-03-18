@@ -118,7 +118,6 @@
 
   # Services
   services = {
-    fstrim.enable = true;
     tailscale.enable = false;
   };
 

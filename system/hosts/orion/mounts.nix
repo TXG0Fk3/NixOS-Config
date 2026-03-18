@@ -21,4 +21,8 @@
       "x-gvfs-show"
     ];
   };
+
+  services = {
+    fstrim.enable = true;
+  };
 }
