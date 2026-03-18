@@ -96,6 +96,9 @@
     # JRE
     javaPackages.compiler.temurin-bin.jre-25
 
+    # Virtualisation
+    distrobox
+
     # Containers
     podman-compose
   ];
