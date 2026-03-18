@@ -51,6 +51,7 @@
   ];
 
   services = {
+    fstrim.enable = true;
     smartd = {
       enable = true;
       notifications.wall.enable = true;
