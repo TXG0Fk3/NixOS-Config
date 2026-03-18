@@ -25,6 +25,10 @@
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "f2fs";
+    options = [
+      "noatime"
+      "lazytime"
+    ];
   };
 
   fileSystems."/boot" = {
