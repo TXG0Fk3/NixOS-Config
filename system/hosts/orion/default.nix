@@ -100,6 +100,7 @@
   environment.systemPackages = with pkgs; [
     # Virtualisation
     distrobox
+    gnome-boxes
     virt-manager
   ];
 
