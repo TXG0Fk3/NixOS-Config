@@ -64,13 +64,14 @@
 
     # PCIe NIC
     interfaces.enp1s0 = {
-    useDHCP = false;
-    ipv4.addresses = [
-      {
-        address = "192.168.1.110";
-        prefixLength = 24;
-      }
-    ];
+      useDHCP = false;
+      ipv4.addresses = [
+        {
+          address = "192.168.1.110";
+          prefixLength = 24;
+        }
+      ];
+    };
   };
 
   # Hardware
