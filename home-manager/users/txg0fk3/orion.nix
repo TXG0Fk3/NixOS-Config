@@ -75,6 +75,7 @@
     gapless
     gradia
     loupe
+    mousai
     parabolic
     showtime
     (callPackage (home-modules + "/packages/spotiflac.nix") { })
