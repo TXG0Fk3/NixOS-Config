@@ -11,7 +11,7 @@ let
   linuxBetelgeuse = buildLinux (
     args
     // rec {
-      version = "6.19.9";
+      version = "6.19.10";
       modDirVersion = "${version}-Betelgeuse";
       stdenv = pkgs.impureUseNativeOptimizations pkgs.llvmPackages_22.stdenv;
       isZen = true;
@@ -32,7 +32,7 @@ let
         name = "patch";
         patch = builtins.fetchurl {
           url = "https://cdn.kernel.org/pub/linux/kernel/v${lib.versions.major version}.x/patch-${version}.xz";
-          sha256 = "19pwgvifkadsgfsx3w29mi0ks2vwwk88gw4jsya1gjy0jfk1h6qr";
+          sha256 = "1j829szjipnybxgzb5js077a8msqv06hjsa7024z41p3n753zm81";
         };
       };
 
