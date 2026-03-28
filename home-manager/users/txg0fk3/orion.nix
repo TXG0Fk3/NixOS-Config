@@ -83,7 +83,6 @@
     # System Tools
     impression
     baobab
-    deja-dup
     usb-modeswitch
     cryptomator
 
