@@ -54,7 +54,7 @@
     signal-desktop
     jellyfin-desktop
     localsend
-    protonvpn-gui
+    proton-vpn
 
     # Productivity / Knowledge
     gnome-feeds
