@@ -110,7 +110,7 @@
     nerd-fonts.jetbrains-mono
 
     # Icon Packs
-    morewaita-icon-theme
+    (callPackage (home-modules + "/packages/hatter-icon-theme.nix") { })
 
     # Themes
     marble-shell-theme
@@ -140,7 +140,7 @@
   # Themes
   gtk = {
     enable = true;
-    iconTheme.name = "MoreWaita";
+    iconTheme.name = "Hatter-Blue";
     theme.name = "adw-gtk3-dark";
   };
   qt = {
