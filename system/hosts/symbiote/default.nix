@@ -12,12 +12,22 @@
   wsl.enable = true;
   wsl.defaultUser = "TXG0Fk3";
 
-  programs.nix-ld.enable = true;
-
+  # Users
   users.users.TXG0Fk3 = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
+
+  # Packages
+  environment.systemPackages = with pkgs; [
+    # Tools
+    git
+    curl
+    zellij
+    superfile
+  ];
+
+  programs.nix-ld.enable = true;
 
   system.stateVersion = "25.11";
 }
