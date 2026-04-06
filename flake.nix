@@ -78,6 +78,7 @@
         # Symbiote
         Symbiote = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs system-modules; };
           modules = [
             ./system/hosts/symbiote
             nixos-wsl.nixosModules.default
