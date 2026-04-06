@@ -12,6 +12,9 @@
   wsl.enable = true;
   wsl.defaultUser = "TXG0Fk3";
 
+  # Network
+  networking.hostName = "Symbiote";
+
   # Users
   users.users.TXG0Fk3 = {
     isNormalUser = true;
