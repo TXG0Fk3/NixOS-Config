@@ -24,6 +24,10 @@
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "btrfs";
+    options = [
+      "noatime"
+      "compress=zstd:3"
+    ];
   };
 
   fileSystems."/boot" = {
