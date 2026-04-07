@@ -32,6 +32,7 @@ This repository contains my personal NixOS configuration. The goal is to have a 
     - [🐉 hydra](system/hosts/hydra/) - My homelab server
     - [🌠 orion](system/hosts/orion/) - My personal computer
     - [🐦‍🔥 phoenix](system/hosts/phoenix) - Disposable virtual machine
+    - [🪱 symbiote](system/hosts/symbiote) - NixOS on Windows Subsystem for Linux
 
 <div align="center">
     <h2>🖥️ Screenshots</h2>
