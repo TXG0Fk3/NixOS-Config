@@ -61,7 +61,7 @@
     gnome-solanum
     logseq
     obsidian
-    planify
+    todoist-electron
 
     # Media & Utilities
     gnome-calculator
