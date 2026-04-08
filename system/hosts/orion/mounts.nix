@@ -8,6 +8,7 @@
     options = [
       "noatime"
       "lazytime"
+      "nofail"
       "compress_chksum"
       "x-gvfs-show"
     ];
