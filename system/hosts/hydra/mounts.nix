@@ -35,14 +35,14 @@
     ];
   };
 
-  fileSystems."/mnt/scratch" = {
-    device = "/dev/disk/by-label/SCRATCH-SM";
-    fsType = "xfs";
-    options = [
-      "noatime"
-      "nofail"
-    ];
-  };
+  #fileSystems."/mnt/scratch" = {
+  #  device = "/dev/disk/by-label/SCRATCH-SM";
+  #  fsType = "xfs";
+  #  options = [
+  #    "noatime"
+  #    "nofail"
+  #  ];
+  #};
 
   environment.systemPackages = with pkgs; [
     hdparm
