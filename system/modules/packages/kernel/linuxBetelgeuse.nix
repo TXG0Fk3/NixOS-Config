@@ -11,7 +11,7 @@ let
   linuxBetelgeuse = buildLinux (
     args
     // rec {
-      version = "6.19.11";
+      version = "6.19.12";
       modDirVersion = "${version}-Betelgeuse";
       stdenv = pkgs.impureUseNativeOptimizations pkgs.llvmPackages_22.stdenv;
       isZen = true;
@@ -32,15 +32,15 @@ let
         name = "patch";
         patch = builtins.fetchurl {
           url = "https://cdn.kernel.org/pub/linux/kernel/v${lib.versions.major version}.x/patch-${version}.xz";
-          sha256 = "00lpw7m1ksigqhsjvp00gsb6fkzrjxzwxx33b392f6ppyf8r5myh";
+          sha256 = "0ip1rbw5ml1hr1dfrspid5xlg0nkrmznr2mg86i6avpsjqmz9zrx";
         };
       };
 
       linuxTkgPatchesRepo = fetchFromGitHub {
         owner = "Frogging-Family";
         repo = "linux-tkg";
-        rev = "94667bd04c33f4c86f7dc0ddd2e334dae0aa89cd";
-        hash = "sha256-e9Y8d/Tj5p3QWuAiQXcAJtZx4ItmMv+BJG3vMoSyQeE=";
+        rev = "1d50a775bc87ac30f1953467a4bda0915fe6b2f5";
+        hash = "sha256-SNtsnN/y9m4W4cI7uKwRwWuejnsnR3ZhMvwZNYx2NWc=";
       };
 
       linuxTkgPatches = [
