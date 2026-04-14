@@ -101,6 +101,7 @@
     curl
     zellij
     superfile
+    steamcmd
 
     # JRE
     javaPackages.compiler.temurin-bin.jre-25
