@@ -117,6 +117,17 @@
     podman-compose
   ];
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      openssl
+      glibc
+      libgcc
+      zlib
+    ];
+  };
+
   # Containers
   virtualisation.podman = {
     enable = true;
