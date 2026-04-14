@@ -60,6 +60,10 @@
       ];
       allowedUDPPorts = [
         5520 # Hyale Server
+
+        27015 # Query port for Steam server browser
+        7777 # ARK Game client port
+        7778 # Raw UDP socket port (always Game client port + 1)
       ];
     };
 
