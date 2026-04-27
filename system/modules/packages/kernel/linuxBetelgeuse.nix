@@ -11,7 +11,7 @@ let
   linuxBetelgeuse = buildLinux (
     args
     // rec {
-      version = "6.19.14";
+      version = "7.0.1";
       modDirVersion = "${version}-Betelgeuse";
       stdenv = pkgs.impureUseNativeOptimizations pkgs.llvmPackages_22.stdenv;
       isZen = true;
@@ -24,23 +24,15 @@ let
       hasPatch = (builtins.length (builtins.splitVersion version)) == 3;
 
       src = builtins.fetchurl {
-        url = "https://cdn.kernel.org/pub/linux/kernel/v${lib.versions.major version}.x/linux-${mm}.tar.xz";
-        sha256 = "0mqka8ii7bvmx9hvfjdiyva9ib0j7m390gxhh8gki3qb4nl7jc1h";
-      };
-
-      kernelPatchSrc = {
-        name = "patch";
-        patch = builtins.fetchurl {
-          url = "https://cdn.kernel.org/pub/linux/kernel/v${lib.versions.major version}.x/patch-${version}.xz";
-          sha256 = "1zgw5q3qxmy5kc6ik0wn0q0srqmycqdc1ldvc743z9a2jb1fgwqr";
-        };
+        url = "https://cdn.kernel.org/pub/linux/kernel/v${lib.versions.major version}.x/linux-${version}.tar.xz";
+        sha256 = "1gw7v1j0pp2w6fm5y1n0krhnfvgab2jkrvcvwl8hx614dnikbjdj";
       };
 
       linuxTkgPatchesRepo = fetchFromGitHub {
         owner = "Frogging-Family";
         repo = "linux-tkg";
-        rev = "7dca678ec4fb0f29066a660a239fd49c788d5001";
-        hash = "sha256-qgVobWoetZCoxw9gq1qJs7HuDs2A/Ujowm+jfgnzLh4=";
+        rev = "6c5fc86a0c6645fa96ac88c8137d1a4c39a33809";
+        hash = "sha256-ZfhMXkqixUg1v4Vn99qejxWvAtoKd9bbE0F+UlRWgd0=";
       };
 
       linuxTkgPatches = [
@@ -53,12 +45,10 @@ let
         "0013-optimize_harder_O3"
       ];
 
-      kernelPatches =
-        lib.optionals hasPatch [ kernelPatchSrc ]
-        ++ builtins.map (patchName: {
-          inherit patchName;
-          patch = "${linuxTkgPatchesRepo}/linux-tkg-patches/${mm}/${patchName}.patch";
-        }) linuxTkgPatches;
+      kernelPatches = builtins.map (patchName: {
+        inherit patchName;
+        patch = "${linuxTkgPatchesRepo}/linux-tkg-patches/${mm}/${patchName}.patch";
+      }) linuxTkgPatches;
 
       structuredExtraConfig =
         with lib.kernel;
