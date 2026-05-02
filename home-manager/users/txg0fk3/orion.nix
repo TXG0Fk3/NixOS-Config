@@ -57,6 +57,7 @@
     proton-vpn
 
     # Productivity / Knowledge
+    alpaca
     gnome-feeds
     gnome-solanum
     logseq
