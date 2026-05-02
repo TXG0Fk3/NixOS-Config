@@ -57,7 +57,9 @@
     proton-vpn
 
     # Productivity / Knowledge
-    alpaca
+    (alpaca.override {
+      ollama = pkgs.ollama-rocm;
+    })
     gnome-feeds
     gnome-solanum
     logseq
