@@ -16,6 +16,7 @@
         leonardssh.vscord
         mesonbuild.mesonbuild
         ms-python.python
+        ms-python.vscode-pylance
         ms-vscode.powershell
         piousdeer.adwaita-theme
       ];
@@ -42,6 +43,8 @@
         "editor.formatOnPaste" = true;
         "files.autoSave" = "afterDelay";
         "security.workspace.trust.untrustedFiles" = "open";
+
+        "python.languageServer" = "Pylance";
 
         "[nix]" = {
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
