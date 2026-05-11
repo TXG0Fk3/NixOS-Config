@@ -10,8 +10,9 @@
 {
   imports = [
     ./common.nix
-    (home-modules + "/flatpak.nix")
     (home-modules + "/bottles.nix")
+    (home-modules + "/flatpak.nix")
+    (home-modules + "/kando.nix")
     (home-modules + "/prismlauncher.nix")
     (home-modules + "/vscodium.nix")
     inputs.sops-nix.homeManagerModules.sops
