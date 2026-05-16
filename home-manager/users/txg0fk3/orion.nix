@@ -63,7 +63,6 @@
     })
     gnome-feeds
     gnome-solanum
-    logseq
     obsidian
     todoist-electron
 
@@ -97,7 +96,6 @@
     # Gaming && Wine
     steam
     steam-run
-    openmw
     protonplus
     gamescope
     lsfg-vk
