@@ -28,6 +28,8 @@
     curl
     zellij
     superfile
+    nixfmt
+    nixfmt-tree
   ];
 
   programs.nix-ld.enable = true;
