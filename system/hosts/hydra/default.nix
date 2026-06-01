@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  secreats,
   system-modules,
   ...
 }:
