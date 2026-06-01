@@ -38,7 +38,7 @@ in
       ];
 
     virtualisation.oci-containers.containers.qbittorrent = {
-      image = "lscr.io/linuxserver/qbittorrent:latest";
+      image = "lscr.io/linuxserver/qbittorrent:5.2.1";
       autoStart = true;
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       environment = {

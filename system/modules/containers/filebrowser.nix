@@ -35,7 +35,7 @@ in
         ];
 
     virtualisation.oci-containers.containers.filebrowser = {
-      image = "filebrowser/filebrowser:latest";
+      image = "filebrowser/filebrowser:v2.63.5";
       autoStart = true;
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       cmd = [

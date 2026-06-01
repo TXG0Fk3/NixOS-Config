@@ -22,7 +22,7 @@ in
 
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers.cloudflared = {
-      image = "cloudflare/cloudflared:latest";
+      image = "cloudflare/cloudflared:2026.5.2";
       autoStart = true;
       cmd = [
         "tunnel"

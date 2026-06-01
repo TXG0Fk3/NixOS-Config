@@ -34,7 +34,7 @@ in
         ];
 
     virtualisation.oci-containers.containers.crafty = {
-      image = "registry.gitlab.com/crafty-controller/crafty-4:latest";
+      image = "arcadiatechnology/crafty-4:4.10.4";
       autoStart = false;
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       environment = {
