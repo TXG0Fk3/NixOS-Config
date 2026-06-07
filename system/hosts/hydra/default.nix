@@ -165,13 +165,13 @@
       qbittorrent = {
         enable = true;
         user = "admin";
-        storagePath = "/home/admin/scratch/torrents";
+        storagePath = "/mnt/scratch/torrents";
       };
       jellyfin = {
         enable = true;
         user = "admin";
         mediaPath = "/mnt/media";
-        transcodePath = "/home/admin/scratch/jellyfin/transcode";
+        transcodePath = "/mnt/scratch/jellyfin/transcode";
       };
       crafty = {
         enable = true;
