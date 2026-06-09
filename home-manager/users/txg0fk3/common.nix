@@ -8,7 +8,7 @@
 {
   home.username = "TXG0Fk3";
   home.homeDirectory = "/home/TXG0Fk3";
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 
   nixpkgs.config.allowUnfree = true;
 
