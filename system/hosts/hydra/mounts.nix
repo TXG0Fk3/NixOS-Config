@@ -27,7 +27,7 @@
   };
 
   fileSystems."/mnt/media" = {
-    device = "/dev/disk/by-label/MEDIA-SM";
+    device = "/dev/disk/by-label/MEDIA-WD";
     fsType = "xfs";
     options = [
       "noatime"
