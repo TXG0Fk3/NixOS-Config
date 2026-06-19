@@ -33,7 +33,7 @@ in
     ];
 
     virtualisation.oci-containers.containers.forgejo = {
-      image = "codeberg.org/forgejo/forgejo:15.0.2-rootless";
+      image = "codeberg.org/forgejo/forgejo:15.0.3-rootless";
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       environment = {
         TZ = "America/Maceio";
