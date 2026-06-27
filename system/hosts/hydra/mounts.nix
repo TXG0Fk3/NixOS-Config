@@ -50,6 +50,10 @@
     idle3tools
   ];
 
+  services.udev.extraRules = ''
+    KERNEL=="sd*", ATTR{serial}=="WD-WXA2A90F6V75", RUN+="${pkgs.hdparm}/bin/hdparm -B 254 -S 0 -M 254 %N"
+  '';
+
   services = {
     fstrim.enable = true;
     smartd = {
