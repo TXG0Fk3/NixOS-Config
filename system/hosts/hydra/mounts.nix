@@ -35,14 +35,23 @@
     ];
   };
 
-  #fileSystems."/mnt/scratch" = {
-  #  device = "/dev/disk/by-label/SCRATCH-SM";
-  #  fsType = "xfs";
-  #  options = [
-  #    "noatime"
-  #    "nofail"
-  #  ];
-  #};
+  fileSystems."/mnt/media2" = {
+    device = "/dev/disk/by-label/MEDIA2-WD";
+    fsType = "xfs";
+    options = [
+      "noatime"
+      "nofail"
+    ];
+  };
+
+  fileSystems."/mnt/scratch" = {
+    device = "/dev/disk/by-label/SCRATCH-SM";
+    fsType = "xfs";
+    options = [
+      "noatime"
+      "nofail"
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     hdparm
@@ -52,6 +61,7 @@
 
   services.udev.extraRules = ''
     KERNEL=="sd[a-z]", ENV{ID_SERIAL_SHORT}=="WD-WXA2A90F6V75", RUN+="${pkgs.hdparm}/bin/hdparm -B 254 -S 0 -M 254 %N"
+    KERNEL=="sd[a-z]", ENV{ID_SERIAL_SHORT}=="WD-WXK2AC0RCVLC", RUN+="${pkgs.hdparm}/bin/hdparm -B 254 -S 0 -M 254 %N"
   '';
 
   services = {
