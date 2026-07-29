@@ -23,11 +23,21 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
-    # Tools
-    git
+    # Languages / Runtimes
+    bun
+    go
+    python3
+
+    # CLI Tools
     curl
-    zellij
+    git
+    tree
+
+    # Terminal / Productivity
     superfile
+    zellij
+
+    # Nix tooling
     nixfmt
     nixfmt-tree
   ];
