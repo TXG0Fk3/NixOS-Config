@@ -11,6 +11,7 @@
 
   wsl.enable = true;
   wsl.defaultUser = "TXG0Fk3";
+  wsl.startMenuLaunchers = true;
 
   # Network
   networking.hostName = "Symbiote";
