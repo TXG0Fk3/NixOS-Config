@@ -12,6 +12,9 @@
     "flakes"
   ];
 
+  # Lix
+  nix.package = pkgs.lixPackageSets.latest.lix;
+
   # Locale and TimeZone
   time.timeZone = "America/Maceio";
   i18n.defaultLocale = "pt_BR.UTF-8";
