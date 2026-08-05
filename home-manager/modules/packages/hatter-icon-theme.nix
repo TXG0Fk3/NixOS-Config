@@ -6,13 +6,13 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "hatter-icon-theme";
-  version = "2026-05-03";
+  version = "2026-08-04";
 
   src = fetchFromGitHub {
     owner = "Mibea";
     repo = "Hatter";
-    rev = "a6ad2f74f07f66df9cb4e9e85653cd1bd90539d7";
-    hash = "sha256-I8DLOP2EnlZjLVgS+srIKBhzmofds4iJbI+hj0lTuto=";
+    rev = "c92b36cc439e2e82ae1ec864ed9c16d5ddd28bc6";
+    hash = "sha256-EQMsEjUxv9wyIWg6k/rc4FvhPBqq820Y/MgeG5KytVQ=";
   };
 
   nativeBuildInputs = [
