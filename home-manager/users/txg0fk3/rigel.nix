@@ -53,7 +53,6 @@
 
     # Media & Utilities
     gnome-calculator
-    gnome-text-editor
     decibels
     file-roller
     fragments
@@ -99,5 +98,21 @@
   programs.git = {
     enable = true;
     includes = [ { path = config.sops.templates."git-secrets".path; } ];
+  };
+
+  gtk = {
+    enable = true;
+    iconTheme.name = "Hatter-Blue";
+    theme.name = "Adwaita-dark";
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
   };
 }
