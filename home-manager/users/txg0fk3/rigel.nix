@@ -53,12 +53,9 @@
 
     # Media & Utilities
     gnome-calculator
-    decibels
-    file-roller
     fragments
     gradia
-    loupe
-    showtime
+    xarchiver
 
     # System Tools
     impression
