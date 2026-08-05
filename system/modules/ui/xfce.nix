@@ -21,13 +21,16 @@
 
     # Programs
     gnome-disk-utility
+    labwc-gtktheme
     mousepad
     thunar
+    swaybg # Wallpaper
   ];
 
   environment.xfce.excludePackages = with pkgs; [
     hicolor-icon-theme
     tango-icon-theme
     xfce4-icon-theme
+    xfdesktop
   ];
 }
