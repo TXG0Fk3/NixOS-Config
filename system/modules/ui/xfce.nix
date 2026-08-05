@@ -25,7 +25,7 @@
     thunar
   ];
 
-  environment.xfce.excludePackages = with pkgs.xfce; [
+  environment.xfce.excludePackages = with pkgs; [
     hicolor-icon-theme
     tango-icon-theme
     xfce4-icon-theme
