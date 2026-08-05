@@ -48,6 +48,23 @@
           ];
         };
 
+        # Rigel
+        Rigel = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs system-modules; };
+          modules = [
+            ./system/hosts/rigel
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs secrets home-modules; };
+                users.TXG0Fk3 = import ./home-manager/users/txg0fk3/rigel.nix;
+              };
+            }
+          ];
+        };
+
         # Phoenix
         Phoenix = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
