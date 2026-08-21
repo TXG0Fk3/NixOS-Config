@@ -117,11 +117,10 @@
       rb = "sudo systemctl reboot";
       ngc = "sudo nix-collect-garbage -d";
     };
-  };
-  programs.oh-my-posh = {
-    enable = true;
-    enableZshIntegration = true;
-    useTheme = "catppuccin_mocha";
+    ohMyZsh = {
+      enable = true;
+      theme = "refined";
+    };
   };
 
   # Packages
