@@ -88,6 +88,7 @@
   };
 
   # Users.
+  users.defaultUserShell = pkgs.zsh;
   users.users.admin = {
     isNormalUser = true;
     uid = 1000;
@@ -95,6 +96,32 @@
       "wheel"
       "podman"
     ];
+  };
+
+  # Shell
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    history.size = 10000;
+    interactiveShellInit = ''
+      bindkey "^[[H" beginning-of-line
+      bindkey "^[[F" end-of-line
+      bindkey "^[[3~" delete-char
+
+      fastfetch -c minimal
+    '';
+    shellAliases = {
+      nr = "sudo nixos-rebuild boot --flake github:TXG0Fk3/NixOS-Config#Hydra";
+      rb = "sudo systemctl reboot";
+      ngc = "sudo nix-collect-garbage -d";
+    };
+  };
+  programs.oh-my-posh = {
+    enable = true;
+    enableZshIntegration = true;
+    useTheme = "catppuccin_mocha";
   };
 
   # Packages
