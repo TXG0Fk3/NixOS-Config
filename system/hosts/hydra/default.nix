@@ -102,9 +102,9 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    autosuggestion.enable = true;
+    autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
-    history.size = 10000;
+    histSize = 10000;
     interactiveShellInit = ''
       bindkey "^[[H" beginning-of-line
       bindkey "^[[F" end-of-line
