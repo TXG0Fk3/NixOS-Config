@@ -119,7 +119,7 @@
     };
     ohMyZsh = {
       enable = true;
-      theme = "refined";
+      theme = "risto";
     };
   };
 
