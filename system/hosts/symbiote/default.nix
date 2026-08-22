@@ -17,9 +17,27 @@
   networking.hostName = "Symbiote";
 
   # Users
+  users.defaultUserShell = pkgs.zsh;
   users.users.TXG0Fk3 = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+  };
+
+  # Shell
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+    histSize = 10000;
+    shellAliases = {
+      nr = "sudo nixos-rebuild boot --flake github:TXG0Fk3/NixOS-Config#Symbiote";
+      ngc = "sudo nix-collect-garbage -d";
+    };
+    ohMyZsh = {
+      enable = true;
+      theme = "risto";
+    };
   };
 
   # Packages
