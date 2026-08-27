@@ -92,10 +92,7 @@
   users.users.admin = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [
-      "wheel"
-      "podman"
-    ];
+    extraGroups = [ "wheel" ];
   };
 
   # Shell

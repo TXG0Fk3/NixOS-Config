@@ -83,7 +83,6 @@
       "wheel"
       "networkmanager"
       "libvirtd"
-      "podman"
     ];
   };
 
