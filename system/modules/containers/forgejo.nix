@@ -33,7 +33,7 @@ in
     ];
 
     virtualisation.oci-containers.containers.forgejo = {
-      image = "codeberg.org/forgejo/forgejo:15.0.3-rootless";
+      image = "codeberg.org/forgejo/forgejo:16.0.4-rootless";
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       environment = {
         TZ = "America/Maceio";
@@ -47,7 +47,6 @@ in
       };
       volumes = [
         "${cfg.reposPath}:/var/lib/gitea"
-        "/var/lib/containers/forgejo:/etc/gitea"
         "/etc/localtime:/etc/localtime:ro"
       ];
       ports = [

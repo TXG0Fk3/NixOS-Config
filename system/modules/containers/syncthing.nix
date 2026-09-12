@@ -33,7 +33,7 @@ in
     ];
 
     virtualisation.oci-containers.containers.syncthing = {
-      image = "docker.io/syncthing/syncthing:2.1.3";
+      image = "docker.io/syncthing/syncthing:2.1.5";
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       environment = {
         TZ = "America/Maceio";
