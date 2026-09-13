@@ -41,9 +41,10 @@ in
         FORGEJO____RUN_USER = "git";
         FORGEJO__server__ROOT_URL = "https://fgj.txgfk.xyz/";
         FORGEJO__server__DOMAIN = "fgj.txgfk.xyz";
+        FORGEJO__server__SSH_DOMAIN = "fgjssh.txgfk.xyz";
         FORGEJO__server__DISABLE_SSH = "false";
         FORGEJO__server__START_SSH_SERVER = "true";
-        FORGEJO__server__SSH_PORT = "222";
+        FORGEJO__server__SSH_PORT = "22"; # Just to keep the URL clean
         FORGEJO__server__SSH_LISTEN_PORT = "2222";
         FORGEJO__indexer__MAX_FILE_SIZE = "6291456";
         FORGEJO__service__ENABLE_CAPTCHA = "true";
