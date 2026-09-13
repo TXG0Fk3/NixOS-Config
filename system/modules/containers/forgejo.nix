@@ -40,7 +40,10 @@ in
         FORGEJO____RUN_USER = "git";
         FORGEJO__server__ROOT_URL = "https://fgj.txgfk.xyz/";
         FORGEJO__server__DOMAIN = "fgj.txgfk.xyz";
-        FORGEJO__server__DISABLE_SSH = "true";
+        FORGEJO__server__DISABLE_SSH = "false";
+        FORGEJO__server__START_SSH_SERVER = "true";
+        FORGEJO__server__SSH_PORT = "222";
+        FORGEJO__server__SSH_LISTEN_PORT = "2222";
         FORGEJO__indexer__MAX_FILE_SIZE = "6291456";
         FORGEJO__service__ENABLE_CAPTCHA = "true";
         FORGEJO__service__EMAIL_DOMAIN_BLOCK_DISPOSABLE = "true";
@@ -51,11 +54,13 @@ in
       ];
       ports = [
         "3000:3000"
+        "222:2222"
       ];
     };
 
     networking.firewall.allowedTCPPorts = [
       3000
+      222
     ];
   };
 }
