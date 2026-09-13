@@ -22,6 +22,7 @@ in
 
     reposPath = mkOption {
       type = types.str;
+      default = "/var/lib/containers/forgejo";
       example = "/mnt/forgejo";
       description = "Path to your repos directory.";
     };
@@ -29,7 +30,7 @@ in
 
   config = mkIf cfg.enable {
     systemd.tmpfiles.rules = [
-      "d /var/lib/containers/forgejo 0750 ${cfg.user} users -"
+      "d ${cfg.reposPath} 0750 ${cfg.user} users -"
     ];
 
     virtualisation.oci-containers.containers.forgejo = {
