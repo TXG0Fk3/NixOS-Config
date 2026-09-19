@@ -45,7 +45,7 @@ in
       ];
 
     virtualisation.oci-containers.containers.jellyfin = {
-      image = "docker.io/jellyfin/jellyfin:12.0";
+      image = "docker.io/jellyfin/jellyfin:12.1";
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       environment = {
         TZ = "America/Maceio";
