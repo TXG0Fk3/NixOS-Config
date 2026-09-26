@@ -1,11 +1,11 @@
 final: prev: {
   equibop = prev.stdenv.mkDerivation rec {
     pname = "equibop";
-    version = "3.2.2";
+    version = "3.3.1";
 
     src = prev.fetchurl {
       url = "https://github.com/Equicord/Equibop/releases/download/v${version}/equibop-${version}.tar.gz";
-      sha256 = "1550a0fbfcb7ccad882c5b6258204c6219820d61a84c4270c9e2934bce2591b0";
+      sha256 = "ecba2f8f4546697b055b35e5b94ecaf055c723c18a0f452405684b228fbfd402";
     };
 
     nativeBuildInputs = [
