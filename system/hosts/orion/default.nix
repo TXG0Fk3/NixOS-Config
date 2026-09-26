@@ -9,7 +9,6 @@
 {
   imports = [
     ./hardware.nix
-    ./overlays.nix
     ./mounts.nix
     system-modules
     (system-modules + "/ui/gnome.nix")
@@ -22,7 +21,7 @@
       efi.canTouchEfiVariables = true;
     };
     tmp.useTmpfs = true;
-    kernelPackages = pkgs.linuxPackages_betelgeuse;
+    kernelPackages = pkgs.linuxPackages_zen;
     kernelModules = [
       "rtw89_8852cu"
       "ntsync"
