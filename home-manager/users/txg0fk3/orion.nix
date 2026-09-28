@@ -79,6 +79,7 @@
     gradia
     loupe
     mousai
+    musicpresence
     parabolic
     showtime
     (callPackage (home-modules + "/packages/spotiflac.nix") { })
@@ -137,6 +138,22 @@
   # Services
   services = {
     syncthing.enable = true;
+  };
+
+  # Autostart
+  xdg.autostart = {
+    enable = true;
+    entries = [
+      (pkgs.writeText "equibop.desktop" ''
+        [Desktop Entry]
+        Name=Equibop
+        Exec=${pkgs.equibop}/bin/equibop --start-minimized
+        Icon=discord
+        Type=Application
+        StartupWMClass=equibop
+      '')
+      "${pkgs.musicpresence}/share/applications/musicpresence.desktop"
+    ];
   };
 
   # Themes
