@@ -28,6 +28,7 @@
     gnomeExtensions.media-controls
     gnomeExtensions.rounded-window-corners-reborn
     gnomeExtensions.space-bar
+    gnomeExtensions.tiling-shell
     gnomeExtensions.user-themes
     gnomeExtensions.vertical-workspaces
     gnomeExtensions.vitals
