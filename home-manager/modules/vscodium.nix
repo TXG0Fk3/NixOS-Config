@@ -9,40 +9,66 @@
       enableExtensionUpdateCheck = false;
 
       extensions = with pkgs.vscode-extensions; [
+        # Themes & Icons
+        miguelsolorio.fluent-icons
+
+        # Core & Languages
         bodil.blueprint-gtk
         bradlc.vscode-tailwindcss
         jnoortheen.nix-ide
-        leonardssh.vscord
         mesonbuild.mesonbuild
+        ms-python.black-formatter
         ms-python.python
         ms-python.vscode-pylance
         ms-vscode.powershell
-        piousdeer.adwaita-theme
+
+        # Formatters
+        prettier.prettier-vscode
+
+        # Other
+        leonardssh.vscord
       ];
+
       userSettings = {
+        # UI
         "workbench.startupEditor" = "none";
-        "workbench.colorTheme" = "Adwaita Dark";
+        "workbench.iconTheme" = "fluent-icons";
         "window.titleBarStyle" = "custom";
         "window.customTitleBarVisibility" = "auto";
+
+        # Editor
         "editor.fontSize" = 16;
-
-        "editor.fontFamily" = "'JetBrainsMono Nerd Font'";
+        "editor.fontFamily" = "JetBrainsMono Nerd Font";
+        "editor.codeLensFontFamily" = "JetBrainsMono Nerd Font";
         "editor.fontLigatures" = true;
-        "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font'";
+        "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
 
+        "editor.stickyScroll.enabled" = true;
+        "editor.bracketPairColorization.enabled" = true;
+        "editor.guides.bracketPairs" = true;
+        "editor.smoothScrolling" = true;
+        "workbench.list.smoothScrolling" = true;
+        "terminal.integrated.smoothScrolling" = true;
+        "editor.inlineSuggest.enabled" = true;
+
+        "editor.formatOnSave" = true;
+        "editor.formatOnPaste" = false;
+        "files.autoSave" = "onFocusChange";
+
+        # Explorer
         "explorer.confirmDelete" = false;
         "explorer.confirmDragAndDrop" = false;
         "explorer.compactFolders" = false;
+        "explorer.excludeGitIgnore" = true;
 
-        "git.autofetch" = true;
+        # Git
+        "git.autofetch" = false;
         "git.confirmSync" = false;
         "git.suggestSmartCommit" = false;
+        "diffEditor.renderSideBySide" = true;
+        "diffEditor.ignoreTrimWhitespace" = false;
 
-        "editor.formatOnSave" = true;
-        "editor.formatOnPaste" = true;
-        "files.autoSave" = "afterDelay";
-        "security.workspace.trust.untrustedFiles" = "open";
-
+        # Languages ​​and Formatters
         "python.languageServer" = "Pylance";
 
         "[nix]" = {
@@ -54,10 +80,23 @@
         "[html]" = {
           "editor.defaultFormatter" = "vscode.html-language-features";
         };
+        "[typescriptreact]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[javascript]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[json]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[jsonc]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
         "[powershell]" = {
           "editor.defaultFormatter" = "ms-vscode.powershell";
         };
 
+        # VSCord
         "vscord.status.image.large.debugging.key" = "https://vscord.catppuccin.com/mocha/debugging.webp";
         "vscord.status.image.large.editing.key" = "https://vscord.catppuccin.com/mocha/{lang}.webp";
         "vscord.status.image.large.idle.key" = "https://vscord.catppuccin.com/mocha/idle-{app_id}.webp";
