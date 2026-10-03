@@ -28,6 +28,16 @@
       secrets = ./secrets;
       system-modules = ./system/modules;
       home-modules = ./home-manager/modules;
+      users = ./home-manager/users;
+
+      homeArgs = {
+        inherit
+          inputs
+          secrets
+          home-modules
+          users
+          ;
+      };
     in
     {
       nixosConfigurations = {
@@ -41,7 +51,7 @@
             {
               home-manager = {
                 useUserPackages = true;
-                extraSpecialArgs = { inherit inputs secrets home-modules; };
+                extraSpecialArgs = homeArgs;
                 users.TXG0Fk3 = import ./home-manager/users/txg0fk3/orion.nix;
               };
             }
@@ -58,7 +68,7 @@
             {
               home-manager = {
                 useUserPackages = true;
-                extraSpecialArgs = { inherit inputs secrets home-modules; };
+                extraSpecialArgs = homeArgs;
                 users.TXG0Fk3 = import ./home-manager/users/txg0fk3/rigel.nix;
               };
             }
@@ -75,7 +85,7 @@
             {
               home-manager = {
                 useUserPackages = true;
-                extraSpecialArgs = { inherit inputs home-modules; };
+                extraSpecialArgs = homeArgs;
                 users.TXG0Fk3 = import ./home-manager/users/txg0fk3/phoenix.nix;
               };
             }
@@ -85,7 +95,7 @@
         # Hydra
         Hydra = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs secrets system-modules; };
+          extraSpecialArgs = homeArgs;
           modules = [
             ./system/hosts/hydra
             sops-nix.nixosModules.sops
@@ -95,7 +105,7 @@
         # Symbiote
         Symbiote = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs system-modules; };
+          extraSpecialArgs = homeArgs;
           modules = [
             ./system/hosts/symbiote
             nixos-wsl.nixosModules.default
