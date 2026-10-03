@@ -30,6 +30,7 @@
       home-modules = ./home-manager/modules;
       users = ./home-manager/users;
 
+      sysArgs = { inherit inputs secrets system-modules; };
       homeArgs = {
         inherit
           inputs
@@ -44,7 +45,7 @@
         # Orion
         Orion = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs system-modules; };
+          specialArgs = sysArgs;
           modules = [
             ./system/hosts/orion
             home-manager.nixosModules.home-manager
@@ -61,7 +62,7 @@
         # Rigel
         Rigel = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs system-modules; };
+          specialArgs = sysArgs;
           modules = [
             ./system/hosts/rigel
             home-manager.nixosModules.home-manager
@@ -78,7 +79,7 @@
         # Phoenix
         Phoenix = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs system-modules; };
+          specialArgs = sysArgs;
           modules = [
             ./system/hosts/phoenix
             home-manager.nixosModules.home-manager
@@ -95,7 +96,7 @@
         # Hydra
         Hydra = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          extraSpecialArgs = homeArgs;
+          specialArgs = sysArgs;
           modules = [
             ./system/hosts/hydra
             sops-nix.nixosModules.sops
@@ -105,7 +106,7 @@
         # Symbiote
         Symbiote = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          extraSpecialArgs = homeArgs;
+          specialArgs = sysArgs;
           modules = [
             ./system/hosts/symbiote
             nixos-wsl.nixosModules.default
