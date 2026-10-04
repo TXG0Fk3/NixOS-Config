@@ -52,9 +52,6 @@
     # Network & Streaming & Sharing
     firefox
     equibop
-    telegram-desktop
-    signal-desktop
-    jellyfin-desktop
     localsend
     proton-vpn
     cloudflared
@@ -64,17 +61,13 @@
       ollama = pkgs.ollama-rocm;
     })
     gnome-feeds
-    gnome-solanum
     obsidian
     todoist-electron
 
     # Media & Utilities
     gnome-calculator
-    gnome-podcasts
-    gnome-text-editor
-    decibels
+    bluetui
     eartag
-    eyedropper
     file-roller
     fragments
     gapless
@@ -87,9 +80,7 @@
     (callPackage (home-modules + "/packages/spotiflac.nix") { })
 
     # System Tools
-    impression
     baobab
-    usb-modeswitch
     cryptomator
 
     # Content Creation
@@ -142,6 +133,7 @@
   # Services
   services = {
     syncthing.enable = true;
+    mpris-proxy.enable = true;
   };
 
   # Autostart
