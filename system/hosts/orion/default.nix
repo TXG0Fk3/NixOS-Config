@@ -67,6 +67,13 @@
       enable = true;
       enable32Bit = true;
     };
+
+    # Bluetooth
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      settings.General.Experimental = true;
+    };
   };
 
   # Sound.
