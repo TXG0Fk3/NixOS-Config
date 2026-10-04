@@ -26,16 +26,20 @@
           "tray"
           "wireplumber"
           "battery"
+          "custom/dunst"
           "clock"
         ];
 
         "custom/nixos" = {
           format = "";
           tooltip = false;
+          on-click = "rofi -show drun";
         };
 
         "hyprland/workspaces" = {
           format = "{name}";
+          on-scroll-up = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'm-1' })\"";
+          on-scroll-down = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'm+1' })\"";
         };
 
         network = {
@@ -75,6 +79,7 @@
           format = "VOL {volume}%";
           format-muted = "MUTED";
           tooltip = false;
+          scroll-step = 5;
           on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           on-click-right = "pavucontrol";
         };
@@ -84,10 +89,22 @@
           format-charging = "CHG {capacity}%";
           interval = 5;
           tooltip = false;
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+        };
+
+        "custom/dunst" = {
+          exec = "if [ \"$(dunstctl is-paused)\" = true ]; then echo DND; fi";
+          interval = 5;
+          signal = 8;
+          tooltip = false;
         };
 
         clock = {
           format = "{:%d/%m/%Y  %H:%M}";
+          on-click = "dunstctl set-paused toggle";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "year";
@@ -101,6 +118,12 @@
               weekdays = "<span color='#FFFFFF'><b>{}</b></span>";
               today = "<span color='#00FEFF'><b><u>{}</u></b></span>";
             };
+          };
+
+          actions = {
+            on-click-right = "mode";
+            on-scroll-up = "shift_down";
+            on-scroll-down = "shift_up";
           };
         };
       }
@@ -139,6 +162,11 @@
           border: 1px solid #ffffff;
       }
 
+      #custom-nixos:hover {
+          background-color: #ffffff;
+          color: #000000;
+      }
+
       #workspaces {
           padding: 0;
           margin-right: 6px;
@@ -165,12 +193,23 @@
           border: 1px solid #ffffff;
       }
 
+      #workspaces button.urgent {
+          background-color: #ffffff;
+          color: #000000;
+          border: 1px solid #00FEFF;
+      }
+
       #network {
           background-color: #000000;
           color: #ffffff;
           border: 1px solid #ffffff;
           padding: 2px 10px;
           margin-right: 6px;
+      }
+
+      #network.disconnected {
+          color: #595959;
+          border-color: #595959;
       }
 
       #window {
@@ -188,6 +227,7 @@
       #tray,
       #wireplumber,
       #battery,
+      #custom-dunst,
       #clock {
           background-color: #000000;
           color: #ffffff;
@@ -196,8 +236,27 @@
           margin-left: 6px;
       }
 
+      #wireplumber.muted {
+          color: #595959;
+          border-color: #595959;
+      }
+
+      #battery.warning:not(.charging) {
+          border-color: #00FEFF;
+      }
+
+      #battery.critical:not(.charging) {
+          background-color: #ffffff;
+          color: #000000;
+      }
+
       #tray {
           padding: 2px 8px;
+      }
+
+      #custom-dunst {
+          color: #00FEFF;
+          border-color: #00FEFF;
       }
 
       #clock {
