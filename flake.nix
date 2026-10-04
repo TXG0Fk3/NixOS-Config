@@ -53,7 +53,7 @@
               home-manager = {
                 useUserPackages = true;
                 extraSpecialArgs = homeArgs;
-                users.TXG0Fk3 = import ./home-manager/users/txg0fk3/orion.nix;
+                users.TXG0Fk3 = import ./home-manager/users/txg0fk3/orion;
               };
             }
           ];

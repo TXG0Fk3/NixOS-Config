@@ -4,12 +4,14 @@
   inputs,
   secrets,
   home-modules,
+  users,
   ...
 }:
 
 {
   imports = [
-    ./common.nix
+    (users + "/txg0fk3/common.nix")
+    (home-modules + "/hypr")
     (home-modules + "/bottles.nix")
     (home-modules + "/flatpak.nix")
     (home-modules + "/prismlauncher.nix")
@@ -112,15 +114,17 @@
     noto-fonts-color-emoji
     nerd-fonts.jetbrains-mono
 
-    # Icon Packs
-    (callPackage (home-modules + "/packages/hatter-icon-theme.nix") { })
-
     # Themes
-    marble-shell-theme
     adw-gtk3
     adwaita-qt
     adwaita-qt6
   ];
+
+  # UI
+  hypr = {
+    primaryMonitor = "DP-1";
+    extraLuaConfig = ./monitors.lua;
+  };
 
   # Flatpaks
   services.flatpak.packages = [
@@ -154,16 +158,5 @@
       '')
       "${pkgs.musicpresence}/share/applications/musicpresence.desktop"
     ];
-  };
-
-  # Themes
-  gtk = {
-    enable = true;
-    iconTheme.name = "Hatter-Blue";
-    theme.name = "adw-gtk3-dark";
-  };
-  qt = {
-    enable = true;
-    style.name = "adwaita-dark";
   };
 }
