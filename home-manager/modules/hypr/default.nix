@@ -14,6 +14,7 @@ in
 {
   imports = [
     ./dunst.nix
+    ./hyprlock.nix
     ./kitty.nix
     ./rofi.nix
     ./waybar.nix
@@ -53,6 +54,8 @@ in
       superfile
       xdg-user-dirs
       zenity
+
+      nerd-fonts.jetbrains-mono
 
       (callPackage (home-modules + "/packages/hatter-icon-theme.nix") { })
     ];
