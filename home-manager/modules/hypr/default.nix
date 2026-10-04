@@ -18,6 +18,7 @@ in
     ./kitty.nix
     ./rofi.nix
     ./waybar.nix
+    (home-modules + "/nautilus.nix")
   ];
 
   options.hypr.primaryMonitor = mkOption {
@@ -45,10 +46,10 @@ in
     # Packages
     home.packages = with pkgs; [
       awww
-      hyprlock
       hyprpicker
       hyprshot
 
+      nautilus
       pavucontrol
       playerctl
       superfile
