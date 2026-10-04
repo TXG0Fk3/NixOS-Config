@@ -12,7 +12,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     owner = "Mibea";
     repo = "Hatter";
     rev = "e2be38b856d55bfa578a51c5c7c36c41528982e9";
-    hash = "sha256-EQMsEjUxv9wyIWg6k/rc4FvhPBqq820Y/MgeG5KytVQ=";
+    hash = "sha256-ubm188RgDXKnnUn8GNOdXndeyU/6y2O+CqQs/1+eFqs=";
   };
 
   nativeBuildInputs = [
