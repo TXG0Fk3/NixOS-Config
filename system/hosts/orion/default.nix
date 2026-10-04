@@ -11,7 +11,7 @@
     ./hardware.nix
     ./mounts.nix
     system-modules
-    (system-modules + "/ui/gnome.nix")
+    (system-modules + "/ui/hypr.nix")
   ];
 
   # Bootloader and Kernel
