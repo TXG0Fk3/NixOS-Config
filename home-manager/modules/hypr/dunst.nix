@@ -1,5 +1,8 @@
 { config, ... }:
 
+let
+  c = import ./colors.nix;
+in
 {
   services.dunst = {
     enable = true;
@@ -46,23 +49,23 @@
       };
 
       urgency_low = {
-        background = "#000000";
-        foreground = "#ffffff";
-        frame_color = "#ffffff";
+        background = c.bg;
+        foreground = c.fg;
+        frame_color = c.fg;
         timeout = 4;
       };
 
       urgency_normal = {
-        background = "#000000";
-        foreground = "#ffffff";
-        frame_color = "#ffffff";
+        background = c.bg;
+        foreground = c.fg;
+        frame_color = c.fg;
         timeout = 6;
       };
 
       urgency_critical = {
-        background = "#ffffff";
-        foreground = "#000000";
-        frame_color = "#ffffff";
+        background = c.fg;
+        foreground = c.bg;
+        frame_color = c.fg;
         timeout = 0;
       };
     };

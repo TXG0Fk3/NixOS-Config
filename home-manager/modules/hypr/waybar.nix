@@ -1,5 +1,8 @@
 { config, ... }:
 
+let
+  c = import ./colors.nix;
+in
 {
   programs.waybar = {
     enable = true;
@@ -112,11 +115,11 @@
             weeks-pos = "right";
             on-scroll = 1;
             format = {
-              months = "<span color='#FFFFFF'><b>{}</b></span>";
-              days = "<span color='#FFFFFF'><b>{}</b></span>";
-              weeks = "<span color='#FFFFFF'><b>W{}</b></span>";
-              weekdays = "<span color='#FFFFFF'><b>{}</b></span>";
-              today = "<span color='#00FEFF'><b><u>{}</u></b></span>";
+              months = "<span color='${c.fg}'><b>{}</b></span>";
+              days = "<span color='${c.fg}'><b>{}</b></span>";
+              weeks = "<span color='${c.fg}'><b>W{}</b></span>";
+              weekdays = "<span color='${c.fg}'><b>{}</b></span>";
+              today = "<span color='${c.accent}'><b><u>{}</u></b></span>";
             };
           };
 
@@ -140,9 +143,9 @@
       }
 
       window#waybar {
-          background-color: #000000;
-          color: #ffffff;
-          border-bottom: 1px solid #ffffff;
+          background-color: ${c.bg};
+          color: ${c.fg};
+          border-bottom: 1px solid ${c.fg};
           padding: 0;
       }
 
@@ -153,18 +156,18 @@
       }
 
       #custom-nixos {
-          background-color: #000000;
-          color: #ffffff;
+          background-color: ${c.bg};
+          color: ${c.fg};
           padding: 0 8px;
           font-size: 16px;
           padding-right: 14px;
           margin-right: 6px;
-          border: 1px solid #ffffff;
+          border: 1px solid ${c.fg};
       }
 
       #custom-nixos:hover {
-          background-color: #ffffff;
-          color: #000000;
+          background-color: ${c.fg};
+          color: ${c.bg};
       }
 
       #workspaces {
@@ -173,50 +176,50 @@
       }
 
       #workspaces button {
-          background-color: #000000;
-          color: #ffffff;
-          border: 1px solid #ffffff;
+          background-color: ${c.bg};
+          color: ${c.fg};
+          border: 1px solid ${c.fg};
           margin: 0 2px;
           padding: 2px 8px;
           min-width: 16px;
       }
 
       #workspaces button:hover {
-          background-color: #ffffff;
-          color: #000000;
+          background-color: ${c.fg};
+          color: ${c.bg};
       }
 
       #workspaces button.focused,
       #workspaces button.active {
-          background-color: #ffffff;
-          color: #000000;
-          border: 1px solid #ffffff;
+          background-color: ${c.fg};
+          color: ${c.bg};
+          border: 1px solid ${c.fg};
       }
 
       #workspaces button.urgent {
-          background-color: #ffffff;
-          color: #000000;
-          border: 1px solid #00FEFF;
+          background-color: ${c.fg};
+          color: ${c.bg};
+          border: 1px solid ${c.accent};
       }
 
       #network {
-          background-color: #000000;
-          color: #ffffff;
-          border: 1px solid #ffffff;
+          background-color: ${c.bg};
+          color: ${c.fg};
+          border: 1px solid ${c.fg};
           padding: 2px 10px;
           margin-right: 6px;
       }
 
       #network.disconnected {
-          color: #595959;
-          border-color: #595959;
+          color: ${c.dim};
+          border-color: ${c.dim};
       }
 
       #window {
-          background-color: #000000;
-          color: #ffffff;
+          background-color: ${c.bg};
+          color: ${c.fg};
           padding: 2px 12px;
-          border: 1px solid #ffffff;
+          border: 1px solid ${c.fg};
       }
 
       window#waybar.empty #window{
@@ -229,25 +232,25 @@
       #battery,
       #custom-dunst,
       #clock {
-          background-color: #000000;
-          color: #ffffff;
-          border: 1px solid #ffffff;
+          background-color: ${c.bg};
+          color: ${c.fg};
+          border: 1px solid ${c.fg};
           padding: 2px 10px;
           margin-left: 6px;
       }
 
       #wireplumber.muted {
-          color: #595959;
-          border-color: #595959;
+          color: ${c.dim};
+          border-color: ${c.dim};
       }
 
       #battery.warning:not(.charging) {
-          border-color: #00FEFF;
+          border-color: ${c.accent};
       }
 
       #battery.critical:not(.charging) {
-          background-color: #ffffff;
-          color: #000000;
+          background-color: ${c.fg};
+          color: ${c.bg};
       }
 
       #tray {
@@ -255,13 +258,13 @@
       }
 
       #custom-dunst {
-          color: #00FEFF;
-          border-color: #00FEFF;
+          color: ${c.accent};
+          border-color: ${c.accent};
       }
 
       #clock {
-          background-color: #ffffff;
-          color: #000000;
+          background-color: ${c.fg};
+          color: ${c.bg};
       }
     '';
   };

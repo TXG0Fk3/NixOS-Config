@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  c = import ./colors.nix;
+in
 {
   home.packages = with pkgs; [
     noto-fonts-color-emoji
@@ -28,21 +31,24 @@
     theme =
       let
         inherit (config.lib.formats.rasi) mkLiteral;
+        bg = mkLiteral c.bg;
+        fg = mkLiteral c.fg;
+        dim = mkLiteral c.dim;
       in
       {
         "*" = {
-          background-color = mkLiteral "#000000";
-          text-color = mkLiteral "#ffffff";
-          border-color = mkLiteral "#ffffff";
+          background-color = bg;
+          text-color = fg;
+          border-color = fg;
           margin = mkLiteral "0px";
           padding = mkLiteral "0px";
           spacing = mkLiteral "0px";
         };
 
         window = {
-          background-color = mkLiteral "#000000";
+          background-color = bg;
           border = mkLiteral "1px";
-          border-color = mkLiteral "#ffffff";
+          border-color = fg;
           width = mkLiteral "450px";
           padding = mkLiteral "12px";
         };
@@ -56,7 +62,7 @@
 
         inputbar = {
           border = mkLiteral "1px";
-          border-color = mkLiteral "#ffffff";
+          border-color = fg;
           padding = mkLiteral "6px 10px";
           margin = mkLiteral "0px 0px 10px 0px";
           children = map mkLiteral [
@@ -72,8 +78,8 @@
 
         entry = {
           placeholder = "Buscar...";
-          placeholder-color = mkLiteral "#666666";
-          text-color = mkLiteral "#ffffff";
+          placeholder-color = dim;
+          text-color = fg;
         };
 
         listview = {
@@ -86,16 +92,16 @@
         element = {
           padding = mkLiteral "6px 10px";
           border = mkLiteral "1px";
-          border-color = mkLiteral "#ffffff";
-          background-color = mkLiteral "#000000";
-          text-color = mkLiteral "#ffffff";
+          border-color = fg;
+          background-color = bg;
+          text-color = fg;
         };
 
         "element selected" = {
-          background-color = mkLiteral "#ffffff";
-          text-color = mkLiteral "#000000";
+          background-color = fg;
+          text-color = bg;
           border = mkLiteral "1px";
-          border-color = mkLiteral "#ffffff";
+          border-color = fg;
         };
 
         element-text = {
