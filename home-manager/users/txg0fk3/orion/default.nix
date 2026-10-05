@@ -13,6 +13,7 @@
     (users + "/txg0fk3/common.nix")
     (home-modules + "/hypr")
     (home-modules + "/bottles.nix")
+    (home-modules + "/fastfetch.nix")
     (home-modules + "/flatpak.nix")
     (home-modules + "/prismlauncher.nix")
     (home-modules + "/vscodium.nix")
