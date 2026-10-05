@@ -22,7 +22,7 @@
   # Sops
   sops = {
     defaultSopsFile = (secrets + "/common.yaml");
-    age.keyFile = "/home/TXG0Fk3/.config/sops/age/keys.txt";
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
     secrets = {
       "git/userName" = { };
@@ -132,18 +132,36 @@
   };
 
   # Autostart
-  xdg.autostart = {
+  systemd.user.services = {
+    equibop = {
+      Service.ExecStart = "${pkgs.equibop}/bin/equibop --start-minimized";
+      Install.WantedBy = [ config.wayland.systemd.target ];
+    };
+    musicpresence = {
+      Service = {
+        ExecStart = "${pkgs.musicpresence}/bin/musicpresence";
+        Restart = "on-failure";
+      };
+      Install.WantedBy = [ config.wayland.systemd.target ];
+    };
+  };
+
+  # Mime
+  xdg.mimeApps = {
     enable = true;
-    entries = [
-      (pkgs.writeText "equibop.desktop" ''
-        [Desktop Entry]
-        Name=Equibop
-        Exec=${pkgs.equibop}/bin/equibop --start-minimized
-        Icon=discord
-        Type=Application
-        StartupWMClass=equibop
-      '')
-      "${pkgs.musicpresence}/share/applications/musicpresence.desktop"
-    ];
+
+    defaultApplications = {
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "application/pdf" = "firefox.desktop";
+
+      "image/png" = "org.gnome.Loupe.desktop";
+      "image/jpeg" = "org.gnome.Loupe.desktop";
+      "image/webp" = "org.gnome.Loupe.desktop";
+      "image/gif" = "org.gnome.Loupe.desktop";
+
+      "video/mp4" = "org.gnome.Showtime.desktop";
+      "video/x-matroska" = "org.gnome.Showtime.desktop";
+    };
   };
 }
