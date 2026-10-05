@@ -104,11 +104,6 @@
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
     nerd-fonts.jetbrains-mono
-
-    # Themes
-    adw-gtk3
-    adwaita-qt
-    adwaita-qt6
   ];
 
   # UI

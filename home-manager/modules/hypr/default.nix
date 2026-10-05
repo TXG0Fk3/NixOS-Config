@@ -59,6 +59,9 @@ in
       nerd-fonts.jetbrains-mono
 
       (callPackage (home-modules + "/packages/hatter-icon-theme.nix") { })
+      adw-gtk3
+      adwaita-qt
+      adwaita-qt6
     ];
 
     # Themes
@@ -68,7 +71,7 @@ in
     };
     gtk = {
       enable = true;
-      iconTheme.name = "Hatter-Blue";
+      iconTheme.name = "Hatter-Slate";
       theme.name = "adw-gtk3-dark";
       colorScheme = "dark";
     };
