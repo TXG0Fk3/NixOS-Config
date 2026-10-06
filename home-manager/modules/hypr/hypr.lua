@@ -162,6 +162,10 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Requires playerctl
+hl.bind("CONTROL + ALT + Q",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
+hl.bind("CONTROL + ALT + W", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("CONTROL + ALT + E",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
+
 hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
