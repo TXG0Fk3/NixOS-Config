@@ -18,6 +18,7 @@ in
     ./kitty.nix
     ./rofi.nix
     ./waybar.nix
+    ./gtk.nix
     (home-modules + "/nautilus.nix")
   ];
 
