@@ -197,8 +197,7 @@ in
       }
 
       #workspaces button.urgent {
-          background-color: ${c.fg};
-          color: ${c.bg};
+          color: ${c.accent};
           border: 1px solid ${c.accent};
       }
 
