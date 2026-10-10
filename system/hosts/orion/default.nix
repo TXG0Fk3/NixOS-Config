@@ -109,6 +109,12 @@
     virt-manager
   ];
 
+  # GPU Screen Recorder
+  programs.gpu-screen-recorder = {
+    enable = true;
+    ui.enable = true;
+  };
+
   # Virtualisation
   virtualisation = {
     spiceUSBRedirection.enable = true;
