@@ -85,7 +85,6 @@
     cryptomator
 
     # Content Creation
-    obs-studio
     shotcut
 
     # Gaming && Wine
