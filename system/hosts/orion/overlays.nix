@@ -7,23 +7,11 @@
 
 {
   nixpkgs.overlays = [
-    (
-      self: super:
-      let
-        linuxBetelgeuse = import (system-modules + "/packages/kernel/linuxBetelgeuse.nix") {
-          inherit (super)
-            pkgs
-            fetchurl
-            fetchFromGitHub
-            buildLinux
-            lib
-            ;
-        };
-        baseLinuxPackages = pkgs.linuxPackagesFor linuxBetelgeuse;
-      in
-      {
-        linuxPackages_betelgeuse = baseLinuxPackages;
-      }
-    )
+    (self: super: {
+      linuxPackages_betelgeuse = self.linuxPackagesFor (
+        self.callPackage (system-modules + "/packages/kernel/linuxBetelgeuse.nix") { }
+      );
+      dmemcg-booster = self.callPackage (system-modules + "/packages/dmemcg-booster.nix") { };
+    })
   ];
 }

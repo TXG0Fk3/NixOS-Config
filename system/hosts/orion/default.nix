@@ -10,6 +10,8 @@
   imports = [
     ./hardware.nix
     ./mounts.nix
+    ./overlays.nix
+    ./systemd.nix
     system-modules
     (system-modules + "/ui/hypr.nix")
   ];
