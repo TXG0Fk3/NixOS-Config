@@ -21,11 +21,12 @@ in
   programs.rofi = {
     enable = true;
 
-    settings = {
+    extraConfig = {
       modi = "drun,run";
       show-icons = false;
       font = "JetBrains Mono 10";
       drun-display-format = "{name}";
+      run-command = "uwsm app -- {cmd}";
     };
 
     theme =

@@ -37,6 +37,8 @@ in
       package = null;
       portalPackage = null;
 
+      systemd.enable = false;
+
       configType = "lua";
       extraConfig = ''
         ${builtins.readFile cfg.extraLuaConfig}
