@@ -203,17 +203,3 @@ hl.window_rule({
     size  = {800, 512},
     float = true,
 })
-
-for i = 1, 10 do
-    hl.workspace_rule({
-        workspace = tostring(i),
-        monitor = "DP-1",
-        default = (i == 1)
-    })
-end
-
-hl.workspace_rule({
-    workspace = "11",
-    monitor = "HDMI-A-1",
-    default = true
-})

@@ -12,3 +12,18 @@ hl.monitor({
     scale    = "1",
     transform = 1,
 })
+
+---- WINDOWS AND WORKSPACES ----
+for i = 1, 10 do
+    hl.workspace_rule({
+        workspace = tostring(i),
+        monitor = "DP-1",
+        default = (i == 1)
+    })
+end
+
+hl.workspace_rule({
+    workspace = "11",
+    monitor = "HDMI-A-1",
+    default = true
+})
