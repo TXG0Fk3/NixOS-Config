@@ -12,7 +12,7 @@ hl.config({
         },
 
         resize_on_border = false,
-        allow_tearing = true,
+        -- allow_tearing = true,
 
         layout = "dwindle",
     },
@@ -102,7 +102,7 @@ local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("uwsm app -- kitty"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("uwsm app -- nautilus"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("rofi -show drun"))
 hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("rofimoji --action type"))
