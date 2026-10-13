@@ -23,7 +23,7 @@
       efi.canTouchEfiVariables = true;
     };
     tmp.useTmpfs = true;
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_betelgeuse;
     kernelModules = [
       "rtw89_8852cu"
       "ntsync"
