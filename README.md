@@ -44,5 +44,5 @@ This repository contains my personal NixOS configuration. The goal is to have a 
   <h3>🌠 Orion</h3>
   <img src="assets/screenshots/orion.png" width="840"/>
   <br>
-  <sub>GNOME • Marble-Blue-Dark</sub>
+  <sub>HYPRLAND • Monochrome</sub>
 </div>
