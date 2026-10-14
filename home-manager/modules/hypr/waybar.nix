@@ -13,7 +13,7 @@ in
         output = config.hypr.primaryMonitor;
         layer = "top";
         position = "top";
-        height = 38;
+        height = 42;
         spacing = 0;
 
         modules-left = [
@@ -56,7 +56,7 @@ in
 
         "hyprland/window" = {
           format = "{title}";
-          max-length = 35;
+          max-length = 40;
           separate-outputs = true;
         };
 
@@ -64,10 +64,10 @@ in
           format = "{player_icon} {title} - {artist}";
           format-paused = "{status_icon} {title} - {artist}";
           player-icons = {
-            default = "▶";
+            default = "󰐊";
           };
           status-icons = {
-            paused = "⏸";
+            paused = "󰏤";
           };
           max-length = 30;
           tooltip = false;
