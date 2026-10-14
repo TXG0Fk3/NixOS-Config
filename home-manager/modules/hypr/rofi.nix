@@ -21,7 +21,7 @@ in
   programs.rofi = {
     enable = true;
 
-    extraConfig = {
+    settings = {
       modi = "drun,run";
       show-icons = false;
       font = "JetBrains Mono 10";

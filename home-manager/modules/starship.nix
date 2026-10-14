@@ -52,7 +52,7 @@
 
       nix_shell = {
         style = "white";
-        format = "[$symbol$state( \($name\))]($style) ";
+        format = "[$symbol$state( ($name))]($style) ";
         symbol = "nix:";
       };
 
