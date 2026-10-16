@@ -59,15 +59,14 @@
     cloudflared
 
     # Productivity / Knowledge
-    (alpaca.override {
-      ollama = pkgs.ollama-rocm;
-    })
+    antigravity-cli
     gnome-feeds
     obsidian
     todoist-electron
 
     # Media & Utilities
     gnome-calculator
+    gnome-solanum
     bluetui
     eartag
     file-roller
