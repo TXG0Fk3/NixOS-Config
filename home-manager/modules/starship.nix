@@ -36,7 +36,7 @@
       };
 
       git_status = {
-        style = "white";
+        style = "cyan";
         format = "([$all_status$ahead_behind]($style) )";
         conflicted = "=";
         ahead = "⇡";
@@ -51,20 +51,20 @@
       };
 
       nix_shell = {
-        style = "white";
+        style = "cyan";
         format = "[$symbol$state( ($name))]($style) ";
         symbol = "nix:";
       };
 
       cmd_duration = {
         min_time = 2000;
-        style = "white";
+        style = "bright-black";
         format = "[$duration]($style) ";
       };
 
       character = {
         success_symbol = "[❯](bold white)";
-        error_symbol = "[❯](bold white)";
+        error_symbol = "[❯](bold red)";
         vicmd_symbol = "[❮](bold white)";
       };
 
@@ -83,8 +83,4 @@
       };
     };
   };
-
-  home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
 }
