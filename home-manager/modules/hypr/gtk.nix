@@ -1,9 +1,9 @@
-{ lib, ... }:
+{ colors, lib, ... }:
 # TODO: stop depending on adw-gtk3. Ship a standalone GTK3 theme (own
 # gtk-3.0/gtk.css) so this module is the theme, not a patch over another one.
 
 let
-  c = import ./colors.nix;
+  c = colors;
 
   # Reusable declarations
   inverted = ''

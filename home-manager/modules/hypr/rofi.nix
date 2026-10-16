@@ -1,7 +1,12 @@
-{ config, pkgs, ... }:
+{
+  config,
+  colors,
+  pkgs,
+  ...
+}:
 
 let
-  c = import ./colors.nix;
+  c = colors;
 in
 {
   home.packages = with pkgs; [

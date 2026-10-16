@@ -1,7 +1,12 @@
-{ config, lib, ... }:
+{
+  config,
+  colors,
+  lib,
+  ...
+}:
 
 let
-  c = import ./colors.nix;
+  c = colors;
 
   col = hex: "rgb(${lib.removePrefix "#" hex})";
   white = col c.fg;

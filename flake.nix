@@ -33,6 +33,7 @@
       system-modules = ./system/modules;
       home-modules = ./home-manager/modules;
       users = ./home-manager/users;
+      colors = import ./home-manager/colors.nix;
 
       sysArgs = { inherit inputs secrets system-modules; };
       homeArgs = {
@@ -41,6 +42,7 @@
           secrets
           home-modules
           users
+          colors
           ;
       };
     in

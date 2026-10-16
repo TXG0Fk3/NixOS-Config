@@ -1,7 +1,7 @@
-{ config, ... }:
+{ config, colors, ... }:
 
 let
-  c = import ./colors.nix;
+  c = colors;
 in
 {
   programs.waybar = {
