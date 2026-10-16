@@ -14,6 +14,7 @@
     (home-modules + "/bottles.nix")
     (home-modules + "/fastfetch.nix")
     (home-modules + "/flatpak.nix")
+    (home-modules + "/helix.nix")
     (home-modules + "/hypr")
     (home-modules + "/prismlauncher.nix")
     (home-modules + "/starship.nix")
