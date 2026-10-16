@@ -21,7 +21,12 @@ let
 
     display = {
       separator = "  ";
-      color.keys = keyColor;
+      color = {
+        keys = keyColor;
+        title = keyColor;
+        output = keyColor;
+        separator = keyColor;
+      };
     };
 
     modules = [
