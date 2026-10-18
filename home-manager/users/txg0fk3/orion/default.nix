@@ -12,12 +12,10 @@
   imports = [
     (users + "/txg0fk3/common.nix")
     (home-modules + "/bottles.nix")
-    (home-modules + "/fastfetch.nix")
     (home-modules + "/flatpak.nix")
     (home-modules + "/helix.nix")
     (home-modules + "/hypr")
     (home-modules + "/prismlauncher.nix")
-    (home-modules + "/starship.nix")
     (home-modules + "/vscodium.nix")
     inputs.sops-nix.homeManagerModules.sops
   ];
