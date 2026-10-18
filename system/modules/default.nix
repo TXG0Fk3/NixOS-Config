@@ -17,7 +17,7 @@
 
   # Locale and TimeZone
   time.timeZone = "America/Maceio";
-  i18n.defaultLocale = "pt_BR.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "br-abnt2";
 
   # Root
