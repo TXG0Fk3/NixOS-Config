@@ -1,6 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    ouch-rar
+  ];
+
   programs = {
     bat = {
       enable = true;
