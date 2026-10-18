@@ -55,7 +55,6 @@ in
       nautilus
       pavucontrol
       playerctl
-      superfile
       xdg-user-dirs
       zenity
 
