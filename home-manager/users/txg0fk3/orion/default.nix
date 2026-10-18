@@ -16,7 +16,6 @@
     (home-modules + "/helix.nix")
     (home-modules + "/hypr")
     (home-modules + "/prismlauncher.nix")
-    (home-modules + "/vscodium.nix")
     inputs.sops-nix.homeManagerModules.sops
   ];
 
