@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -14,6 +15,7 @@
     ./systemd.nix
     system-modules
     (system-modules + "/ui/hypr.nix")
+    inputs.artcraft.nixosModules.default
   ];
 
   # Bootloader and Kernel
@@ -110,6 +112,15 @@
     gnome-boxes
     virt-manager
   ];
+
+  # ArtCraft
+  programs.artcraft = {
+    enable = true;
+    apps = [
+      "photocraft"
+      "filmcraft"
+    ];
+  };
 
   # GPU Screen Recorder
   programs.gpu-screen-recorder = {
