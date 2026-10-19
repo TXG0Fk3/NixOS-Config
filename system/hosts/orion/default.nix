@@ -15,14 +15,19 @@
     ./systemd.nix
     system-modules
     (system-modules + "/ui/hypr.nix")
+    inputs.lanzaboote.nixosModules.lanzaboote
     inputs.artcraft.nixosModules.default
   ];
 
   # Bootloader and Kernel
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
+    };
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
     };
     tmp.useTmpfs = true;
     kernelPackages = pkgs.linuxPackages_betelgeuse;
@@ -111,6 +116,9 @@
     distrobox
     gnome-boxes
     virt-manager
+
+    # Other
+    sbctl
   ];
 
   # ArtCraft
