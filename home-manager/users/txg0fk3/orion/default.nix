@@ -76,7 +76,6 @@
     musicpresence
     parabolic
     showtime
-    (callPackage (home-modules + "/packages/spotiflac.nix") { })
 
     # System Tools
     baobab
