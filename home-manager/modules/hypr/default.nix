@@ -20,6 +20,7 @@ in
     ./waybar.nix
     ./gtk.nix
     (home-modules + "/nautilus.nix")
+    (home-modules + "/edged.nix")
   ];
 
   options.hypr.primaryMonitor = mkOption {

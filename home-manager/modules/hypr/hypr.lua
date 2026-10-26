@@ -112,6 +112,7 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" 
 hl.bind(mainMod .. " + CONTROL + F", hl.dsp.window.fullscreen_state({ action = "toggle", internal = 0, client = 2 }))
 hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + SHIFT + X", hl.dsp.exec_cmd("hyprpicker -a"))
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("edged"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + O", hl.dsp.layout("togglesplit"))
 
