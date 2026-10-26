@@ -19,6 +19,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    edged = {
+      url = "github:TXG0Fk3/Edged";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
     artcraft.url = "github:ipeglin/artcraft-nix";

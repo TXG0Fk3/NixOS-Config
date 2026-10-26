@@ -33,6 +33,26 @@
         "type": "github"
       }
     },
+    "edged": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792964649,
+        "narHash": "sha256-hil2Inmi7gtevFU1hFv5gkGv5vCUE2EGPy2vZL59jiI=",
+        "owner": "TXG0Fk3",
+        "repo": "Edged",
+        "rev": "413595a7a996505d5c7836c673517a1f90d35e36",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TXG0Fk3",
+        "repo": "Edged",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -289,6 +309,7 @@
     "root": {
       "inputs": {
         "artcraft": "artcraft",
+        "edged": "edged",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
