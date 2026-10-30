@@ -15,6 +15,7 @@
     (home-modules + "/flatpak.nix")
     (home-modules + "/helix.nix")
     (home-modules + "/hypr")
+    (home-modules + "/librewolf.nix")
     (home-modules + "/prismlauncher.nix")
     inputs.sops-nix.homeManagerModules.sops
   ];
@@ -50,7 +51,6 @@
   # User Packages
   home.packages = with pkgs; [
     # Network & Streaming & Sharing
-    firefox
     equibop
     localsend
     proton-vpn
@@ -148,9 +148,9 @@
     enable = true;
 
     defaultApplications = {
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "application/pdf" = "firefox.desktop";
+      "x-scheme-handler/http" = "librewolf.desktop";
+      "x-scheme-handler/https" = "librewolf.desktop";
+      "application/pdf" = "librewolf.desktop";
 
       "image/png" = "org.gnome.Loupe.desktop";
       "image/jpeg" = "org.gnome.Loupe.desktop";
