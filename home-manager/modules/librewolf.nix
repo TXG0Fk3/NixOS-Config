@@ -298,6 +298,19 @@ in
           font-weight: bold !important;
         }
 
+        .tabbrowser-tab[visuallyselected] .tab-audio-button,
+        .tabbrowser-tab[visuallyselected] .tab-icon-overlay {
+          --my-fill: ${c.bg} !important;
+          fill: ${c.bg} !important;
+          color: ${c.bg} !important;
+        }
+
+        .tabbrowser-tab[visuallyselected] .tab-audio-button:hover,
+        .tabbrowser-tab[visuallyselected] .tab-icon-overlay:hover {
+          --my-fill: ${c.bg} !important;
+          fill: ${c.bg} !important;
+        }
+
         .tabbrowser-tab:not([visuallyselected]) .tab-label {
           color: ${c.mid} !important;
         }
@@ -430,6 +443,45 @@ in
         /* window controls */
         .titlebar-buttonbox-container {
           display: none !important;
+        }
+
+        /* find bar */
+        findbar {
+          appearance: none !important;
+          background-image: none !important;
+          background-color: ${c.bg} !important;
+          color: ${c.fg} !important;
+          border-top: 1px solid ${c.fg} !important;
+        }
+
+        .findbar-container {
+          background-color: transparent !important;
+        }
+
+        findbar .findbar-textbox {
+          appearance: none !important;
+          background-color: ${c.bg} !important;
+          color: ${c.fg} !important;
+          border: 1px solid ${c.fg} !important;
+          border-radius: 0px !important;
+          box-shadow: none !important;
+        }
+
+        findbar .findbar-textbox:focus {
+          border-color: ${c.accent} !important;
+        }
+
+        findbar toolbarbutton {
+          appearance: none !important;
+          background-color: transparent !important;
+          fill: ${c.fg} !important;
+          color: ${c.fg} !important;
+        }
+
+        findbar toolbarbutton:hover {
+          background-color: ${c.fg} !important;
+          fill: ${c.bg} !important;
+          color: ${c.bg} !important;
         }
       '';
 
