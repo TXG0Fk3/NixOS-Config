@@ -61,7 +61,6 @@
     antigravity-hub
     gnome-feeds
     obsidian
-    todoist-electron
 
     # Media & Utilities
     gnome-calculator
