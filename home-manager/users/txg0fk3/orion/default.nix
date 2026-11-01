@@ -58,6 +58,7 @@
 
     # Productivity / Knowledge
     antigravity-cli
+    antigravity-hub
     gnome-feeds
     obsidian
     todoist-electron
