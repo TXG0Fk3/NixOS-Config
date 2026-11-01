@@ -81,9 +81,6 @@
     baobab
     cryptomator
 
-    # Content Creation
-    shotcut
-
     # Gaming && Wine
     steam
     steam-run
@@ -111,7 +108,6 @@
 
   # Flatpaks
   services.flatpak.packages = [
-    "io.github.vikdevelop.SaveDesktop"
     "io.mrarm.mcpelauncher"
     "org.vinegarhq.Sober"
   ];
