@@ -83,7 +83,7 @@ in
         };
 
         entry = {
-          placeholder = "Buscar...";
+          placeholder = "Search...";
           placeholder-color = dim;
           text-color = fg;
         };
