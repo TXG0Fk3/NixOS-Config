@@ -233,6 +233,14 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
+-- Volume OSD
+hl.bind("CONTROL + ALT + A",     hl.dsp.exec_cmd("volume-osd down"), { locked = true, repeating = true })
+hl.bind("CONTROL + ALT + S",     hl.dsp.exec_cmd("volume-osd mute"), { locked = true })
+hl.bind("CONTROL + ALT + D",     hl.dsp.exec_cmd("volume-osd up"),   { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume",  hl.dsp.exec_cmd("volume-osd down"), { locked = true, repeating = true })
+hl.bind("XF86AudioMute",         hl.dsp.exec_cmd("volume-osd mute"), { locked = true })
+hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd("volume-osd up"),   { locked = true, repeating = true })
+
 
 
 ---- WINDOWS AND WORKSPACES ----

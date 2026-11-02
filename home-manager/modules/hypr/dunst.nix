@@ -1,9 +1,35 @@
-{ config, colors, ... }:
+{
+  config,
+  colors,
+  pkgs,
+  ...
+}:
 
 let
   c = colors;
+
+  volumeOsd = pkgs.writeShellScriptBin "volume-osd" ''
+    case "$1" in
+      up)   ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+ ;;
+      down) ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- ;;
+      mute) ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ;;
+    esac
+
+    out=$(${pkgs.wireplumber}/bin/wpctl get-volume @DEFAULT_AUDIO_SINK@)
+    if [[ "$out" == *"[MUTED]"* ]]; then
+      ${pkgs.dunst}/bin/dunstify -a "volume-osd" -r 2593 -u low -t 1500 "VOLUME" "MUTED"
+    else
+      raw="''${out#Volume: }"
+      raw="''${raw//./}"
+      vol=$((10#$raw))
+      ${pkgs.dunst}/bin/dunstify -a "volume-osd" -r 2593 -u normal -t 1500 \
+        -h int:value:"$vol" "VOLUME" "''${vol}%"
+    fi
+  '';
 in
 {
+  home.packages = [ volumeOsd ];
+
   services.dunst = {
     enable = true;
 
