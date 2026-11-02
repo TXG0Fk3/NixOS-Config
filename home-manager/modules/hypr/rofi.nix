@@ -7,12 +7,26 @@
 
 let
   c = colors;
+
+  rofiPowerMenu = pkgs.writeShellScriptBin "power-menu" ''
+    chosen=$(printf 'Lock\nExit\nReboot\nPoweroff' | ${pkgs.rofi}/bin/rofi -dmenu -i -only-match \
+      -theme-str 'listview { lines: 4; }' -p "Power") || exit 0
+    [ -n "$chosen" ] || exit 0
+
+    case "$chosen" in
+      Lock) hyprlock ;;
+      Exit) uwsm stop ;;
+      Reboot) systemctl reboot ;;
+      Poweroff) systemctl poweroff ;;
+    esac
+  '';
 in
 {
   home.packages = with pkgs; [
     noto-fonts-color-emoji
 
     rofimoji
+    rofiPowerMenu
 
     wl-clipboard
     wtype

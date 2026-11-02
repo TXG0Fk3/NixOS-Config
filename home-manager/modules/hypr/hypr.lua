@@ -129,7 +129,7 @@ local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("uwsm app -- kitty"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("uwsm stop"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("power-menu"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("uwsm app -- nautilus"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("rofi -show drun"))
 hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("rofimoji --action type"))
