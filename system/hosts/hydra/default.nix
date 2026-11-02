@@ -216,11 +216,6 @@
       user = "admin";
       openFirewall = true; # 8989
     };
-    bazarr = {
-      enable = false;
-      user = "admin";
-      openFirewall = false; # 6767
-    };
     prowlarr = {
       enable = true;
       openFirewall = true; # 9696
