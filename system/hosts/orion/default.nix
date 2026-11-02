@@ -49,7 +49,8 @@
     hostName = "Orion";
     networkmanager = {
       enable = true;
-      dns = "systemd-resolved";
+      dns = lib.mkForce "none";
+      settings.main.systemd-resolved = false;
       wifi = {
         backend = "iwd";
         powersave = false;
