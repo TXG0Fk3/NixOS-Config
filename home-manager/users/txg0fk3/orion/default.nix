@@ -61,6 +61,7 @@
     antigravity-hub
     gnome-feeds
     obsidian
+    opencode
 
     # Media & Utilities
     gnome-calculator
