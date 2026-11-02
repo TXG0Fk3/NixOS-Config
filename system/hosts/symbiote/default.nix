@@ -16,6 +16,10 @@
   # Network
   networking.hostName = "Symbiote";
 
+  # DNS is managed by WSL (wsl.wslConf.network.generateResolvConf)
+  networking.nameservers = lib.mkForce [ ];
+  services.resolved.enable = lib.mkForce false;
+
   # Users
   users.defaultUserShell = pkgs.zsh;
   users.users.TXG0Fk3 = {
