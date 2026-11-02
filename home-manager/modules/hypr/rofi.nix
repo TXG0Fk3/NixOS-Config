@@ -9,7 +9,7 @@ let
   c = colors;
 
   rofiPowerMenu = pkgs.writeShellScriptBin "power-menu" ''
-    chosen=$(printf 'Lock\nExit\nReboot\nPoweroff' | ${pkgs.rofi}/bin/rofi -dmenu -i -only-match \
+    chosen=$(printf 'Lock\nExit\nReboot\nPoweroff' | ${pkgs.rofi}/bin/rofi -dmenu -i \
       -theme-str 'listview { lines: 4; }' -p "Power") || exit 0
     [ -n "$chosen" ] || exit 0
 
