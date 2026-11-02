@@ -83,10 +83,8 @@
     cryptomator
 
     # Gaming && Wine
-    steam
     steam-run
     protonplus
-    gamescope
     lsfg-vk
     lsfg-vk-ui
     mangohud

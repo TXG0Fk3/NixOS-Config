@@ -131,6 +131,10 @@
     ];
   };
 
+  # Gaming
+  programs.steam.enable = true;
+  programs.gamescope.enable = true;
+
   # GPU Screen Recorder
   programs.gpu-screen-recorder = {
     enable = true;
