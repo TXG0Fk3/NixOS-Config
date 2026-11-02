@@ -22,6 +22,33 @@ hl.config({
     animations = {
         enabled = true,
     },
+    group = {
+        col = {
+            border_active = "rgba(ffffffff)",
+            border_inactive = "rgba(595959aa)",
+            border_locked_active = "rgba(00feffff)",
+            border_locked_inactive = "rgba(595959aa)",
+        },
+        groupbar = {
+            enabled = true,
+            font_family = "JetBrainsMono Nerd Font",
+            font_size = 10,
+            gradients = false,
+            rounding = 0,
+            gradient_rounding = 0,
+            height = 14,
+            text_color = "rgba(ffffffff)",
+            text_color_inactive = "rgba(595959aa)",
+            text_color_locked_active = "rgba(00feffff)",
+            text_color_locked_inactive = "rgba(595959aa)",
+            col = {
+                active = "rgba(ffffffff)",
+                inactive = "rgba(595959aa)",
+                locked_active = "rgba(00feffff)",
+                locked_inactive = "rgba(595959aa)",
+            },
+        },
+    },
 })
 
 hl.curve("easeOutQuint",   { type = "bezier", points = { {0.23, 1},    {0.32, 1}    } })
@@ -116,6 +143,21 @@ hl.bind(mainMod .. " + SHIFT + X", hl.dsp.exec_cmd("hyprpicker -a"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("edged"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + O", hl.dsp.layout("togglesplit"))
+
+-- Groups
+hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
+hl.bind(mainMod .. " + TAB", hl.dsp.group.next())
+hl.bind(mainMod .. " + SHIFT + TAB", hl.dsp.group.prev())
+hl.bind(mainMod .. " + CONTROL + G", hl.dsp.group.lock({ action = "toggle" }))
+hl.bind(mainMod .. " + CONTROL + H", hl.dsp.window.move({ into_group = "left" }))
+hl.bind(mainMod .. " + CONTROL + J", hl.dsp.window.move({ into_group = "down" }))
+hl.bind(mainMod .. " + CONTROL + K", hl.dsp.window.move({ into_group = "up" }))
+hl.bind(mainMod .. " + CONTROL + L", hl.dsp.window.move({ into_group = "right" }))
+hl.bind(mainMod .. " + CONTROL + Left", hl.dsp.window.move({ into_group = "left" }))
+hl.bind(mainMod .. " + CONTROL + Down", hl.dsp.window.move({ into_group = "down" }))
+hl.bind(mainMod .. " + CONTROL + Up", hl.dsp.window.move({ into_group = "up" }))
+hl.bind(mainMod .. " + CONTROL + Right", hl.dsp.window.move({ into_group = "right" }))
+hl.bind(mainMod .. " + CONTROL + U", hl.dsp.window.move({ out_of_group = true }))
 
 -- Walpaper
 hl.bind("SUPER + W", hl.dsp.exec_cmd([[
