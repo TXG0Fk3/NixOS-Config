@@ -279,6 +279,45 @@ in
           background-color: ${c.fg};
           color: ${c.bg};
       }
+
+      tooltip {
+          background-color: ${c.bg};
+          color: ${c.fg};
+          border: 1px solid ${c.fg};
+          padding: 4px 8px;
+      }
+
+      tooltip label {
+          color: ${c.fg};
+      }
+
+      menu {
+          background-color: ${c.bg};
+          color: ${c.fg};
+          border: 1px solid ${c.fg};
+          padding: 2px;
+      }
+
+      menuitem {
+          background-color: ${c.bg};
+          color: ${c.fg};
+          padding: 4px 10px;
+      }
+
+      menuitem:hover,
+      menuitem:hover * {
+          background-color: ${c.fg};
+          color: ${c.bg};
+      }
+
+      menuitem:disabled,
+      menuitem:disabled * {
+          color: ${c.dim};
+      }
+
+      menu separator {
+          background-color: ${c.dim};
+      }
     '';
   };
 }
