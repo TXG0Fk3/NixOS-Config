@@ -103,7 +103,7 @@
   # UI
   hypr = {
     primaryMonitor = "DP-1";
-    extraLuaConfig = ./monitors.lua;
+    extraLuaConfig = ./hypr.lua;
   };
 
   # Flatpaks
