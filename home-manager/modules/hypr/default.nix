@@ -53,7 +53,6 @@ in
       hyprpicker
       hyprshot
 
-      nautilus
       pavucontrol
       playerctl
       xdg-user-dirs

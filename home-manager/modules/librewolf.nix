@@ -49,7 +49,6 @@ in
     };
 
     # Overrides
-    # Overrides
     settings = {
       # Custom stylesheets & fonts
       "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
