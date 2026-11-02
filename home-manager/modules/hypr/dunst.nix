@@ -46,12 +46,13 @@ in
         progress_bar_min_width = 150;
         progress_bar_max_width = 300;
         progress_bar_corner_radius = 0;
+        highlight = c.accent;
       };
 
       urgency_low = {
         background = c.bg;
         foreground = c.fg;
-        frame_color = c.fg;
+        frame_color = c.dim;
         timeout = 4;
       };
 
@@ -65,7 +66,7 @@ in
       urgency_critical = {
         background = c.fg;
         foreground = c.bg;
-        frame_color = c.fg;
+        frame_color = c.accent;
         timeout = 0;
       };
     };

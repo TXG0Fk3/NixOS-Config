@@ -20,6 +20,7 @@ in
           "custom/nixos"
           "hyprland/workspaces"
           "network"
+          "hyprland/submap"
         ];
         modules-center = [
           "hyprland/window"
@@ -52,6 +53,11 @@ in
           interval = 2;
           tooltip = false;
           on-click = "hyprctl dispatch \"hl.dsp.exec_cmd('kitty nmtui', { float = true, size = {512, 512} })\"";
+        };
+
+        "hyprland/submap" = {
+          format = "{}";
+          tooltip = false;
         };
 
         "hyprland/window" = {
@@ -107,7 +113,7 @@ in
 
         clock = {
           format = "{:%d/%m/%Y  %H:%M}";
-          on-click = "dunstctl set-paused toggle";
+          on-click = "dunstctl set-paused toggle && pkill -RTMIN+8 waybar";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "year";
@@ -212,6 +218,14 @@ in
       #network.disconnected {
           color: ${c.dim};
           border-color: ${c.dim};
+      }
+
+      #submap {
+          background-color: ${c.bg};
+          color: ${c.accent};
+          border: 1px solid ${c.accent};
+          padding: 2px 10px;
+          margin-right: 6px;
       }
 
       #window {

@@ -11,6 +11,8 @@ let
   col = hex: "rgb(${lib.removePrefix "#" hex})";
   white = col c.fg;
   black = col c.bg;
+  accent = col c.accent;
+  red = col c.red;
 
   m = config.hypr.primaryMonitor;
   font = "JetBrainsMono Nerd Font Mono";
@@ -81,8 +83,8 @@ in
           outer_color = white;
           inner_color = black;
           font_color = white;
-          check_color = white;
-          fail_color = white;
+          check_color = accent;
+          fail_color = red;
 
           dots_size = 0.25;
           dots_spacing = 0.3;

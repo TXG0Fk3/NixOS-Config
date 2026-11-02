@@ -205,6 +205,24 @@ hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
+-- Resize submap
+hl.bind(mainMod .. " + R", hl.dsp.submap("RESIZE"))
+
+hl.define_submap("RESIZE", function()
+    hl.bind("H",     hl.dsp.window.resize({ x = -20, y = 0,   relative = true }), { repeating = true })
+    hl.bind("J",     hl.dsp.window.resize({ x = 0,   y = 20,  relative = true }), { repeating = true })
+    hl.bind("K",     hl.dsp.window.resize({ x = 0,   y = -20, relative = true }), { repeating = true })
+    hl.bind("L",     hl.dsp.window.resize({ x = 20,  y = 0,   relative = true }), { repeating = true })
+    hl.bind("Left",  hl.dsp.window.resize({ x = -20, y = 0,   relative = true }), { repeating = true })
+    hl.bind("Down",  hl.dsp.window.resize({ x = 0,   y = 20,  relative = true }), { repeating = true })
+    hl.bind("Up",    hl.dsp.window.resize({ x = 0,   y = -20, relative = true }), { repeating = true })
+    hl.bind("Right", hl.dsp.window.resize({ x = 20,  y = 0,   relative = true }), { repeating = true })
+
+    hl.bind("Escape",          hl.dsp.submap("reset"))
+    hl.bind("RETURN",          hl.dsp.submap("reset"))
+    hl.bind(mainMod .. " + R", hl.dsp.submap("reset"))
+end)
+
 -- Requires playerctl
 hl.bind("CONTROL + ALT + Q",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 hl.bind("CONTROL + ALT + W", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
@@ -246,4 +264,11 @@ hl.window_rule({
 
     size  = {800, 512},
     float = true,
+})
+
+hl.window_rule({
+    name  = "scratchpad-border",
+    match = { workspace = "special:magic" },
+
+    border_color = "rgba(00feffff)",
 })
