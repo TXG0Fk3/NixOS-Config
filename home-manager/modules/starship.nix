@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ colors, ... }:
 
+let
+  c = colors;
+in
 {
   programs.starship = {
     enable = true;
@@ -58,7 +61,7 @@
 
       cmd_duration = {
         min_time = 2000;
-        style = "bright-black";
+        style = "gray";
         format = "[$duration]($style) ";
       };
 
@@ -69,17 +72,17 @@
       };
 
       palettes.mono = {
-        white = "#ffffff";
-        black = "#000000";
-        gray = "#808080";
+        white = c.fg;
+        black = c.bg;
+        gray = c.dim;
 
-        blue = "#c0c0c0";
-        green = "#c0c0c0";
-        red = "#c0c0c0";
-        yellow = "#c0c0c0";
-        purple = "#c0c0c0";
-        cyan = "#c0c0c0";
-        orange = "#c0c0c0";
+        blue = c.blue;
+        green = c.green;
+        red = c.red;
+        yellow = c.yellow;
+        purple = c.pink;
+        cyan = c.accent;
+        orange = c.orange;
       };
     };
   };
