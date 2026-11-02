@@ -227,5 +227,16 @@
     };
   };
 
+  systemd.services = {
+    radarr.unitConfig.RequiresMountsFor = [
+      "/mnt/media"
+      "/mnt/scratch"
+    ];
+    sonarr.unitConfig.RequiresMountsFor = [
+      "/mnt/media"
+      "/mnt/scratch"
+    ];
+  };
+
   system.stateVersion = "26.05";
 }

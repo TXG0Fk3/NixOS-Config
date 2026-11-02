@@ -32,6 +32,8 @@ in
       "d /var/lib/containers/syncthing 0750 ${cfg.user} users -"
     ];
 
+    systemd.services."podman-syncthing".unitConfig.RequiresMountsFor = [ cfg.cloudPath ];
+
     virtualisation.oci-containers.containers.syncthing = {
       image = "docker.io/syncthing/syncthing:2.1.7";
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";

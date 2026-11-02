@@ -44,6 +44,11 @@ in
         "d ${cfg.transcodePath} 0750 ${cfg.user} users -"
       ];
 
+    systemd.services."podman-jellyfin".unitConfig.RequiresMountsFor = [
+      cfg.mediaPath
+      cfg.transcodePath
+    ];
+
     virtualisation.oci-containers.containers.jellyfin = {
       image = "docker.io/jellyfin/jellyfin:12.4";
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";

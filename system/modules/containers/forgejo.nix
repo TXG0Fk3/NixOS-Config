@@ -33,6 +33,8 @@ in
       "d ${cfg.reposPath} 0750 ${cfg.user} users -"
     ];
 
+    systemd.services."podman-forgejo".unitConfig.RequiresMountsFor = [ cfg.reposPath ];
+
     virtualisation.oci-containers.containers.forgejo = {
       image = "codeberg.org/forgejo/forgejo:17.0.1-rootless";
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
