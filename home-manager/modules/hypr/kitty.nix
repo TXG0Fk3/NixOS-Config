@@ -76,7 +76,7 @@ in
       color14 = c.accent;
 
       # White
-      color7 = c.mid;
+      color7 = c.fg;
       color15 = c.fg;
     };
   };
