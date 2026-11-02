@@ -142,6 +142,7 @@ hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + SHIFT + X", hl.dsp.exec_cmd("hyprpicker -a"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("edged"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + Y", hl.dsp.window.pin())
 hl.bind(mainMod .. " + O", hl.dsp.layout("togglesplit"))
 
 -- Groups
@@ -272,6 +273,22 @@ hl.window_rule({
 
     size  = {800, 512},
     float = true,
+})
+
+hl.window_rule({
+    name  = "pip",
+    match = { title = "^Picture-in-Picture$" },
+
+    size  = {480, 270},
+    float = true,
+    pin   = true,
+})
+
+hl.window_rule({
+    name  = "pinned-border",
+    match = { pin = true },
+
+    border_color = "rgba(00feffff)",
 })
 
 hl.window_rule({
