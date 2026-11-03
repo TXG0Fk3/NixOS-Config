@@ -5,22 +5,20 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.services.homelab.cloudflared;
 in
 {
   options.services.homelab.cloudflared = {
-    enable = mkEnableOption "Enable Cloudflared service.";
+    enable = lib.mkEnableOption "Enable Cloudflared service.";
 
-    tunnelTokenFile = mkOption {
-      type = types.str;
+    tunnelTokenFile = lib.mkOption {
+      type = lib.types.str;
       description = "Path to file containing TUNNEL_TOKEN environment variable";
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     virtualisation.oci-containers.containers.cloudflared = {
       image = "docker.io/cloudflare/cloudflared:2026.10.4";
       autoStart = true;

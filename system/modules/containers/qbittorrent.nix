@@ -5,29 +5,27 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.services.homelab.qbittorrent;
 in
 {
   options.services.homelab.qbittorrent = {
-    enable = mkEnableOption "Activate the qBittorrent service.";
+    enable = lib.mkEnableOption "Activate the qBittorrent service.";
 
-    user = mkOption {
-      type = types.str;
+    user = lib.mkOption {
+      type = lib.types.str;
       default = "admin";
       description = "The username that will own the config and downloads.";
     };
 
-    storagePath = mkOption {
-      type = types.str;
+    storagePath = lib.mkOption {
+      type = lib.types.str;
       description = "The path where downloads will be saved (must be an absolute path string).";
       example = "/mnt/storage/downloads";
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     systemd.tmpfiles.rules =
       (map (subDir: "d /var/lib/containers/qbittorrent${subDir} 0755 ${cfg.user} users -") [
         ""

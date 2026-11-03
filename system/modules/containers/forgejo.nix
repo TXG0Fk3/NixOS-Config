@@ -5,30 +5,28 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.services.homelab.forgejo;
 in
 {
   options.services.homelab.forgejo = {
-    enable = mkEnableOption "Activate the Forgejo Server.";
+    enable = lib.mkEnableOption "Activate the Forgejo Server.";
 
-    user = mkOption {
-      type = types.str;
+    user = lib.mkOption {
+      type = lib.types.str;
       example = "admin";
       description = "Owner of the reposPath and config files.";
     };
 
-    reposPath = mkOption {
-      type = types.str;
+    reposPath = lib.mkOption {
+      type = lib.types.str;
       default = "/var/lib/containers/forgejo";
       example = "/mnt/forgejo";
       description = "Path to your repos directory.";
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     systemd.tmpfiles.rules = [
       "d ${cfg.reposPath} 0750 ${cfg.user} users -"
     ];

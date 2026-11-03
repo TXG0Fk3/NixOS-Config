@@ -5,35 +5,33 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.services.homelab.jellyfin;
 in
 {
   options.services.homelab.jellyfin = {
-    enable = mkEnableOption "Activate the Jellyfin Media Server.";
+    enable = lib.mkEnableOption "Activate the Jellyfin Media Server.";
 
-    user = mkOption {
-      type = types.str;
+    user = lib.mkOption {
+      type = lib.types.str;
       example = "admin";
       description = "Owner of the media and config files.";
     };
 
-    mediaPaths = mkOption {
-      type = types.listOf types.str;
+    mediaPaths = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
       example = [ "/mnt/storage/media" ];
       description = "Paths to your media libraries. Mounted at /media, /media2, ... in the container.";
     };
 
-    transcodePath = mkOption {
-      type = types.str;
+    transcodePath = lib.mkOption {
+      type = lib.types.str;
       default = "/var/lib/containers/jellyfin/cache/transcode";
       description = "Path for temporary transcode files.";
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     systemd.tmpfiles.rules =
       (map (subDir: "d /var/lib/containers/jellyfin${subDir} 0750 ${cfg.user} users -") [
         ""
@@ -59,7 +57,7 @@ in
         "/var/lib/containers/jellyfin/cache:/cache"
         "${cfg.transcodePath}:/transcode"
       ]
-      ++ (imap1 (i: path: "${path}:/media${if i == 1 then "" else toString i}") cfg.mediaPaths);
+      ++ (lib.imap1 (i: path: "${path}:/media${if i == 1 then "" else toString i}") cfg.mediaPaths);
       ports = [
         "8096:8096/tcp"
         "7359:7359/udp"

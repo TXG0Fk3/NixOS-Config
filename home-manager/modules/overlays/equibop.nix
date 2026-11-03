@@ -57,10 +57,10 @@ final: prev: {
       })
     ];
 
-    meta = with prev.lib; {
+    meta = {
       description = "Equibop - A custom Discord client";
       homepage = "https://github.com/Equicord/Equibop";
-      license = licenses.gpl3Only;
+      license = prev.lib.licenses.gpl3Only;
       platforms = [ "x86_64-linux" ];
       mainProgram = "equibop";
     };

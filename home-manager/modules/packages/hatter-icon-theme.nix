@@ -39,10 +39,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  meta = with lib; {
+  meta = {
     description = "Icon theme/desktop theme with the right balance between unity and diversity.";
     homepage = "https://github.com/Mibea/Hatter";
-    license = with licenses; [ gpl3Only ];
-    platforms = platforms.linux;
+    license = [ lib.licenses.gpl3Only ];
+    platforms = lib.platforms.linux;
   };
 })

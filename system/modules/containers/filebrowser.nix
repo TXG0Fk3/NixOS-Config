@@ -5,27 +5,25 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.services.homelab.filebrowser;
 in
 {
   options.services.homelab.filebrowser = {
-    enable = mkEnableOption "Activate FileBrowser Web UI.";
+    enable = lib.mkEnableOption "Activate FileBrowser Web UI.";
 
-    user = mkOption {
-      type = types.str;
+    user = lib.mkOption {
+      type = lib.types.str;
       default = "admin";
     };
 
-    storagePath = mkOption {
-      type = types.str;
+    storagePath = lib.mkOption {
+      type = lib.types.str;
       default = "/mnt/storage";
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     systemd.tmpfiles.rules =
       map (subDir: "d /var/lib/containers/filebrowser${subDir} 0700 ${cfg.user} users -")
         [

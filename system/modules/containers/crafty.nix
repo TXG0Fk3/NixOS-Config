@@ -5,23 +5,21 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.services.homelab.crafty;
 in
 {
   options.services.homelab.crafty = {
-    enable = mkEnableOption "Activate the Crafty service.";
+    enable = lib.mkEnableOption "Activate the Crafty service.";
 
-    user = mkOption {
-      type = types.str;
+    user = lib.mkOption {
+      type = lib.types.str;
       default = "admin";
       description = "The username that will own the configs";
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     systemd.tmpfiles.rules =
       map (subDir: "d /var/lib/containers/crafty${subDir} 0750 ${cfg.user} users -")
         [

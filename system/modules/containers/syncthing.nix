@@ -5,29 +5,27 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.services.homelab.syncthing;
 in
 {
   options.services.homelab.syncthing = {
-    enable = mkEnableOption "Activate the Syncthing container.";
+    enable = lib.mkEnableOption "Activate the Syncthing container.";
 
-    user = mkOption {
-      type = types.str;
+    user = lib.mkOption {
+      type = lib.types.str;
       example = "admin";
       description = "Owner of the cloudPath and config files.";
     };
 
-    cloudPath = mkOption {
-      type = types.str;
+    cloudPath = lib.mkOption {
+      type = lib.types.str;
       example = "/mnt/cloud";
       description = "Path to your files.";
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     systemd.tmpfiles.rules = [
       "d /var/lib/containers/syncthing 0750 ${cfg.user} users -"
     ];
