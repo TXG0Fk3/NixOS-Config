@@ -92,7 +92,7 @@ in
       urgency_critical = {
         background = c.fg;
         foreground = c.bg;
-        frame_color = c.accent;
+        frame_color = c.fg;
         timeout = 0;
       };
     };
