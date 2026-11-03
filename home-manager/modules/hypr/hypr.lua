@@ -289,3 +289,10 @@ hl.window_rule({
 
     border_color = "rgba(00feffff)",
 })
+
+hl.layer_rule({
+    name    = "rofi",
+    match   = { namespace = "^rofi$" },
+
+    no_anim = true,
+})
