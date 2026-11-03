@@ -1,6 +1,8 @@
-{ colors, lib, ... }:
-# TODO: stop depending on adw-gtk3. Ship a standalone GTK3 theme (own
-# gtk-3.0/gtk.css) so this module is the theme, not a patch over another one.
+{
+  colors,
+  lib,
+  ...
+}:
 
 let
   c = colors;
@@ -12,8 +14,14 @@ let
   '';
   framed = ''
     background-color: ${c.bg};
+    background-image: none;
     border: 1px solid ${c.fg};
     box-shadow: none;
+  '';
+  disabled = ''
+    background-color: ${c.bg};
+    color: ${c.dim};
+    border-color: ${c.dim};
   '';
 
   # Named colors read by libadwaita and gtk3
@@ -21,6 +29,10 @@ let
     accent_color = c.accent;
     accent_bg_color = c.accent;
     accent_fg_color = c.bg;
+
+    destructive_color = c.red;
+    destructive_bg_color = c.red;
+    destructive_fg_color = c.bg;
 
     window_bg_color = c.bg;
     window_fg_color = c.fg;
@@ -56,6 +68,22 @@ let
     scrollbar_outline_color = c.fg;
     link_color = c.accent;
     visited_link_color = c.fg;
+
+    theme_bg_color = c.bg;
+    theme_fg_color = c.fg;
+    theme_base_color = c.bg;
+    theme_text_color = c.fg;
+    theme_selected_bg_color = c.accent;
+    theme_selected_fg_color = c.bg;
+    insensitive_bg_color = c.bg;
+    insensitive_fg_color = c.dim;
+    insensitive_base_color = c.bg;
+    theme_unfocused_bg_color = c.bg;
+    theme_unfocused_fg_color = c.dim;
+    theme_unfocused_base_color = c.bg;
+    theme_unfocused_text_color = c.dim;
+    borders = c.fg;
+    unfocused_borders = c.dim;
   };
 
   namedColors =
@@ -68,36 +96,27 @@ let
     * {
       border-radius: 0;
     }
+    *:link,
+    button.link {
+      color: ${c.accent};
+    }
+    *:visited {
+      color: ${c.fg};
+    }
   '';
 
   buttons = ''
     button {
-      background-image: none;
-      background-color: ${c.bg};
+      ${framed}
       color: ${c.fg};
-      border: 1px solid ${c.fg};
-      box-shadow: none;
-    }
-    button:hover,
-    button:checked,
-    button:active {
-      ${inverted}
     }
 
-    /* flat and window buttons */
+    /* flat and window buttons (must precede :hover) */
     button.flat,
     button.titlebutton,
     windowcontrols button {
       background-color: transparent;
       border-color: transparent;
-    }
-    button.flat:hover,
-    button.flat:checked,
-    button.flat:active,
-    button.titlebutton:hover,
-    windowcontrols button:hover {
-      ${inverted}
-      border-color: ${c.fg};
     }
     button.titlebutton image,
     windowcontrols button image {
@@ -106,37 +125,45 @@ let
       color: inherit;
     }
 
+    button:hover,
+    button:checked,
+    button:active {
+      ${inverted}
+      border-color: ${c.fg};
+    }
+
     /* variants */
     button.suggested-action {
       background-color: ${c.accent};
       color: ${c.bg};
       border-color: ${c.accent};
     }
-    button.suggested-action:hover {
+    button.suggested-action:hover,
+    button.suggested-action:active {
       background-color: ${c.fg};
+      color: ${c.bg};
       border-color: ${c.fg};
     }
     button.destructive-action {
-      color: @destructive_color;
-      border-color: @destructive_color;
+      color: ${c.red};
+      border-color: ${c.red};
     }
-    button.destructive-action:hover {
-      background-color: @destructive_bg_color;
-      color: @destructive_fg_color;
+    button.destructive-action:hover,
+    button.destructive-action:active {
+      background-color: ${c.red};
+      color: ${c.bg};
+      border-color: ${c.red};
     }
 
     /* disabled (must stay last) */
     button:disabled,
-    button:disabled:hover,
     button.suggested-action:disabled,
     button.destructive-action:disabled {
-      background-color: ${c.bg};
-      color: ${c.dim};
-      border-color: ${c.dim};
+      ${disabled}
     }
     button.flat:disabled,
-    button.flat:disabled:hover,
-    button.titlebutton:disabled {
+    button.titlebutton:disabled,
+    windowcontrols button:disabled {
       background-color: transparent;
       color: ${c.dim};
       border-color: transparent;
@@ -149,8 +176,7 @@ let
       color: ${c.fg};
     }
     entry:disabled {
-      color: ${c.dim};
-      border-color: ${c.dim};
+      ${disabled}
     }
   '';
 
@@ -158,6 +184,11 @@ let
     selection {
       background-color: ${c.accent};
       color: ${c.bg};
+    }
+    rubberband,
+    .rubberband {
+      background-color: transparent;
+      border: 1px solid ${c.accent};
     }
     row:hover,
     row:selected,
@@ -176,6 +207,7 @@ let
   surfaces = ''
     headerbar {
       background-color: ${c.bg};
+      background-image: none;
       color: ${c.fg};
       border-bottom: 1px solid ${c.fg};
       box-shadow: none;
@@ -186,10 +218,14 @@ let
 
     separator {
       background-color: ${c.dim};
+      background-image: none;
     }
 
     modelbutton:hover {
       ${inverted}
+    }
+    modelbutton:disabled {
+      color: ${c.dim};
     }
 
     tooltip.background,
@@ -215,6 +251,7 @@ let
       background-color: ${c.accent};
     }
 
+    /* switches */
     switch {
       ${framed}
     }
@@ -222,15 +259,23 @@ let
       background-color: ${c.accent};
       border-color: ${c.accent};
     }
+    switch:disabled {
+      border-color: ${c.dim};
+    }
     switch slider {
       background-color: ${c.fg};
+      background-image: none;
       border: none;
       box-shadow: none;
     }
     switch:checked slider {
       background-color: ${c.bg};
     }
+    switch:disabled slider {
+      background-color: ${c.dim};
+    }
 
+    /* checks and radios */
     check,
     radio {
       ${framed}
@@ -242,43 +287,277 @@ let
     radio:indeterminate {
       background-color: ${c.accent};
       border-color: ${c.accent};
+      color: ${c.bg};
+    }
+    check:disabled,
+    radio:disabled {
+      ${disabled}
     }
 
+    /* progress, levels and scales */
     progressbar trough,
-    scale trough {
-      background-color: ${c.bg};
-      border: 1px solid ${c.fg};
+    scale trough,
+    levelbar trough {
+      ${framed}
     }
     progressbar progress,
     scale highlight {
       background-color: ${c.accent};
+      background-image: none;
       border: none;
     }
     scale slider {
       background-color: ${c.fg};
+      background-image: none;
       border: none;
       box-shadow: none;
     }
     scale slider:hover {
       background-color: ${c.accent};
     }
+    scale slider:disabled {
+      background-color: ${c.dim};
+    }
   '';
 
   gtk3Only = ''
-    decoration {
-      border-radius: 0;
+    * {
+      text-shadow: none;
+      -gtk-icon-shadow: none;
+      -gtk-outline-radius: 0;
+    }
+
+    /* surfaces */
+    .background,
+    .view,
+    .view text,
+    textview text,
+    textview border,
+    iconview,
+    treeview.view,
+    list,
+    .sidebar,
+    placessidebar,
+    notebook > header,
+    notebook > stack,
+    toolbar,
+    .inline-toolbar,
+    .location-bar,
+    searchbar > revealer > box,
+    actionbar > revealer > box,
+    menubar,
+    .menubar,
+    statusbar {
+      background-color: ${c.bg};
+      background-image: none;
+      color: ${c.fg};
+      box-shadow: none;
+    }
+    .sidebar,
+    stacksidebar list,
+    .inline-toolbar,
+    .location-bar,
+    searchbar > revealer > box,
+    actionbar > revealer > box,
+    filechooser .dialog-action-box,
+    filechooser #pathbarbox {
+      border-color: ${c.fg};
+    }
+    .view:selected,
+    iconview:selected,
+    treeview.view:selected,
+    flowbox flowboxchild:selected {
+      ${inverted}
+    }
+
+    /* window decorations and titlebars */
+    decoration,
+    .csd decoration,
+    .ssd decoration,
+    .solid-csd decoration {
       box-shadow: none;
       margin: 0;
+      padding: 0;
+      border: none;
     }
-    entry:focus {
+    .titlebar:not(headerbar) {
+      background-color: ${c.bg};
+      background-image: none;
+      color: ${c.fg};
+      box-shadow: none;
+      border-bottom: 1px solid ${c.fg};
+    }
+    .titlebar:backdrop:not(headerbar) {
+      border-bottom-color: ${c.dim};
+    }
+    window.csd > .titlebar:not(headerbar) {
+      border-style: none;
+    }
+    button.titlebutton {
+      min-width: 24px;
+      min-height: 24px;
+      padding: 0;
+      margin: 0 2px;
+    }
+
+    /* spinbuttons and entries */
+    entry:focus,
+    spinbutton:not(.vertical):focus {
       border-color: ${c.accent};
     }
-    popover.background,
-    menu {
+    spinbutton:not(.vertical) {
       ${framed}
+      color: ${c.fg};
+      padding: 0;
+    }
+    spinbutton:not(.vertical):disabled {
+      ${disabled}
+    }
+    spinbutton:not(.vertical) entry {
+      border: none;
+      background-color: transparent;
+      box-shadow: none;
+    }
+    spinbutton:not(.vertical) button {
+      border-width: 0 0 0 1px;
+      border-style: solid;
+      border-color: ${c.fg};
+    }
+
+    /* notebooks */
+    notebook > header {
+      border-color: ${c.fg};
+      padding: 2px;
+    }
+    notebook > header tabs {
+      margin: 0;
+    }
+    notebook > header > tabs > tab {
+      background-color: ${c.bg};
+      color: ${c.dim};
+      border: 1px solid ${c.dim};
+      box-shadow: none;
+      margin: 0 1px;
+      padding: 4px 10px;
+      min-height: 20px;
+    }
+    notebook > header > tabs > tab:hover {
+      color: ${c.fg};
+      border-color: ${c.fg};
+    }
+    notebook > header > tabs > tab:checked {
+      ${inverted}
+      border-color: ${c.fg};
+    }
+
+    /* lists and treeviews */
+    row {
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+    filechooser placessidebar list {
+      padding: 4px 6px;
+    }
+    treeview.view header button {
+      border-width: 0 1px 1px 0;
+      border-style: solid;
+      border-color: ${c.dim};
+      border-bottom-color: ${c.fg};
+      padding: 2px 6px;
+    }
+
+    /* frames and separators */
+    frame > border,
+    .frame {
+      border-color: ${c.fg};
+    }
+    paned > separator {
+      background-color: transparent;
+      background-image: image(${c.dim});
+    }
+    paned > separator.wide {
+      background-color: ${c.bg};
+      background-image: image(${c.dim}), image(${c.dim});
+    }
+
+    /* menus */
+    popover.background,
+    menu,
+    .menu,
+    .context-menu {
+      ${framed}
+      color: ${c.fg};
+    }
+    menuitem {
+      color: ${c.fg};
+      background-color: transparent;
+      box-shadow: none;
     }
     menuitem:hover {
       ${inverted}
+    }
+    menuitem:disabled {
+      color: ${c.dim};
+    }
+
+    /* scrolled windows */
+    scrolledwindow overshoot,
+    scrolledwindow undershoot {
+      background-image: none;
+      background-color: transparent;
+    }
+    scrolledwindow junction {
+      border-image: none;
+      background-color: ${c.bg};
+    }
+    scrollbar {
+      background-color: ${c.bg};
+      background-image: none;
+      border-color: ${c.dim};
+    }
+    scrollbar slider {
+      margin: 0;
+    }
+
+    /* switches */
+    switch {
+      color: transparent;
+    }
+    switch slider {
+      margin: 0;
+      min-width: 22px;
+      min-height: 22px;
+    }
+
+    /* progress, levels and scales */
+    progressbar.horizontal trough,
+    progressbar.horizontal progress {
+      min-height: 6px;
+    }
+    progressbar.vertical trough,
+    progressbar.vertical progress {
+      min-width: 6px;
+    }
+    progressbar progress,
+    scale highlight,
+    scale fill {
+      margin: 0;
+    }
+    scale fill {
+      background-color: ${c.dim};
+      border: none;
+    }
+    scale slider {
+      min-width: 14px;
+      min-height: 14px;
+      margin: -6px;
+    }
+    levelbar block:not(.empty) {
+      background-color: ${c.accent};
+      border-color: ${c.accent};
+    }
+    levelbar block.empty {
+      border-color: ${c.dim};
     }
   '';
 
@@ -304,7 +583,6 @@ let
     }
     .nautilus-window placessidebar list.navigation-sidebar > row,
     .nautilus-window .navigation-sidebar > row {
-      border-left: 2px solid transparent;
       padding: 6px 8px;
     }
     .nautilus-window .sidebar-pane headerbar {
