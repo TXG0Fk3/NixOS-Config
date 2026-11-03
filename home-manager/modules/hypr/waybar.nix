@@ -90,7 +90,7 @@ in
           tooltip = false;
           scroll-step = 5;
           on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          on-click-right = "pavucontrol";
+          on-click-right = "hyprctl dispatch \"hl.dsp.exec_cmd('kitty wiremix', { float = true, size = {1000, 600} })\"";
         };
 
         battery = {

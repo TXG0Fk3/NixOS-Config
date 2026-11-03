@@ -268,14 +268,6 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name  = "pavu",
-    match = { class = "org.pulseaudio.pavucontrol" },
-
-    size  = {800, 512},
-    float = true,
-})
-
-hl.window_rule({
     name  = "pip",
     match = { title = "^Picture-in-Picture$" },
 

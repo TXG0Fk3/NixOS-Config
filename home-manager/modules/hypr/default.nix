@@ -51,7 +51,7 @@ in
       hyprpicker
       hyprshot
 
-      pavucontrol
+      wiremix
       playerctl
       xdg-user-dirs
       zenity
