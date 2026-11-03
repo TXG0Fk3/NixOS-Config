@@ -142,6 +142,9 @@ in
       * {
           border: none;
           border-radius: 0;
+          box-shadow: none;
+          text-shadow: none;
+          transition: none;
           font-family: "JetBrainsMono Nerd Font", "Courier New", monospace;
           font-size: 12px;
           font-weight: bold;
@@ -183,6 +186,7 @@ in
 
       #workspaces button {
           background-color: ${c.bg};
+          background-image: none;
           color: ${c.fg};
           border: 1px solid ${c.fg};
           margin: 0 2px;
@@ -190,14 +194,10 @@ in
           min-width: 16px;
       }
 
-      #workspaces button:hover {
-          background-color: ${c.fg};
-          color: ${c.bg};
-      }
-
       #workspaces button.focused,
       #workspaces button.active {
           background-color: ${c.fg};
+          background-image: none;
           color: ${c.bg};
           border: 1px solid ${c.fg};
       }
@@ -205,6 +205,13 @@ in
       #workspaces button.urgent {
           color: ${c.accent};
           border: 1px solid ${c.accent};
+      }
+
+      #workspaces button:hover {
+          background-color: ${c.fg};
+          background-image: none;
+          color: ${c.bg};
+          border: 1px solid ${c.fg};
       }
 
       #network {
@@ -235,7 +242,7 @@ in
           border: 1px solid ${c.fg};
       }
 
-      window#waybar.empty #window{
+      window#waybar.empty #window {
           border: transparent;
       }
 
