@@ -12,6 +12,9 @@
     "flakes"
   ];
 
+  # Auto-deduplicate the Nix Store
+  nix.settings.auto-optimise-store = true;
+
   # Lix
   nix.package = pkgs.lixPackageSets.latest.lix;
 
