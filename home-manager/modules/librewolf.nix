@@ -270,6 +270,10 @@ in
         }
 
         /* tabs */
+        #TabsToolbar {
+          padding-left: 2px !important;
+        }
+
         .tabbrowser-tab {
           padding: 0 2px 0 0 !important;
         }
