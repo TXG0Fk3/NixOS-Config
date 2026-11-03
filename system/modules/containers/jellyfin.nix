@@ -20,10 +20,10 @@ in
       description = "Owner of the media and config files.";
     };
 
-    mediaPath = mkOption {
-      type = types.str;
-      example = "/mnt/storage/media";
-      description = "Path to your media library.";
+    mediaPaths = mkOption {
+      type = types.listOf types.str;
+      example = [ "/mnt/storage/media" ];
+      description = "Paths to your media libraries. Mounted at /media, /media2, ... in the container.";
     };
 
     transcodePath = mkOption {
@@ -44,8 +44,7 @@ in
         "d ${cfg.transcodePath} 0750 ${cfg.user} users -"
       ];
 
-    systemd.services."podman-jellyfin".unitConfig.RequiresMountsFor = [
-      cfg.mediaPath
+    systemd.services."podman-jellyfin".unitConfig.RequiresMountsFor = cfg.mediaPaths ++ [
       cfg.transcodePath
     ];
 
@@ -58,9 +57,9 @@ in
       volumes = [
         "/var/lib/containers/jellyfin/config:/config"
         "/var/lib/containers/jellyfin/cache:/cache"
-        "${cfg.mediaPath}:/media"
         "${cfg.transcodePath}:/transcode"
-      ];
+      ]
+      ++ (imap1 (i: path: "${path}:/media${if i == 1 then "" else toString i}") cfg.mediaPaths);
       ports = [
         "8096:8096/tcp"
         "7359:7359/udp"

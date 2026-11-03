@@ -193,7 +193,10 @@
       jellyfin = {
         enable = true;
         user = "admin";
-        mediaPath = "/mnt/media";
+        mediaPaths = [
+          "/mnt/media"
+          "/mnt/media2"
+        ];
         transcodePath = "/mnt/scratch/jellyfin/transcode";
       };
       crafty = {
@@ -225,10 +228,12 @@
   systemd.services = {
     radarr.unitConfig.RequiresMountsFor = [
       "/mnt/media"
+      "/mnt/media2"
       "/mnt/scratch"
     ];
     sonarr.unitConfig.RequiresMountsFor = [
       "/mnt/media"
+      "/mnt/media2"
       "/mnt/scratch"
     ];
   };
