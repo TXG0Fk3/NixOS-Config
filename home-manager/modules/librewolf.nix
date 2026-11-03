@@ -271,22 +271,24 @@ in
 
         /* tabs */
         .tabbrowser-tab {
-          padding: 0 2px !important;
+          padding: 0 2px 0 0 !important;
         }
 
         .tab-background {
           background-color: ${c.bg} !important;
           border: 1px solid ${c.dim} !important;
+          outline: none !important;
           margin: 2px 0 !important;
         }
 
-        .tabbrowser-tab:hover:not([visuallyselected]) .tab-background {
+        .tabbrowser-tab:hover:not([visuallyselected], [selected]) .tab-background {
           border-color: ${c.fg} !important;
         }
 
-        .tabbrowser-tab[visuallyselected] .tab-background {
+        .tabbrowser-tab:is([visuallyselected], [selected]) .tab-background {
           background-color: ${c.fg} !important;
           border: 1px solid ${c.fg} !important;
+          outline: none !important;
         }
 
         .tabbrowser-tab[visuallyselected] .tab-label,
