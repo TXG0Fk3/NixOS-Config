@@ -6,17 +6,22 @@
 }:
 
 {
-  # Flakes
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  # Auto-deduplicate the Nix Store
-  nix.settings.auto-optimise-store = true;
-
-  # Lix
-  nix.package = pkgs.lixPackageSets.latest.lix;
+  # Nix
+  nix = {
+    package = pkgs.lixPackageSets.latest.lix;
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
+  };
 
   # Locale and TimeZone
   time.timeZone = "America/Maceio";
