@@ -17,6 +17,7 @@ in
     ./rofi.nix
     ./waybar.nix
     ./gtk.nix
+    ./qt.nix
     (home-modules + "/nautilus.nix")
     (home-modules + "/edged.nix")
   ];
@@ -59,8 +60,6 @@ in
       nerd-fonts.jetbrains-mono
 
       (callPackage (home-modules + "/packages/hatter-icon-theme.nix") { })
-      adwaita-qt
-      adwaita-qt6
     ];
 
     # Themes
@@ -74,7 +73,7 @@ in
     };
     qt = {
       enable = true;
-      style.name = "adwaita-dark";
+      platformTheme.name = "qtct";
     };
 
     # Cursors
