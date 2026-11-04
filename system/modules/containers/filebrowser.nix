@@ -54,14 +54,12 @@ in
         "/var/lib/containers:/srv/configs"
         "/home/${cfg.user}:/srv/home-user"
       ];
-      ports = [ "8090:8080" ];
+      ports = [ "127.0.0.1:8090:8080" ];
 
       # We disable healthchecks because the official image defaults to checking port 80.
       # Since we are running as a non-root user and moved the internal port to 8080,
       # the default healthcheck would always fail, causing unnecessary rebuild warnings.
       extraOptions = [ "--no-healthcheck" ];
     };
-
-    networking.firewall.allowedTCPPorts = [ 8090 ];
   };
 }

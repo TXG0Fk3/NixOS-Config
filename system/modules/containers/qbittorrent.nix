@@ -53,10 +53,7 @@ in
       extraOptions = [ "--network=host" ];
     };
 
-    networking.firewall.allowedTCPPorts = [
-      8080
-      50322
-    ];
+    networking.firewall.allowedTCPPorts = [ 50322 ];
     networking.firewall.allowedUDPPorts = [ 50322 ];
   };
 }

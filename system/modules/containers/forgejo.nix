@@ -55,14 +55,11 @@ in
         "/etc/localtime:/etc/localtime:ro"
       ];
       ports = [
-        "3000:3000"
+        "127.0.0.1:3000:3000"
         "222:2222"
       ];
     };
 
-    networking.firewall.allowedTCPPorts = [
-      3000
-      222
-    ];
+    networking.firewall.allowedTCPPorts = [ 222 ];
   };
 }

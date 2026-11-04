@@ -46,14 +46,13 @@ in
         "/var/lib/containers/crafty/import:/crafty/import"
       ];
       ports = [
-        "8443:8443"
+        "127.0.0.1:8443:8443"
         "8123:8123"
         "19132:19132/udp"
         "25500-25600:25500-25600"
       ];
     };
 
-    networking.firewall.allowedTCPPorts = [ 8443 ];
     networking.firewall.allowedUDPPorts = [ 19132 ];
     networking.firewall.allowedTCPPortRanges = [
       {

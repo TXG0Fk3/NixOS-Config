@@ -24,6 +24,13 @@
         group = "root";
       };
 
+      "cloudflare.env" = {
+        sopsFile = (secrets + "/hydra.yaml");
+        mode = "0400";
+        owner = "root";
+        group = "root";
+      };
+
       "ts-key" = {
         sopsFile = (secrets + "/hydra.yaml");
         mode = "0400";

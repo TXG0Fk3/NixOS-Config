@@ -43,16 +43,13 @@ in
         "${cfg.cloudPath}:/cloud"
       ];
       ports = [
-        "8384:8384"
+        "127.0.0.1:8384:8384"
         "22000:22000/tcp"
         "22000:22000/udp"
       ];
     };
 
-    networking.firewall.allowedTCPPorts = [
-      8384
-      22000
-    ];
+    networking.firewall.allowedTCPPorts = [ 22000 ];
     networking.firewall.allowedUDPPorts = [ 22000 ];
   };
 }
