@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   system-modules,
   ...
@@ -11,6 +10,7 @@
     ./hardware.nix
     ./mounts.nix
     ./sops.nix
+    ./caddy.nix
     system-modules
     (system-modules + "/containers/cloudflared.nix")
     (system-modules + "/containers/filebrowser.nix")
@@ -57,7 +57,6 @@
       enable = true;
       allowedTCPPorts = [
         22 # SSH
-        443 # HTTPS (Caddy)
       ];
       allowedUDPPorts = [
         5520 # Hyale Server
@@ -156,17 +155,9 @@
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
-  };
-
-  # ACME Wildcard Certificate
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "txg0fk3@proton.me";
-    certs."hydra.txgfk.xyz" = {
-      domain = "*.hydra.txgfk.xyz";
-      dnsProvider = "cloudflare";
-      environmentFile = config.sops.secrets."cloudflare.env".path;
-      group = config.services.caddy.group;
+    autoPrune = {
+      enable = true;
+      dates = "weekly";
     };
   };
 
@@ -177,32 +168,6 @@
     tailscale = {
       enable = true;
       authKeyFile = config.sops.secrets."ts-key".path;
-    };
-
-    caddy = {
-      enable = true;
-      virtualHosts =
-        lib.mapAttrs'
-          (
-            name: target:
-            lib.nameValuePair "${name}.hydra.txgfk.xyz" {
-              useACMEHost = "hydra.txgfk.xyz";
-              extraConfig = ''
-                reverse_proxy ${target}
-              '';
-            }
-          )
-          {
-            filebrowser = "127.0.0.1:8090";
-            syncthing = "127.0.0.1:8384 {\n  header_up Host localhost\n}";
-            forgejo = "127.0.0.1:3000";
-            qbittorrent = "127.0.0.1:8080";
-            jellyfin = "127.0.0.1:8096";
-            crafty = "https://127.0.0.1:8443 {\n  transport http {\n    tls_insecure_skip_verify\n  }\n}";
-            radarr = "127.0.0.1:7878";
-            sonarr = "127.0.0.1:8989";
-            prowlarr = "127.0.0.1:9696";
-          };
     };
 
     homelab = {
