@@ -1,5 +1,29 @@
 { config, pkgs, ... }:
 
+let
+  smartdDiscord = pkgs.writeShellScript "smartd-discord" ''
+    cat > /dev/null
+    webhook=$(<"${config.sops.secrets."discord-webhook".path}")
+    payload=$(${pkgs.jq}/bin/jq -n \
+      --arg title "SMART Alert on ${config.networking.hostName}: $SMARTD_SUBJECT" \
+      --arg device "$SMARTD_DEVICESTRING" \
+      --arg type "$SMARTD_FAILTYPE" \
+      --arg msg "$SMARTD_FULLMESSAGE" \
+      '{
+        username: "Hydra SMART",
+        embeds: [{
+          title: $title,
+          color: 16729440,
+          fields: [
+            { name: "Device", value: $device, inline: true },
+            { name: "Failure Type", value: $type, inline: true },
+            { name: "Details", value: $msg }
+          ]
+        }]
+      }')
+    ${pkgs.curl}/bin/curl -fsSL -H "Content-Type: application/json" -d "$payload" "$webhook"
+  '';
+in
 {
   fileSystems."/mnt/cloud" = {
     device = "/dev/disk/by-label/CLOUD-WD";
@@ -68,7 +92,14 @@
     fstrim.enable = true;
     smartd = {
       enable = true;
-      notifications.wall.enable = true;
+      defaults.monitored = "-a -o on -s (S/../.././02|L/../../7/04)";
+      notifications = {
+        wall.enable = true;
+        mail = {
+          enable = true;
+          mailer = "${smartdDiscord}";
+        };
+      };
     };
     btrfs.autoScrub = {
       enable = true;
