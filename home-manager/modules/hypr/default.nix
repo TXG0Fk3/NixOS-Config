@@ -26,6 +26,11 @@ in
     type = lib.types.str;
     description = "Default output name (e.g. DP-1).";
   };
+  options.hypr.secondaryMonitor = lib.mkOption {
+    type = lib.types.nullOr lib.types.str;
+    default = null;
+    description = "Optional secondary output name (e.g. HDMI-A-1).";
+  };
   options.hypr.extraLuaConfig = lib.mkOption {
     type = lib.types.path;
     description = "Path to a .lua file containing extra hyprland configuration. Set host monitors here.";
@@ -53,6 +58,7 @@ in
       hyprshot
       hyprsunset
 
+      btop
       wiremix
       playerctl
       xdg-user-dirs

@@ -87,7 +87,6 @@
     protonplus
     lsfg-vk
     lsfg-vk-ui
-    mangohud
 
     # Remote Access
     remmina
@@ -102,6 +101,7 @@
   # UI
   hypr = {
     primaryMonitor = "DP-1";
+    secondaryMonitor = "HDMI-A-1";
     extraLuaConfig = ./hypr.lua;
   };
 
