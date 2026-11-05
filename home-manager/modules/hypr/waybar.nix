@@ -30,6 +30,7 @@ in
           "tray"
           "wireplumber"
           "battery"
+          "custom/hyprsunset"
           "custom/dunst"
           "clock"
         ];
@@ -104,6 +105,13 @@ in
           };
         };
 
+        "custom/hyprsunset" = {
+          exec = "if pgrep -x hyprsunset >/dev/null; then echo SHD; fi";
+          interval = 5;
+          signal = 9;
+          tooltip = false;
+        };
+
         "custom/dunst" = {
           exec = "if [ \"$(dunstctl is-paused)\" = true ]; then echo DND; fi";
           interval = 5;
@@ -114,6 +122,7 @@ in
         clock = {
           format = "{:%d/%m/%Y  %H:%M}";
           on-click = "dunstctl set-paused toggle && pkill -RTMIN+8 waybar";
+          on-click-middle = "if pkill -x hyprsunset; then while pgrep -x hyprsunset >/dev/null; do sleep 0.01; done; else hyprsunset -t 3500 </dev/null >/dev/null 2>&1 & fi && pkill -RTMIN+9 waybar";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "year";
@@ -250,6 +259,7 @@ in
       #tray,
       #wireplumber,
       #battery,
+      #custom-hyprsunset,
       #custom-dunst,
       #clock {
           background-color: ${c.bg};
@@ -277,6 +287,7 @@ in
           padding: 2px 8px;
       }
 
+      #custom-hyprsunset,
       #custom-dunst {
           color: ${c.accent};
           border-color: ${c.accent};

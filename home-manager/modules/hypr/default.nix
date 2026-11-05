@@ -51,6 +51,7 @@ in
       awww
       hyprpicker
       hyprshot
+      hyprsunset
 
       wiremix
       playerctl
