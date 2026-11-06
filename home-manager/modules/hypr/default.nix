@@ -14,6 +14,7 @@ in
     ./dunst.nix
     ./hyprlock.nix
     ./kitty.nix
+    ./ocr.nix
     ./rofi.nix
     ./waybar.nix
     ./gtk.nix
