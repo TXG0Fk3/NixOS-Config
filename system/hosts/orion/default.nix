@@ -36,6 +36,9 @@
       "rtw89_8852cu"
       "ntsync"
     ];
+    extraModprobeConfig = ''
+      options rtw89_core disable_ps_mode=y
+    '';
   };
 
   # Swap
