@@ -25,7 +25,7 @@
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
-    artcraft.url = "github:ipeglin/artcraft-nix";
+    artcraft.url = "github:TXG0Fk3/artcraft-nix";
   };
 
   outputs =

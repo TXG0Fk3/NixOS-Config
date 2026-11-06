@@ -5,15 +5,15 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1793271921,
-        "narHash": "sha256-tC0FARK+gxo7FE/S5MgBQzpxp2jKxj2cqD7Mz790iA8=",
-        "owner": "ipeglin",
+        "lastModified": 1793944003,
+        "narHash": "sha256-8K5xOfJejZN+Q0TE/a8CDz0/VxH2U3fztGQkIYacJjA=",
+        "owner": "TXG0Fk3",
         "repo": "artcraft-nix",
-        "rev": "ebae5eb9054081dc2b231f85bbca1655dfa7a8b0",
+        "rev": "ba2846d393f85496d93f62f69bfeb08472c883d5",
         "type": "github"
       },
       "original": {
-        "owner": "ipeglin",
+        "owner": "TXG0Fk3",
         "repo": "artcraft-nix",
         "type": "github"
       }

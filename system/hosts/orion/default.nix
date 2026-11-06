@@ -128,6 +128,7 @@
     apps = [
       "photocraft"
       "filmcraft"
+      "figcraft"
     ];
   };
 
