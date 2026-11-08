@@ -71,7 +71,6 @@
     file-roller
     fragments
     gapless
-    gradia
     loupe
     mousai
     musicpresence
