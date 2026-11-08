@@ -23,6 +23,10 @@
       url = "github:TXG0Fk3/Edged";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
     artcraft.url = "github:TXG0Fk3/artcraft-nix";

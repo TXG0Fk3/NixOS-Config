@@ -17,6 +17,7 @@
     (home-modules + "/fastfetch.nix")
     (home-modules + "/superfile.nix")
     (home-modules + "/cli.nix")
+    (home-modules + "/nix-index.nix")
   ];
 
   # Shell
