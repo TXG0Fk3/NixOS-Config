@@ -230,6 +230,9 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
+-- Notifications
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("dunstctl history-pop"))
+
 -- Volume OSD
 hl.bind("CONTROL + ALT + A",     hl.dsp.exec_cmd("volume-osd down"), { locked = true, repeating = true })
 hl.bind("CONTROL + ALT + S",     hl.dsp.exec_cmd("volume-osd mute"), { locked = true })
