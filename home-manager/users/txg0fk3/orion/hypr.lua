@@ -4,6 +4,7 @@ hl.monitor({
     mode     = "1920x1080@144",
     position = "0x0",
     scale    = "1",
+    vrr      = 2,
 })
 hl.monitor({
     output   = "HDMI-A-1",
@@ -26,6 +27,13 @@ hl.workspace_rule({
     workspace = "11",
     monitor = "HDMI-A-1",
     default = true
+})
+
+hl.window_rule({
+    name  = "steam-tearing",
+    match = { class = "^steam_app_[0-9]+$" },
+
+    immediate = true,
 })
 
 hl.window_rule({
