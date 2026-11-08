@@ -15,6 +15,7 @@
     (home-modules + "/flatpak.nix")
     (home-modules + "/helix.nix")
     (home-modules + "/hypr")
+    (home-modules + "/kdeconnect.nix")
     (home-modules + "/librewolf.nix")
     (home-modules + "/prismlauncher.nix")
     inputs.sops-nix.homeManagerModules.sops
@@ -89,6 +90,7 @@
 
     # Remote Access
     remmina
+    scrcpy
 
     # Fonts
     noto-fonts

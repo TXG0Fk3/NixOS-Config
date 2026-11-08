@@ -141,6 +141,9 @@
     ui.enable = true;
   };
 
+  # KDE Connect
+  programs.kdeconnect.enable = true;
+
   # Virtualisation
   virtualisation = {
     spiceUSBRedirection.enable = true;
