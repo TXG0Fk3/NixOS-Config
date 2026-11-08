@@ -11,6 +11,45 @@ let
   # qtct palettes use #AARRGGBB
   col = hex: "#ff${lib.removePrefix "#" hex}";
 
+  # Converts hex #RRGGBB to decimal R,G,B string for KDE kdeglobals
+  hexToDec =
+    hex:
+    let
+      chars = lib.stringToCharacters (lib.toLower hex);
+      val =
+        c:
+        {
+          "0" = 0;
+          "1" = 1;
+          "2" = 2;
+          "3" = 3;
+          "4" = 4;
+          "5" = 5;
+          "6" = 6;
+          "7" = 7;
+          "8" = 8;
+          "9" = 9;
+          "a" = 10;
+          "b" = 11;
+          "c" = 12;
+          "d" = 13;
+          "e" = 14;
+          "f" = 15;
+        }
+        .${c};
+    in
+    lib.foldl (acc: c: acc * 16 + val c) 0 chars;
+
+  rgb =
+    hex:
+    let
+      clean = lib.removePrefix "#" hex;
+      r = hexToDec (builtins.substring 0 2 clean);
+      g = hexToDec (builtins.substring 2 2 clean);
+      b = hexToDec (builtins.substring 4 2 clean);
+    in
+    "${toString r},${toString g},${toString b}";
+
   # Reusable declarations
   inverted = ''
     background-color: ${c.fg};
@@ -432,6 +471,81 @@ let
       stylesheets = "${config.xdg.configHome}/qt${ver}ct/qss/monosquare.qss";
     };
   };
+
+  # KDE / Kirigami color scheme (read by KColorScheme via kdeglobals)
+  kdeColorSet =
+    {
+      bg ? c.bg,
+      bgAlt ? c.layer1,
+      fg ? c.fg,
+      fgInactive ? c.dim,
+      fgActive ? c.accent,
+      fgLink ? c.accent,
+      focus ? c.accent,
+    }:
+    ''
+      BackgroundAlternate=${rgb bgAlt}
+      BackgroundNormal=${rgb bg}
+      DecorationFocus=${rgb focus}
+      DecorationHover=${rgb focus}
+      ForegroundActive=${rgb fgActive}
+      ForegroundInactive=${rgb fgInactive}
+      ForegroundLink=${rgb fgLink}
+      ForegroundNegative=${rgb c.red}
+      ForegroundNeutral=${rgb c.orange}
+      ForegroundNormal=${rgb fg}
+      ForegroundPositive=${rgb c.green}
+      ForegroundVisited=${rgb fg}
+    '';
+
+  kdeSelectionColorSet = ''
+    BackgroundAlternate=${rgb c.layer3}
+    BackgroundNormal=${rgb c.fg}
+    DecorationFocus=${rgb c.accent}
+    DecorationHover=${rgb c.accent}
+    ForegroundActive=${rgb c.bg}
+    ForegroundInactive=${rgb c.dim}
+    ForegroundLink=${rgb c.accent}
+    ForegroundNegative=${rgb c.red}
+    ForegroundNeutral=${rgb c.orange}
+    ForegroundNormal=${rgb c.bg}
+    ForegroundPositive=${rgb c.green}
+    ForegroundVisited=${rgb c.bg}
+  '';
+
+  kdeglobals = ''
+    [Colors:Button]
+    ${kdeColorSet { }}
+
+    [Colors:Complementary]
+    ${kdeColorSet { }}
+
+    [Colors:Header]
+    ${kdeColorSet { }}
+
+    [Colors:Selection]
+    ${kdeSelectionColorSet}
+
+    [Colors:Tooltip]
+    ${kdeColorSet { }}
+
+    [Colors:View]
+    ${kdeColorSet { }}
+
+    [Colors:Window]
+    ${kdeColorSet { }}
+
+    [General]
+    ColorScheme=Monosquare
+    Name=Monosquare
+    widgetStyle=Fusion
+
+    [Icons]
+    Theme=Hatter-Slate
+
+    [KDE]
+    widgetStyle=Fusion
+  '';
 in
 {
   qt.qt5ctSettings = settings "5";
@@ -442,5 +556,10 @@ in
     "qt6ct/colors/monosquare.conf".text = scheme;
     "qt5ct/qss/monosquare.qss".text = stylesheet;
     "qt6ct/qss/monosquare.qss".text = stylesheet;
+    "kdeglobals".text = kdeglobals;
+  };
+
+  xdg.dataFile = {
+    "color-schemes/Monosquare.colors".text = kdeglobals;
   };
 }
