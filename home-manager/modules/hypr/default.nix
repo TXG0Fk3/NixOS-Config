@@ -87,8 +87,8 @@ in
     # Cursors
     home.pointerCursor = {
       enable = true;
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
+      name = "Simp1e-Dark";
+      package = pkgs.simp1e-cursors;
       size = 24;
       gtk.enable = true;
       hyprcursor.enable = true;
