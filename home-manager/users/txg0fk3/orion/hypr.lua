@@ -83,3 +83,11 @@ hl.window_rule({
     size  = {400, 480},
     float = true,
 })
+
+hl.window_rule({
+    name  = "satty",
+    match = { class = "com.gabm.satty" },
+
+    size  = {1280, 720},
+    float = true,
+})

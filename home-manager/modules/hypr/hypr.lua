@@ -168,6 +168,7 @@ hl.bind("SUPER + W", hl.dsp.exec_cmd([[
 hl.bind("PRINT", hl.dsp.exec_cmd("sh -c 'hyprshot -m output -o \"$(xdg-user-dir PICTURES)/Screenshots\"'"))
 hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("sh -c 'hyprshot -m window -o \"$(xdg-user-dir PICTURES)/Screenshots\"'"))
 hl.bind("CONTROL + PRINT", hl.dsp.exec_cmd("sh -c 'hyprshot -m region -o \"$(xdg-user-dir PICTURES)/Screenshots\"'"))
+hl.bind("ALT + PRINT", hl.dsp.exec_cmd("screen-annotate"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))

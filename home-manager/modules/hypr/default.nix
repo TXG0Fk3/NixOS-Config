@@ -15,6 +15,7 @@ in
     ./hyprlock.nix
     ./kitty.nix
     ./ocr.nix
+    ./satty.nix
     ./rofi.nix
     ./waybar.nix
     ./gtk.nix
