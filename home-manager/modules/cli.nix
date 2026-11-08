@@ -2,8 +2,10 @@
 
 {
   home.packages = with pkgs; [
+    just
     onefetch
     ouch-rar
+    tokei
   ];
 
   programs = {
@@ -36,6 +38,11 @@
     zellij = {
       enable = true;
       enableZshIntegration = false;
+    };
+    gh.enable = true;
+    tealdeer = {
+      enable = true;
+      settings.updates.auto_update = true;
     };
   };
 }
