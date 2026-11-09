@@ -43,7 +43,13 @@
   # Shell Aliases
   programs.zsh.shellAliases = {
     brain-sync = "cd ~/Brain && git add . && git commit -m \"🧠 Brain update: $(date +'%Y-%m-%d %H:%M')\" && git pull origin main --rebase && git push origin main";
-    usbmds = "sudo usb_modeswitch -v 0bda -p 1a2b -K";
+    hydra = "kitten ssh admin@192.168.1.112";
+    hydra-reboot = "ssh -t admin@192.168.1.112 sudo systemctl reboot";
+    nfu = "nix flake update";
+    ngc = "sudo nix-collect-garbage -d";
+    nr = "nixos-rebuild switch --flake .#Orion --sudo --ask-sudo-password";
+    nr-hydra = "nixos-rebuild boot --flake .#Hydra --target-host admin@192.168.1.112 --sudo --ask-sudo-password";
+    nrb = "nixos-rebuild boot --flake .#Orion --sudo --ask-sudo-password";
   };
 
   # Overlays
