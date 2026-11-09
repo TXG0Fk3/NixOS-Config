@@ -115,6 +115,10 @@
       nr = "sudo nixos-rebuild boot --flake github:TXG0Fk3/NixOS-Config#Hydra";
       rb = "sudo systemctl reboot";
       ngc = "sudo nix-collect-garbage -d";
+      mc-on = "sudo systemctl start podman-crafty podman-playit";
+      mc-off = "sudo systemctl stop podman-crafty podman-playit";
+      media-on = "sudo systemctl start podman-jellyfin podman-qbittorrent radarr sonarr prowlarr";
+      media-off = "sudo systemctl stop podman-jellyfin podman-qbittorrent radarr sonarr prowlarr";
     };
     ohMyZsh = {
       enable = true;
