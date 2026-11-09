@@ -95,6 +95,7 @@
     uid = 1000;
     extraGroups = [ "wheel" ];
   };
+  nix.settings.trusted-users = [ "admin" ];
 
   # Shell
   programs.zsh = {
