@@ -145,6 +145,7 @@ in
       enable = true;
       enableZshIntegration = false;
     };
+    git.enable = true;
     gh.enable = true;
     tealdeer = {
       enable = true;

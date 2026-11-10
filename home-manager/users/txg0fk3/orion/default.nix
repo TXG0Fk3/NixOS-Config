@@ -23,7 +23,7 @@
 
   # Sops
   sops = {
-    defaultSopsFile = (secrets + "/common.yaml");
+    defaultSopsFile = secrets + "/common.yaml";
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
     secrets = {
@@ -119,10 +119,9 @@
   ];
 
   # Git
-  programs.git = {
-    enable = true;
-    includes = [ { path = config.sops.templates."git-secrets".path; } ];
-  };
+  programs.git.includes = [
+    { path = config.sops.templates."git-secrets".path; }
+  ];
 
   # Services
   services = {

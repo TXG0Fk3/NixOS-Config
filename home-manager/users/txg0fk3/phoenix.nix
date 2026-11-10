@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   home-modules,
   ...
@@ -25,9 +24,6 @@
 
     # System Tools
     baobab
-
-    # Development
-    git
 
     # Fonts
     noto-fonts
