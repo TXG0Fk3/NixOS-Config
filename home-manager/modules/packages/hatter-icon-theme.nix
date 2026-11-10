@@ -4,7 +4,7 @@
   fetchFromGitHub,
   gtk3,
 }:
-stdenvNoCC.mkDerivation (finalAttrs: {
+stdenvNoCC.mkDerivation (_finalAttrs: {
   pname = "hatter-icon-theme";
   version = "2026-10-10";
 

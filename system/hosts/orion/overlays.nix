@@ -1,6 +1,5 @@
 {
   inputs,
-  pkgs,
   system-modules,
   ...
 }:
@@ -8,7 +7,7 @@
 {
   nixpkgs.overlays = [
     inputs.nix-cachyos-kernel.overlays.pinned
-    (self: super: {
+    (self: _: {
       linuxPackages_betelgeuse = self.linuxPackagesFor (
         import (system-modules + "/packages/kernel/linuxBetelgeuse.nix") {
           inherit (self) lib cachyosKernels;

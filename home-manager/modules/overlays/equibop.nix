@@ -1,4 +1,4 @@
-final: prev: {
+_final: prev: {
   equibop = prev.stdenv.mkDerivation rec {
     pname = "equibop";
     version = "3.3.2";
