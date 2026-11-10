@@ -9,6 +9,7 @@ let
 in
 {
   home.packages = with pkgs; [
+    curlie
     just
     onefetch
     ouch-rar
@@ -90,6 +91,46 @@ in
         "preview-border" = c.dim;
         label = c.fg;
         query = c.fg;
+      };
+    };
+
+    posting = {
+      enable = true;
+      package = pkgs.posting.overrideAttrs (old: {
+        postPatch = (old.postPatch or "") + ''
+          substituteInPlace src/posting/posting.scss \
+            --replace-fail "border: round" "border: solid"
+        '';
+      });
+      settings = {
+        theme = "monosquare";
+      };
+      themes.monosquare = {
+        name = "monosquare";
+        nerd_fonts = true;
+        primary = c.fg;
+        secondary = c.dim;
+        accent = c.fg;
+        background = c.bg;
+        surface = c.layer1;
+        panel = c.layer2;
+        success = c.green;
+        warning = c.yellow;
+        error = c.red;
+        text_area = {
+          cursor = c.fg;
+          cursor_line = c.layer1;
+          selection = c.layer2;
+        };
+        method = {
+          get = c.blue;
+          post = c.green;
+          put = c.yellow;
+          delete = c.red;
+          patch = c.accent;
+          options = c.pink;
+          head = c.orange;
+        };
       };
     };
 
