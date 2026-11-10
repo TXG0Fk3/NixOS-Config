@@ -60,7 +60,6 @@ in
       hyprshot
       hyprsunset
 
-      btop
       wiremix
       playerctl
       xdg-user-dirs
