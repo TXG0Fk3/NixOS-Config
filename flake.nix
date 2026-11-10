@@ -34,7 +34,6 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       nixos-wsl,
       home-manager,
@@ -42,6 +41,7 @@
       ...
     }@inputs:
     let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
       secrets = ./secrets;
       system-modules = ./system/modules;
       home-modules = ./home-manager/modules;
@@ -67,7 +67,18 @@
       };
     in
     {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
+      formatter.x86_64-linux = pkgs.nixfmt-tree;
+
+      devShells.x86_64-linux.default = pkgs.mkShellNoCC {
+        packages = with pkgs; [
+          nixfmt
+          statix
+          deadnix
+          sops
+        ];
+      };
+
+      checks.x86_64-linux = import ./checks.nix { inherit pkgs; };
 
       nixosConfigurations = {
         # Orion
