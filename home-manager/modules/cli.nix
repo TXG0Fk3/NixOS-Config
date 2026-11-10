@@ -10,6 +10,7 @@ in
 {
   home.packages = with pkgs; [
     curlie
+    jq
     just
     onefetch
     ouch-rar
