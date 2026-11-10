@@ -150,6 +150,7 @@
     enable = true;
 
     defaultApplications = {
+      "x-scheme-handler/terminal" = "kitty.desktop";
       "x-scheme-handler/http" = "librewolf.desktop";
       "x-scheme-handler/https" = "librewolf.desktop";
       "application/pdf" = "librewolf.desktop";
