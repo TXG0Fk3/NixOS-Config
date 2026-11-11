@@ -66,6 +66,7 @@
     # Productivity / Knowledge
     antigravity-cli
     antigravity-hub
+    github-copilot-cli
     gnome-feeds
     obsidian
     opencode
