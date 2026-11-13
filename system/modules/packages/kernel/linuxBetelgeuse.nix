@@ -16,6 +16,11 @@ base.override {
       LOCALVERSION = freeform "-Betelgeuse";
       CGROUP_DMEM = yes;
 
+      # Workaround: thin LTO + Rust breaks BTF with pahole 1.32
+      # https://github.com/xddxdd/nix-cachyos-kernel/issues/115
+      RUST = no;
+      DRM_PANIC_SCREEN_QR_CODE = no;
+
       DRM_I915 = no;
       INTEL_IOMMU = no;
       X86_INTEL_PSTATE = no;
