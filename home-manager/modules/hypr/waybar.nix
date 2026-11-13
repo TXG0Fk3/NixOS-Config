@@ -60,6 +60,7 @@ in
 
         "hyprland/workspaces" = {
           format = "{name}";
+          tooltip = false;
           on-scroll-up = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'm-1' })\"";
           on-scroll-down = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'm+1' })\"";
         };
@@ -386,11 +387,6 @@ in
           border: 1px solid ${c.fg};
       }
 
-      #custom-nixos:hover {
-          background-color: ${c.fg};
-          color: ${c.bg};
-      }
-
       #workspaces {
           padding: 0;
           margin-right: 6px;
@@ -437,6 +433,12 @@ in
       #network.disconnected {
           color: ${c.dim};
           border-color: ${c.dim};
+      }
+
+      #network:hover {
+          background-color: ${c.fg};
+          color: ${c.bg};
+          border-color: ${c.fg};
       }
 
       #submap {
@@ -496,6 +498,18 @@ in
       #wireplumber.muted {
           color: ${c.dim};
           border-color: ${c.dim};
+      }
+
+      #wireplumber:hover {
+          background-color: ${c.fg};
+          color: ${c.bg};
+          border-color: ${c.fg};
+      }
+
+      #mpris:hover {
+          background-color: ${c.fg};
+          color: ${c.bg};
+          border-color: ${c.fg};
       }
 
       #battery.warning:not(.charging) {
@@ -583,15 +597,6 @@ in
           border-color: ${c.accent};
       }
 
-      #custom-fps:hover,
-      #custom-cpu:hover,
-      #custom-gpu:hover,
-      #custom-vram:hover,
-      #memory:hover {
-          background-color: ${c.fg};
-          color: ${c.bg};
-      }
-
       #custom-tailscale,
       #custom-hydra {
           background-color: ${c.bg};
@@ -599,12 +604,6 @@ in
           border: 1px solid ${c.fg};
           padding: 2px 10px;
           margin-left: 6px;
-      }
-
-      #custom-tailscale:hover,
-      #custom-hydra:hover {
-          background-color: ${c.fg};
-          color: ${c.bg};
       }
 
       #custom-hydra.online {
@@ -625,6 +624,23 @@ in
       #custom-tailscale.disconnected {
           color: ${c.dim};
           border-color: ${c.dim};
+      }
+
+      /* Waybar 0.16 puts hover on the wrapper, not the named label: https://github.com/Alexays/Waybar/issues/5459 */
+      box:hover > #custom-nixos,
+      box:hover > #custom-fps,
+      box:hover > #custom-cpu,
+      box:hover > #custom-gpu,
+      box:hover > #custom-vram,
+      box:hover > #custom-tailscale,
+      box:hover > #custom-hydra {
+          background-color: ${c.fg};
+          color: ${c.bg};
+      }
+
+      #memory:hover {
+          background-color: ${c.fg};
+          color: ${c.bg};
       }
     '';
   };
