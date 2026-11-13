@@ -18,4 +18,10 @@
   blue = "#4d94ff";
   pink = "#ff4fd8";
   orange = "#ff9f1a";
+
+  # diff backgrounds
+  redDark = "#260a0f";
+  redEmph = "#4d1520";
+  greenDark = "#092414";
+  greenEmph = "#124728";
 }

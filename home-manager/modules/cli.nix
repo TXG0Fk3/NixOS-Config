@@ -6,6 +6,93 @@
 
 let
   c = colors;
+
+  mkTmRule =
+    name: scope: settings:
+    let
+      entries = builtins.concatStringsSep "\n" (
+        pkgs.lib.mapAttrsToList (k: v: "        <key>${k}</key><string>${v}</string>") settings
+      );
+    in
+    ''
+      <dict>
+        <key>name</key><string>${name}</string>
+        <key>scope</key><string>${scope}</string>
+        <key>settings</key>
+        <dict>
+      ${entries}
+        </dict>
+      </dict>
+    '';
+
+  monosquareTheme = pkgs.writeText "monosquare.tmTheme" ''
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+      <key>name</key><string>monosquare</string>
+      <key>settings</key>
+      <array>
+        <dict>
+          <key>settings</key>
+          <dict>
+            <key>background</key><string>${c.bg}</string>
+            <key>foreground</key><string>${c.fg}</string>
+            <key>caret</key><string>${c.fg}</string>
+            <key>selection</key><string>${c.layer2}</string>
+            <key>lineHighlight</key><string>${c.layer1}</string>
+          </dict>
+        </dict>
+        ${mkTmRule "Comment" "comment, punctuation.definition.comment" {
+          foreground = c.dim;
+          fontStyle = "italic";
+        }}
+        ${mkTmRule "Keyword"
+          "keyword, storage.type, storage.modifier, variable.language, entity.name.tag, meta.tag"
+          {
+            foreground = c.pink;
+          }
+        }
+        ${mkTmRule "Operator and Punctuation" "keyword.operator, punctuation" {
+          foreground = c.mid;
+        }}
+        ${mkTmRule "String" "string, markup.inline.raw" {
+          foreground = c.green;
+        }}
+        ${mkTmRule "Constant"
+          "constant.numeric, constant.language, constant.character, constant.other, markup.list"
+          {
+            foreground = c.orange;
+          }
+        }
+        ${mkTmRule "Type and Attribute"
+          "entity.name.type, entity.name.class, entity.name.struct, support.type, entity.other.attribute-name"
+          {
+            foreground = c.yellow;
+          }
+        }
+        ${mkTmRule "Function" "entity.name.function, support.function, markup.underline.link" {
+          foreground = c.blue;
+        }}
+        ${mkTmRule "Variable" "variable, variable.other" {
+          foreground = c.fg;
+        }}
+        ${mkTmRule "Parameter" "variable.parameter" {
+          foreground = c.fg;
+          fontStyle = "italic";
+        }}
+        ${mkTmRule "Heading" "markup.heading" {
+          foreground = c.pink;
+          fontStyle = "bold";
+        }}
+        ${mkTmRule "Quote" "markup.quote" {
+          foreground = c.mid;
+          fontStyle = "italic";
+        }}
+      </array>
+    </dict>
+    </plist>
+  '';
 in
 {
   home.packages = with pkgs; [
@@ -20,7 +107,8 @@ in
   programs = {
     bat = {
       enable = true;
-      config.theme = "ansi";
+      config.theme = "monosquare";
+      themes.monosquare.src = monosquareTheme;
     };
     fd.enable = true;
     ripgrep.enable = true;
@@ -28,6 +116,13 @@ in
     lazygit = {
       enable = true;
       settings = {
+        git.diffRenderers = [
+          {
+            name = "delta";
+            colorArg = "always";
+            command = "delta --paging=never";
+          }
+        ];
         gui = {
           border = "single";
           theme = {
@@ -146,6 +241,27 @@ in
       enableZshIntegration = false;
     };
     git.enable = true;
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        navigate = true;
+        line-numbers = true;
+        syntax-theme = "monosquare";
+        file-style = "${c.fg} bold";
+        file-decoration-style = "${c.dim} box";
+        hunk-header-decoration-style = "${c.layer3} box";
+        minus-style = "syntax ${c.redDark}";
+        minus-emph-style = "syntax ${c.redEmph} bold";
+        plus-style = "syntax ${c.greenDark}";
+        plus-emph-style = "syntax ${c.greenEmph} bold";
+        line-numbers-minus-style = c.red;
+        line-numbers-plus-style = c.green;
+        line-numbers-zero-style = c.dim;
+        line-numbers-left-style = c.layer3;
+        line-numbers-right-style = c.layer3;
+      };
+    };
     gh.enable = true;
     tealdeer = {
       enable = true;
