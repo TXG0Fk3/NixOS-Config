@@ -18,6 +18,12 @@ hl.config({
     },
     decoration = {
         rounding = 0,
+        blur = {
+            enabled = false,
+        },
+        shadow = {
+            enabled = false,
+        },
     },
     animations = {
         enabled = true,
@@ -37,6 +43,7 @@ hl.config({
             rounding = 0,
             gradient_rounding = 0,
             height = 14,
+            indicator_height = 2,
             text_color = "rgba(ffffffff)",
             text_color_inactive = "rgba(595959aa)",
             text_color_locked_active = "rgba(00feffff)",
@@ -96,6 +103,10 @@ hl.config({
     misc = {
         force_default_wallpaper = 1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
+        disable_autoreload      = true,
+    },
+    render = {
+        direct_scanout = 2,
     },
 })
 
