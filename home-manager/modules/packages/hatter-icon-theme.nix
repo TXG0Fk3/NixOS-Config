@@ -3,6 +3,7 @@
   stdenvNoCC,
   fetchFromGitHub,
   gtk3,
+  rsync,
 }:
 stdenvNoCC.mkDerivation (_finalAttrs: {
   pname = "hatter-icon-theme";
@@ -17,22 +18,33 @@ stdenvNoCC.mkDerivation (_finalAttrs: {
 
   nativeBuildInputs = [
     gtk3
+    rsync
   ];
+
+  postPatch = ''
+    substituteInPlace Build-Hatter.sh \
+      --replace-fail 'gtk-update-icon-cache -f "$theme"' 'true'
+  '';
+
+  buildPhase = ''
+    runHook preBuild
+
+    bash ./Build-Hatter.sh <<< "1"
+
+    runHook postBuild
+  '';
 
   installPhase = ''
     runHook preInstall
 
     mkdir -p "$out/share/icons"
 
-    cp -r Hatter* "$out/share/icons/" 2>/dev/null || true
-
-    rm -rf "$out/share/icons/Hatter-kde"*
-    rm -rf "$out/share/icons/Hatter-kde-light"
-    rm -rf "$out/share/icons/Hatter-kde-dark"
+    rm -rf Build/Hatter-kde*
+    cp -a Build/Hatter* "$out/share/icons/"
 
     for theme in "$out/share/icons"/*/; do
-      if [ -d "$theme" ]; then
-        gtk-update-icon-cache -f -q "$theme" || true
+      if [ -f "$theme/index.theme" ]; then
+        gtk-update-icon-cache -f -q "$theme"
       fi
     done
 
