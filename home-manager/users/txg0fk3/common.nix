@@ -26,6 +26,8 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     history.size = 10000;
+    history.ignoreDups = true;
+    history.ignoreSpace = true;
     initContent = ''
       bindkey "^[[H" beginning-of-line
       bindkey "^[[F" end-of-line
