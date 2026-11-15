@@ -19,7 +19,7 @@ in
 
   config = lib.mkIf cfg.enable {
     virtualisation.oci-containers.containers.cloudflared = {
-      image = "docker.io/cloudflare/cloudflared:2026.10.4";
+      image = "docker.io/cloudflare/cloudflared:2026.11.0";
       autoStart = true;
       cmd = [
         "tunnel"

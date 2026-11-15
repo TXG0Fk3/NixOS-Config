@@ -19,7 +19,7 @@ in
 
   config = lib.mkIf cfg.enable {
     virtualisation.oci-containers.containers.playit = {
-      image = "ghcr.io/playit-cloud/playit-agent:1.0.10";
+      image = "ghcr.io/playit-cloud/playit-agent:2.0.2";
       autoStart = false;
       extraOptions = [ "--network=host" ];
       environmentFiles = [
