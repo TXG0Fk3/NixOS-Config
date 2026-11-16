@@ -30,8 +30,13 @@
     };
     tmp.useTmpfs = true;
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelModules = [ "tcp_bbr" ];
     kernel.sysctl = {
       "vm.swappiness" = 10;
+      "net.core.default_qdisc" = "fq";
+      "net.ipv4.tcp_congestion_control" = "bbr";
+      "net.core.rmem_max" = 7500000;
+      "net.core.wmem_max" = 7500000;
     };
   };
 
