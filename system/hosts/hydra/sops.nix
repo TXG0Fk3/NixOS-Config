@@ -44,6 +44,13 @@
         owner = "root";
         group = "root";
       };
+
+      "restic.env" = {
+        sopsFile = secrets + "/hydra.yaml";
+        mode = "0400";
+        owner = "root";
+        group = "root";
+      };
     };
   };
 }

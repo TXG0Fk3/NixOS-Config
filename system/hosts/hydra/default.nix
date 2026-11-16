@@ -11,6 +11,7 @@
     ./mounts.nix
     ./sops.nix
     ./caddy.nix
+    ./backup.nix
     system-modules
     (system-modules + "/containers/cloudflared.nix")
     (system-modules + "/containers/filebrowser.nix")
@@ -217,6 +218,11 @@
       playit = {
         enable = true;
         secretKeyFile = config.sops.secrets."playit.env".path;
+      };
+      backup = {
+        enable = true;
+        environmentFile = config.sops.secrets."restic.env".path;
+        discordWebhookFile = config.sops.secrets."discord-webhook".path;
       };
     };
 
