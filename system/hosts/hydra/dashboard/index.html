@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>HYDRA</title>
+  <link rel="stylesheet" href="/theme.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div class="header-left">
+        <h1>HYDRA</h1>
+        <span id="summary" class="summary">CHECKING...</span>
+      </div>
+      <div class="header-right">
+        <span id="uptime" class="uptime"></span>
+        <span class="domain">@DOMAIN@</span>
+      </div>
+    </header>
+    <section class="panel telemetry" id="telemetry">
+      <div class="metric">
+        <span class="metric-label">CPU</span>
+        <span id="m-cpu" class="metric-value">--</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">MEM</span>
+        <span id="m-mem" class="metric-value">--</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">SWAP</span>
+        <span id="m-swap" class="metric-value">--</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">LOAD</span>
+        <span id="m-load" class="metric-value">--</span>
+      </div>
+    </section>
+    <section class="panel disks" id="disks"></section>
+    <div class="grid">
+      @CARDS@
+    </div>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
