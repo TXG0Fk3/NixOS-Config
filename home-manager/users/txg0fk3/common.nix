@@ -11,7 +11,6 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    (home-modules + "/starship.nix")
     (home-modules + "/fastfetch.nix")
     (home-modules + "/superfile.nix")
     (home-modules + "/cli.nix")

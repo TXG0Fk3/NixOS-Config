@@ -125,10 +125,6 @@
       media-on = "sudo systemctl start podman-jellyfin podman-qbittorrent radarr sonarr prowlarr";
       media-off = "sudo systemctl stop podman-jellyfin podman-qbittorrent radarr sonarr prowlarr";
     };
-    ohMyZsh = {
-      enable = true;
-      theme = "risto";
-    };
   };
 
   # Packages

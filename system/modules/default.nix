@@ -5,6 +5,8 @@
 }:
 
 {
+  imports = [ ./starship.nix ];
+
   # Nix
   nix = {
     package = pkgs.lixPackageSets.latest.lix;

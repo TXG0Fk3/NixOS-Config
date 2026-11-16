@@ -37,10 +37,6 @@
       nr = "sudo nixos-rebuild boot --flake github:TXG0Fk3/NixOS-Config#Symbiote";
       ngc = "sudo nix-collect-garbage -d";
     };
-    ohMyZsh = {
-      enable = true;
-      theme = "risto";
-    };
   };
 
   # Packages
