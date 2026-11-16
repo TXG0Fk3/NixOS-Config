@@ -12,7 +12,7 @@ in
       add_newline = false;
 
       format = ''
-        $os$directory$git_branch$git_status$nix_shell$cmd_duration$line_break$character
+        $os$username$hostname$directory$git_branch$git_status$nix_shell$cmd_duration$line_break$character
       '';
 
       os = {
@@ -22,6 +22,20 @@ in
         symbols = {
           NixOS = " ";
         };
+      };
+
+      username = {
+        show_always = false;
+        style_user = "cyan";
+        style_root = "bold red";
+        format = "[$user]($style) ";
+      };
+
+      hostname = {
+        ssh_only = true;
+        ssh_symbol = "ssh:";
+        style = "cyan";
+        format = "[$ssh_symbol$hostname]($style) ";
       };
 
       directory = {
