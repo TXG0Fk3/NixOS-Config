@@ -24,6 +24,9 @@ in
       cmd = [
         "tunnel"
         "--no-autoupdate"
+        # Force HTTP/2 over TCP to avoid ISP UDP/QUIC throttling on port 7844
+        "--protocol"
+        "http2"
         "run"
       ];
       extraOptions = [ "--network=host" ];
