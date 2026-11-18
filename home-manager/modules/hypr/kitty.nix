@@ -1,9 +1,15 @@
-{ colors, ... }:
+{ colors, pkgs, ... }:
 
 let
   c = colors;
 in
 {
+  home.packages = [ pkgs.xdg-terminal-exec ];
+
+  xdg.configFile."xdg-terminals.list".text = ''
+    kitty.desktop
+  '';
+
   programs.kitty = {
     enable = true;
 
