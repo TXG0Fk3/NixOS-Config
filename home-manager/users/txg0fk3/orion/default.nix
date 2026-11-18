@@ -145,6 +145,12 @@
     };
   };
 
+  # Distrobox
+  xdg.configFile."distrobox/distrobox.conf".text = ''
+    container_home_prefix="$HOME/.local/share/distrobox"
+    SHELL="/bin/bash"
+  '';
+
   # Mime
   xdg.mimeApps = {
     enable = true;
