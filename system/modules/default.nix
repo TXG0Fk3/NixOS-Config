@@ -66,6 +66,7 @@
     btop
     fastfetch
     wget
+    cryptsetup
   ];
 
   programs = {
