@@ -17,8 +17,11 @@
     device = "/dev/disk/by-label/HDD";
     fsType = "ext4";
     options = [
+      "noatime"
+      "lazytime"
       "nofail"
       "x-gvfs-show"
+      "x-systemd.automount"
     ];
   };
 
