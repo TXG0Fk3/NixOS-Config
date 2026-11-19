@@ -27,7 +27,7 @@ in
 
       capture = {
         method = "custom";
-        command = "${pkgs.hyprshot}/bin/hyprshot -m output -s --raw > %s";
+        command = "${pkgs.hyprshot}/bin/hyprshot -m output -z -s --raw > %s";
         timeout_seconds = 5;
       };
 

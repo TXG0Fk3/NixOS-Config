@@ -14,7 +14,7 @@ let
     trap '${pkgs.coreutils}/bin/rm -f "$tmp"' EXIT
 
     # hyprshot exits non-zero even on success
-    ${pkgs.hyprshot}/bin/hyprshot -m region -s --raw 2>/dev/null \
+    ${pkgs.hyprshot}/bin/hyprshot -m region -z -s --raw 2>/dev/null \
       | ${pkgs.coreutils}/bin/cat > "$tmp" || true
 
     if [ ! -s "$tmp" ]; then
