@@ -34,7 +34,13 @@
     kernelModules = [
       "rtw89_8852cu"
       "ntsync"
+      "tcp_bbr"
     ];
+    kernel.sysctl = {
+      "vm.page-cluster" = 0;
+      "net.core.default_qdisc" = "fq";
+      "net.ipv4.tcp_congestion_control" = "bbr";
+    };
     extraModprobeConfig = ''
       options rtw89_core disable_ps_mode=y
     '';
