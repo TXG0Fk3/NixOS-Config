@@ -15,6 +15,11 @@
     };
   };
 
+  systemd.user.tmpfiles.rules = [
+    "e %h/.local/share/Trash/files - - - 30d -"
+    "e %h/.local/share/Trash/info - - - 30d -"
+  ];
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications."inode/directory" = "org.gnome.Nautilus.desktop";
