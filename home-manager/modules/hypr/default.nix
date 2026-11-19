@@ -65,8 +65,6 @@ in
       xdg-user-dirs
       zenity
 
-      nerd-fonts.jetbrains-mono
-
       (callPackage (home-modules + "/packages/hatter-icon-theme.nix") { })
     ];
 

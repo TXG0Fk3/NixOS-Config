@@ -98,12 +98,6 @@
     # Remote Access
     remmina
     scrcpy
-
-    # Fonts
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-    nerd-fonts.jetbrains-mono
   ];
 
   # UI

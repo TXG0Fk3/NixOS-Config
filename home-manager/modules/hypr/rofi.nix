@@ -23,8 +23,6 @@ let
 in
 {
   home.packages = with pkgs; [
-    noto-fonts-color-emoji
-
     rofimoji
     rofiPowerMenu
 
