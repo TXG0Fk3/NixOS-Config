@@ -103,7 +103,6 @@ hl.config({
     misc = {
         force_default_wallpaper = 1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
-        disable_autoreload      = true,
     },
     render = {
         direct_scanout = 2,
@@ -284,6 +283,24 @@ hl.window_rule({
     size  = {480, 270},
     float = true,
     pin   = true,
+})
+
+hl.window_rule({
+    name  = "file-picker-portal",
+    match = { class = "^(xdg-desktop-portal-gtk|org\\.freedesktop\\.impl\\.portal\\.desktop\\.gtk|zenity)$" },
+
+    size   = {900, 600},
+    float  = true,
+    center = true,
+})
+
+hl.window_rule({
+    name  = "file-picker-dialog",
+    match = { title = "^(Open File|Open Files|Open Folder|Save File|Save As|Select a Wallpaper|Choose Files).*$" },
+
+    size   = {900, 600},
+    float  = true,
+    center = true,
 })
 
 hl.window_rule({
