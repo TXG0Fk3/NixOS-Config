@@ -1,10 +1,10 @@
 { pkgs, ... }:
 
 {
-  services.displayManager.ly = {
-    enable = true;
-    x11Support = false;
-  };
+  imports = [
+    ./ly.nix
+    ./plymouth.nix
+  ];
 
   programs.hyprland = {
     enable = true;

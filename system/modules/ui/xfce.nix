@@ -1,11 +1,12 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./ly.nix
+    ./plymouth.nix
+  ];
+
   # https://github.com/NixOS/nixpkgs/blob/8c91a71d13451abc40eb9dae8910f972f979852f/nixos/modules/services/x11/desktop-managers/xfce.nix
-  services.displayManager.ly = {
-    enable = true;
-    x11Support = false;
-  };
   services.xserver.desktopManager.xfce = {
     enable = true;
     enableXfwm = false;
