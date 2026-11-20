@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  imports = [ ./plymouth.nix ];
+
   # UI
   services = {
     displayManager.gdm = {
