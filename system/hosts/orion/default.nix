@@ -124,11 +124,13 @@
   environment.systemPackages = with pkgs; [
     # Virtualisation
     distrobox
-    virt-manager
 
     # Other
     sbctl
   ];
+
+  # Virt-Manager
+  programs.virt-manager.enable = true;
 
   # ArtCraft
   programs.artcraft = {
