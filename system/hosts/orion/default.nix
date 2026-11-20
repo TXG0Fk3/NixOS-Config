@@ -28,6 +28,7 @@
     };
     lanzaboote = {
       enable = true;
+      configurationLimit = 5;
       pkiBundle = "/var/lib/sbctl";
     };
     tmp.useTmpfs = true;

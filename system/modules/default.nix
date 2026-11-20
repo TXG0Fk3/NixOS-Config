@@ -20,9 +20,15 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 14d";
+      options = "--delete-older-than 7d";
     };
   };
+
+  # Bootloader
+  boot.loader.systemd-boot.configurationLimit = lib.mkDefault 5;
+
+  # Logs
+  services.journald.settings.Journal.SystemMaxUse = "500M";
 
   # Locale and TimeZone
   time.timeZone = "America/Maceio";
@@ -82,5 +88,6 @@
 
   programs = {
     nano.enable = false;
+    nh.enable = true;
   };
 }
