@@ -22,6 +22,7 @@
   # Bootloader and Kernel
   boot = {
     loader = {
+      timeout = 3;
       systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
     };
