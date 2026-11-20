@@ -157,6 +157,7 @@
     spiceUSBRedirection.enable = true;
     libvirtd = {
       enable = true;
+      onBoot = "ignore";
       qemu.swtpm.enable = true;
     };
     podman = {
@@ -173,6 +174,7 @@
   services = {
     tailscale.enable = true;
   };
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   system.stateVersion = "26.05";
 }
