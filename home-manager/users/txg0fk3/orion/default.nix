@@ -47,9 +47,9 @@
     hydra-reboot = "ssh -t admin@192.168.1.112 sudo systemctl reboot";
     nfu = "nix flake update";
     ngc = "sudo nix-collect-garbage -d";
-    nr = "nixos-rebuild switch --flake .#Orion --sudo --ask-sudo-password";
+    nr = "nh os switch .";
     nr-hydra = "nixos-rebuild boot --flake .#Hydra --target-host admin@192.168.1.112 --sudo --ask-sudo-password";
-    nrb = "nixos-rebuild boot --flake .#Orion --sudo --ask-sudo-password";
+    nrb = "nh os boot .";
   };
 
   # Overlays
