@@ -240,7 +240,16 @@ in
       enable = true;
       enableZshIntegration = false;
     };
-    git.enable = true;
+    git = {
+      enable = true;
+      settings = {
+        init.defaultBranch = "master";
+        pull.rebase = true;
+        merge.conflictStyle = "zdiff3";
+        rerere.enabled = true;
+        push.autoSetupRemote = true;
+      };
+    };
     delta = {
       enable = true;
       enableGitIntegration = true;
