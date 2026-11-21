@@ -15,6 +15,7 @@ in
       cd_on_quit = true;
       auto_check_update = false;
       show_image_preview = true;
+      zoxide_support = true;
 
       ignore_missing_fields = true;
 
