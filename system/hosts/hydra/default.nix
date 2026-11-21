@@ -104,6 +104,7 @@
   nix.settings.trusted-users = [ "admin" ];
 
   # Shell
+  programs.nh.flake = "github:TXG0Fk3/NixOS-Config";
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -118,7 +119,7 @@
       fastfetch -c minimal
     '';
     shellAliases = {
-      nr = "sudo nixos-rebuild boot --flake github:TXG0Fk3/NixOS-Config#Hydra";
+      nr = "nh os boot";
       rb = "sudo systemctl reboot";
       ngc = "sudo nix-collect-garbage -d";
       mc-on = "sudo systemctl start podman-crafty podman-playit";

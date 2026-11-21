@@ -27,6 +27,7 @@
   };
 
   # Shell
+  programs.nh.flake = "github:TXG0Fk3/NixOS-Config";
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -34,7 +35,7 @@
     syntaxHighlighting.enable = true;
     histSize = 10000;
     shellAliases = {
-      nr = "sudo nixos-rebuild boot --flake github:TXG0Fk3/NixOS-Config#Symbiote";
+      nr = "nh os boot";
       ngc = "sudo nix-collect-garbage -d";
     };
   };
