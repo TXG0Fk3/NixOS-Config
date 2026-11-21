@@ -14,6 +14,7 @@
     ./systemd.nix
     system-modules
     (system-modules + "/gaming.nix")
+    (system-modules + "/keyd.nix")
     (system-modules + "/ui/hypr.nix")
     inputs.lanzaboote.nixosModules.lanzaboote
     inputs.artcraft.nixosModules.default
