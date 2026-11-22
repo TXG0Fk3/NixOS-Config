@@ -30,13 +30,6 @@ hl.workspace_rule({
 })
 
 hl.window_rule({
-    name  = "steam-tearing",
-    match = { class = "^steam_app_[0-9]+$" },
-
-    immediate = true,
-})
-
-hl.window_rule({
     name  = "calculator",
     match = { class = "org.gnome.Calculator" },
 
