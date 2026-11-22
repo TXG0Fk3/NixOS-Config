@@ -11,6 +11,8 @@
         main = {
           # Tap = Esc, Hold = nav layer
           capslock = "overload(nav, esc)";
+          # Preserve distinct Shift_R keycode (keyd defaults rightshift to Shift_L)
+          rightshift = "rightshift";
         };
 
         nav = {
