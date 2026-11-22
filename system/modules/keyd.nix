@@ -9,11 +9,13 @@
 
       settings = {
         main = {
+          # Tap = Esc, Hold = nav layer
           capslock = "overload(nav, esc)";
         };
 
         nav = {
           esc = "capslock";
+          grave = "esc";
 
           # Navigation
           w = "up";
