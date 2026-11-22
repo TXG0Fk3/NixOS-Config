@@ -89,12 +89,6 @@
     baobab
     cryptomator
 
-    # Gaming && Wine
-    steam-run
-    protonplus
-    lsfg-vk
-    lsfg-vk-ui
-
     # Remote Access
     remmina
     scrcpy

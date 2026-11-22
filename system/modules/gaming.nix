@@ -27,6 +27,7 @@ in
       };
     };
     extraPackages = with pkgs; [
+      lsfg-vk
       mangohud
     ];
   };
@@ -35,9 +36,13 @@ in
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;
 
-  # MangoHud
+  # MangoHud, LSFG-VK & Gaming Tools
   environment.systemPackages = with pkgs; [
+    lsfg-vk
+    lsfg-vk-ui
     mangohud
+    protonplus
+    steam-run
   ];
   environment.sessionVariables.MANGOHUD_CONFIG = mangohudConfig;
 }
