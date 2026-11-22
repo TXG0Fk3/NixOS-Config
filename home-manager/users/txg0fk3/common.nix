@@ -28,9 +28,24 @@
     history.ignoreDups = true;
     history.ignoreSpace = true;
     initContent = ''
+      WORDCHARS='*?_[]~=&;!#$%^(){}<>'
+
       bindkey "^[[H" beginning-of-line
+      bindkey "^[OH" beginning-of-line
       bindkey "^[[F" end-of-line
+      bindkey "^[OF" end-of-line
       bindkey "^[[3~" delete-char
+
+      bindkey "^[[1;5D" backward-word
+      bindkey "^[[1;5C" forward-word
+      bindkey "^[[1;3D" backward-word
+      bindkey "^[[1;3C" forward-word
+
+      bindkey "^H" backward-kill-word
+      bindkey "^[[127;5u" backward-kill-word
+      bindkey "^[^?" backward-kill-word
+      bindkey "^[[3;5~" kill-word
+      bindkey "^[[3;3~" kill-word
 
       fastfetch -c minimal
     '';
