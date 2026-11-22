@@ -94,5 +94,8 @@ in
 
     # Wallpapers
     services.awww.enable = true;
+
+    # Polkit
+    services.hyprpolkitagent.enable = true;
   };
 }
