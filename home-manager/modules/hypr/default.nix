@@ -1,5 +1,6 @@
 {
   config,
+  colors,
   pkgs,
   lib,
   home-modules,
@@ -8,6 +9,8 @@
 
 let
   cfg = config.hypr;
+  c = colors;
+  col = hex: "0xFF${lib.removePrefix "#" hex}";
 in
 {
   imports = [
@@ -97,5 +100,22 @@ in
 
     # Polkit
     services.hyprpolkitagent.enable = true;
+
+    # Hyprtoolkit
+    xdg.configFile."hypr/hyprtoolkit.conf".text = ''
+      background = ${col c.bg}
+      base = ${col c.layer1}
+      alternate_base = ${col c.layer2}
+      text = ${col c.fg}
+      bright_text = ${col c.fg}
+      link_text = ${col c.accent}
+      accent = ${col c.accent}
+      accent_secondary = ${col c.fg}
+      rounding_large = 0
+      rounding_small = 0
+      font_family = JetBrainsMono Nerd Font
+      font_family_monospace = JetBrainsMono Nerd Font Mono
+      icon_theme = Hatter-Slate
+    '';
   };
 }
