@@ -5,7 +5,11 @@
 }:
 
 {
-  imports = [ ./starship.nix ];
+  imports = [
+    ./starship.nix
+    ./zsh.nix
+    ./fastfetch.nix
+  ];
 
   # Nix
   nix = {
@@ -81,7 +85,6 @@
   environment.systemPackages = with pkgs; [
     helix
     btop
-    fastfetch
     wget
     cryptsetup
   ];

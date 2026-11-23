@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 
 let
   keyColor = "white";
@@ -59,7 +56,9 @@ let
   };
 in
 {
-  xdg.dataFile."fastfetch/presets/minimal.jsonc".source =
+  environment.systemPackages = [ pkgs.fastfetch ];
+
+  environment.etc."fastfetch/minimal.jsonc".source =
     (pkgs.formats.json { }).generate "fastfetch-minimal.jsonc"
       minimal;
 }

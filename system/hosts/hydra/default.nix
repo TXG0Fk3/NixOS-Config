@@ -95,7 +95,6 @@
   };
 
   # Users.
-  users.defaultUserShell = pkgs.zsh;
   users.users.admin = {
     isNormalUser = true;
     uid = 1000;
@@ -105,28 +104,14 @@
 
   # Shell
   programs.nh.flake = "github:TXG0Fk3/NixOS-Config";
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    histSize = 10000;
-    interactiveShellInit = ''
-      bindkey "^[[H" beginning-of-line
-      bindkey "^[[F" end-of-line
-      bindkey "^[[3~" delete-char
-
-      fastfetch -c minimal
-    '';
-    shellAliases = {
-      nr = "nh os boot";
-      rb = "sudo systemctl reboot";
-      ngc = "sudo nix-collect-garbage -d";
-      mc-on = "sudo systemctl start podman-crafty podman-playit";
-      mc-off = "sudo systemctl stop podman-crafty podman-playit";
-      media-on = "sudo systemctl start podman-jellyfin podman-qbittorrent radarr sonarr prowlarr";
-      media-off = "sudo systemctl stop podman-jellyfin podman-qbittorrent radarr sonarr prowlarr";
-    };
+  programs.zsh.shellAliases = {
+    nr = "nh os boot";
+    rb = "sudo systemctl reboot";
+    ngc = "sudo nix-collect-garbage -d";
+    mc-on = "sudo systemctl start podman-crafty podman-playit";
+    mc-off = "sudo systemctl stop podman-crafty podman-playit";
+    media-on = "sudo systemctl start podman-jellyfin podman-qbittorrent radarr sonarr prowlarr";
+    media-off = "sudo systemctl stop podman-jellyfin podman-qbittorrent radarr sonarr prowlarr";
   };
 
   # Packages

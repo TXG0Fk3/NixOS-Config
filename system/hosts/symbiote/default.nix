@@ -20,7 +20,6 @@
   services.resolved.enable = lib.mkForce false;
 
   # Users
-  users.defaultUserShell = pkgs.zsh;
   users.users.TXG0Fk3 = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -28,16 +27,9 @@
 
   # Shell
   programs.nh.flake = "github:TXG0Fk3/NixOS-Config";
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    histSize = 10000;
-    shellAliases = {
-      nr = "nh os boot";
-      ngc = "sudo nix-collect-garbage -d";
-    };
+  programs.zsh.shellAliases = {
+    nr = "nh os boot";
+    ngc = "sudo nix-collect-garbage -d";
   };
 
   # Packages
