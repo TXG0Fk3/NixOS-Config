@@ -10,6 +10,7 @@
 
 {
   imports = [
+    ./gsr.nix
     (users + "/txg0fk3/common.nix")
     (home-modules + "/bottles.nix")
     (home-modules + "/flatpak.nix")
@@ -121,13 +122,28 @@
   # Autostart
   systemd.user.services = {
     equibop = {
-      Service.ExecStart = "${pkgs.equibop}/bin/equibop --start-minimized";
+      Unit = {
+        After = [ config.wayland.systemd.target ];
+        PartOf = [ config.wayland.systemd.target ];
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
+      Service = {
+        ExecStart = "${pkgs.equibop}/bin/equibop --start-minimized";
+        Restart = "on-failure";
+        RestartSec = "2s";
+      };
       Install.WantedBy = [ config.wayland.systemd.target ];
     };
     musicpresence = {
+      Unit = {
+        After = [ config.wayland.systemd.target ];
+        PartOf = [ config.wayland.systemd.target ];
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
       Service = {
         ExecStart = "${pkgs.musicpresence}/bin/musicpresence";
         Restart = "on-failure";
+        RestartSec = "2s";
       };
       Install.WantedBy = [ config.wayland.systemd.target ];
     };

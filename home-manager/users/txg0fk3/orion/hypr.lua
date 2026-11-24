@@ -84,3 +84,6 @@ hl.window_rule({
     size  = {1280, 720},
     float = true,
 })
+
+---- KEYBINDINGS ----
+hl.bind("ALT + Z", hl.dsp.exec_cmd("gsr-ui-cli toggle-show"))
