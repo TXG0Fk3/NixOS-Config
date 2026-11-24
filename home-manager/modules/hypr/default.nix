@@ -11,6 +11,20 @@ let
   cfg = config.hypr;
   c = colors;
   col = hex: "0xFF${lib.removePrefix "#" hex}";
+
+  luaColors = ''
+    local colors = {
+    ${lib.concatStringsSep "\n" (
+      lib.mapAttrsToList (
+        name: value: "    ${name} = \"${lib.toLower (lib.removePrefix "#" value)}\","
+      ) colors
+    )}
+    }
+
+    local function rgba(hex, alpha)
+        return "rgba(" .. hex .. (alpha or "ff") .. ")"
+    end
+  '';
 in
 {
   imports = [
@@ -51,6 +65,7 @@ in
 
       configType = "lua";
       extraConfig = ''
+        ${luaColors}
         ${builtins.readFile cfg.extraLuaConfig}
         ${builtins.readFile ./hypr.lua}
       '';

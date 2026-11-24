@@ -7,8 +7,8 @@ hl.config({
         border_size = 1,
 
         col = {
-            active_border   = "rgba(ffffffff)",
-            inactive_border = "rgba(595959aa)",
+            active_border   = rgba(colors.fg),
+            inactive_border = rgba(colors.dim, "aa"),
         },
 
         resize_on_border = false,
@@ -30,10 +30,10 @@ hl.config({
     },
     group = {
         col = {
-            border_active = "rgba(ffffffff)",
-            border_inactive = "rgba(595959aa)",
-            border_locked_active = "rgba(00feffff)",
-            border_locked_inactive = "rgba(595959aa)",
+            border_active = rgba(colors.fg),
+            border_inactive = rgba(colors.dim, "aa"),
+            border_locked_active = rgba(colors.accent),
+            border_locked_inactive = rgba(colors.dim, "aa"),
         },
         groupbar = {
             enabled = true,
@@ -44,15 +44,15 @@ hl.config({
             gradient_rounding = 0,
             height = 14,
             indicator_height = 2,
-            text_color = "rgba(ffffffff)",
-            text_color_inactive = "rgba(595959aa)",
-            text_color_locked_active = "rgba(00feffff)",
-            text_color_locked_inactive = "rgba(595959aa)",
+            text_color = rgba(colors.fg),
+            text_color_inactive = rgba(colors.dim, "aa"),
+            text_color_locked_active = rgba(colors.accent),
+            text_color_locked_inactive = rgba(colors.dim, "aa"),
             col = {
-                active = "rgba(ffffffff)",
-                inactive = "rgba(595959aa)",
-                locked_active = "rgba(00feffff)",
-                locked_inactive = "rgba(595959aa)",
+                active = rgba(colors.fg),
+                inactive = rgba(colors.dim, "aa"),
+                locked_active = rgba(colors.accent),
+                locked_inactive = rgba(colors.dim, "aa"),
             },
         },
     },
@@ -309,14 +309,14 @@ hl.window_rule({
     name  = "pinned-border",
     match = { pin = true },
 
-    border_color = "rgba(00feffff)",
+    border_color = rgba(colors.accent),
 })
 
 hl.window_rule({
     name  = "scratchpad-border",
     match = { workspace = "special:magic" },
 
-    border_color = "rgba(00feffff)",
+    border_color = rgba(colors.accent),
 })
 
 hl.layer_rule({
@@ -324,4 +324,18 @@ hl.layer_rule({
     match   = { namespace = "^rofi$" },
 
     no_anim = true,
+})
+
+hl.window_rule({
+    name  = "no-screen-share-sensitive",
+    match = { class = "^(hyprpolkitagent|org\\.cryptomator\\.Cryptomator|Bitwarden|org\\.keepassxc\\.KeePassXC|1Password)$" },
+
+    no_screen_share = true,
+})
+
+hl.layer_rule({
+    name    = "no-screen-share-dunst",
+    match   = { namespace = "^(notifications|dunst)$" },
+
+    no_screen_share = true,
 })
