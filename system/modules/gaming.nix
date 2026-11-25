@@ -31,10 +31,18 @@ in
       mangohud
     ];
   };
+  hardware.steam-hardware.enable = true;
 
   # Gamescope & GameMode
   programs.gamescope.enable = true;
-  programs.gamemode.enable = true;
+  programs.gamemode = {
+    enable = true;
+    settings.general = {
+      renice = 10;
+      ioprio = 0;
+      desiredgov = "performance";
+    };
+  };
 
   # MangoHud, LSFG-VK & Gaming Tools
   environment.systemPackages = with pkgs; [

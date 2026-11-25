@@ -113,6 +113,7 @@
       "wheel"
       "networkmanager"
       "libvirtd"
+      "gamemode"
     ];
   };
 
@@ -149,6 +150,13 @@
 
   # KDE Connect
   programs.kdeconnect.enable = true;
+
+  # GameMode (RX 6600 on /sys/class/drm/card1)
+  programs.gamemode.settings.gpu = {
+    apply_gpu_optimisations = "accept-responsibility";
+    gpu_device = 1;
+    amd_performance_level = "high";
+  };
 
   # Virtualisation
   virtualisation = {
