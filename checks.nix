@@ -19,6 +19,11 @@ let
       (fileset.maybeMissing ./statix.toml)
     ];
   };
+
+  luaSrc = fileset.toSource {
+    root = ./.;
+    fileset = fileset.fileFilter (file: file.hasExt "lua") ./.;
+  };
 in
 {
   format-check =
@@ -51,6 +56,19 @@ in
       }
       ''
         deadnix --fail "$src"
+        touch "$out"
+      '';
+
+  lua-check =
+    pkgs.runCommand "lua-check"
+      {
+        nativeBuildInputs = [ pkgs.lua ];
+        src = luaSrc;
+      }
+      ''
+        while IFS= read -r -d "" file; do
+          luac -p "$file"
+        done < <(find "$src" -type f -name '*.lua' -print0)
         touch "$out"
       '';
 }
