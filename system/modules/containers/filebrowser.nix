@@ -42,7 +42,7 @@ in
         ];
 
     virtualisation.oci-containers.containers.filebrowser = {
-      image = "ghcr.io/gtsteffaniak/filebrowser:2.0.2-stable";
+      image = "ghcr.io/gtsteffaniak/filebrowser:2.1.0-stable";
       autoStart = true;
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       environment = {

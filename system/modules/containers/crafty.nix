@@ -31,7 +31,7 @@ in
         ];
 
     virtualisation.oci-containers.containers.crafty = {
-      image = "docker.io/arcadiatechnology/crafty-4:4.11.0";
+      image = "docker.io/arcadiatechnology/crafty-4:4.11.1";
       autoStart = false;
       user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.users.gid}";
       environment = {
