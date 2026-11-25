@@ -8,6 +8,9 @@
   ...
 }:
 
+let
+  equibop = pkgs.callPackage (home-modules + "/packages/equibop.nix") { };
+in
 {
   imports = [
     ./gsr.nix
@@ -52,9 +55,6 @@
     nr-hydra = "nixos-rebuild boot --flake .#Hydra --target-host admin@192.168.1.112 --sudo --ask-sudo-password";
     nrb = "nh os boot .";
   };
-
-  # Overlays
-  nixpkgs.overlays = [ (import (home-modules + "/overlays/equibop.nix")) ];
 
   # User Packages
   home.packages = with pkgs; [
@@ -128,7 +128,7 @@
         ConditionEnvironment = "WAYLAND_DISPLAY";
       };
       Service = {
-        ExecStart = "${pkgs.equibop}/bin/equibop --start-minimized";
+        ExecStart = "${equibop}/bin/equibop --start-minimized";
         Restart = "on-failure";
         RestartSec = "2s";
       };

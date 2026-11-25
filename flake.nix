@@ -41,7 +41,8 @@
       ...
     }@inputs:
     let
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
       secrets = ./secrets;
       system-modules = ./system/modules;
       home-modules = ./home-manager/modules;
@@ -65,74 +66,71 @@
           colors
           ;
       };
+
+      mkHost =
+        {
+          host,
+          modules ? [ ],
+          homeUser ? null,
+        }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = sysArgs;
+          modules = [
+            host
+          ]
+          ++ modules
+          ++ nixpkgs.lib.optionals (homeUser != null) [
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = homeArgs;
+                users.TXG0Fk3 = import homeUser;
+              };
+            }
+          ];
+        };
     in
     {
-      formatter.x86_64-linux = pkgs.nixfmt-tree;
+      formatter.${system} = pkgs.nixfmt-tree;
 
-      devShells.x86_64-linux.default = pkgs.mkShellNoCC {
+      devShells.${system}.default = pkgs.mkShellNoCC {
         packages = with pkgs; [
           nixfmt
           statix
           deadnix
           sops
+          lua
         ];
       };
 
-      checks.x86_64-linux = import ./checks.nix { inherit pkgs; };
+      checks.${system} = import ./checks.nix { inherit pkgs; };
 
       nixosConfigurations = {
         # Orion
-        Orion = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = sysArgs;
-          modules = [
-            ./system/hosts/orion
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useUserPackages = true;
-                extraSpecialArgs = homeArgs;
-                users.TXG0Fk3 = import ./home-manager/users/txg0fk3/orion;
-              };
-            }
-          ];
+        Orion = mkHost {
+          host = ./system/hosts/orion;
+          homeUser = ./home-manager/users/txg0fk3/orion;
         };
 
         # Phoenix
-        Phoenix = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = sysArgs;
-          modules = [
-            ./system/hosts/phoenix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useUserPackages = true;
-                extraSpecialArgs = homeArgs;
-                users.TXG0Fk3 = import ./home-manager/users/txg0fk3/phoenix.nix;
-              };
-            }
-          ];
+        Phoenix = mkHost {
+          host = ./system/hosts/phoenix;
+          homeUser = ./home-manager/users/txg0fk3/phoenix.nix;
         };
 
         # Hydra
-        Hydra = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = sysArgs;
-          modules = [
-            ./system/hosts/hydra
-            sops-nix.nixosModules.sops
-          ];
+        Hydra = mkHost {
+          host = ./system/hosts/hydra;
+          modules = [ sops-nix.nixosModules.sops ];
         };
 
         # Symbiote
-        Symbiote = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = sysArgs;
-          modules = [
-            ./system/hosts/symbiote
-            nixos-wsl.nixosModules.default
-          ];
+        Symbiote = mkHost {
+          host = ./system/hosts/symbiote;
+          modules = [ nixos-wsl.nixosModules.default ];
         };
       };
     };
