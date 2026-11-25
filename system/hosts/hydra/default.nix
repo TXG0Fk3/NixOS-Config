@@ -225,17 +225,26 @@
     };
   };
 
-  systemd.services = {
-    radarr.unitConfig.RequiresMountsFor = [
-      "/mnt/media"
-      "/mnt/media2"
-      "/mnt/scratch"
-    ];
-    sonarr.unitConfig.RequiresMountsFor = [
-      "/mnt/media"
-      "/mnt/media2"
-      "/mnt/scratch"
-    ];
+  systemd = {
+    oomd = {
+      enable = true;
+      enableRootSlice = true;
+      enableSystemSlice = true;
+      enableUserSlices = true;
+    };
+    services = {
+      sshd.serviceConfig.OOMScoreAdjust = -900;
+      radarr.unitConfig.RequiresMountsFor = [
+        "/mnt/media"
+        "/mnt/media2"
+        "/mnt/scratch"
+      ];
+      sonarr.unitConfig.RequiresMountsFor = [
+        "/mnt/media"
+        "/mnt/media2"
+        "/mnt/scratch"
+      ];
+    };
   };
 
   system.stateVersion = "26.05";
