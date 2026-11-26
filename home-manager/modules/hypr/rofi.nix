@@ -14,10 +14,10 @@ let
     [ -n "$chosen" ] || exit 0
 
     case "$chosen" in
-      Lock) hyprlock ;;
-      Exit) uwsm stop ;;
-      Reboot) systemctl reboot ;;
-      Poweroff) systemctl poweroff ;;
+      Lock) ${pkgs.hyprlock}/bin/hyprlock ;;
+      Exit) ${pkgs.uwsm}/bin/uwsm stop ;;
+      Reboot) ${pkgs.systemd}/bin/systemctl reboot ;;
+      Poweroff) ${pkgs.systemd}/bin/systemctl poweroff ;;
     esac
   '';
 in

@@ -56,7 +56,7 @@ in
         "custom/nixos" = {
           format = "";
           tooltip = false;
-          on-click = "rofi -show drun";
+          on-click = "${pkgs.rofi}/bin/rofi -show drun";
         };
 
         "hyprland/workspaces" = {
@@ -127,7 +127,7 @@ in
           format-muted = "MUTED";
           tooltip = false;
           scroll-step = 5;
-          on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          on-click = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           on-click-right = floatTerm "wiremix" 1000 600;
         };
 
@@ -153,14 +153,14 @@ in
         };
 
         "custom/hyprsunset" = {
-          exec = "if pgrep -x hyprsunset >/dev/null; then echo SHD; fi";
+          exec = "if ${pkgs.procps}/bin/pgrep -x hyprsunset >/dev/null; then echo SHD; fi";
           interval = 5;
           signal = 9;
           tooltip = false;
         };
 
         "custom/dunst" = {
-          exec = "if [ \"$(dunstctl is-paused)\" = true ]; then echo DND; fi";
+          exec = "if [ \"$(${pkgs.dunst}/bin/dunstctl is-paused)\" = true ]; then echo DND; fi";
           interval = 5;
           signal = 8;
           tooltip = false;
@@ -168,8 +168,8 @@ in
 
         clock = {
           format = "{:%d/%m/%Y  %H:%M}";
-          on-click = "dunstctl set-paused toggle && pkill -RTMIN+8 waybar";
-          on-click-middle = "if pkill -x hyprsunset; then while pgrep -x hyprsunset >/dev/null; do sleep 0.01; done; else hyprsunset -t 3500 </dev/null >/dev/null 2>&1 & fi && pkill -RTMIN+9 waybar";
+          on-click = "${pkgs.dunst}/bin/dunstctl set-paused toggle && ${pkgs.procps}/bin/pkill -RTMIN+8 waybar";
+          on-click-middle = "if ${pkgs.procps}/bin/pkill -x hyprsunset; then while ${pkgs.procps}/bin/pgrep -x hyprsunset >/dev/null; do ${pkgs.coreutils}/bin/sleep 0.01; done; else ${pkgs.hyprsunset}/bin/hyprsunset -t 3500 </dev/null >/dev/null 2>&1 & fi && ${pkgs.procps}/bin/pkill -RTMIN+9 waybar";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "year";
