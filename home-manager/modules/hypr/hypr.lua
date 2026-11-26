@@ -245,6 +245,14 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 -- Notifications
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("dunstctl history-pop"))
 
+-- Focus & utilities (F1–F4)
+hl.bind(mainMod .. " + F1",           hl.dsp.exec_cmd("focus-mode toggle"))
+hl.bind(mainMod .. " + SHIFT + F1",   hl.dsp.exec_cmd("focus-mode next"))
+hl.bind(mainMod .. " + CONTROL + F1", hl.dsp.exec_cmd("focus-mode long-break"))
+hl.bind(mainMod .. " + F2",           hl.dsp.exec_cmd("sh -c 'dunstctl set-paused toggle && pkill -RTMIN+8 waybar'"))
+hl.bind(mainMod .. " + F3",           hl.dsp.exec_cmd("sh -c 'if pkill -x hyprsunset; then while pgrep -x hyprsunset >/dev/null; do sleep 0.01; done; else hyprsunset -t 3500 </dev/null >/dev/null 2>&1 & fi && pkill -RTMIN+9 waybar'"))
+hl.bind(mainMod .. " + F4",           hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
+
 -- Volume OSD
 hl.bind("CONTROL + ALT + A",     hl.dsp.exec_cmd("volume-osd down"), { locked = true, repeating = true })
 hl.bind("CONTROL + ALT + S",     hl.dsp.exec_cmd("volume-osd mute"), { locked = true })

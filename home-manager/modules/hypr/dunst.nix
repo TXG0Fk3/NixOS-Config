@@ -95,6 +95,11 @@ in
         frame_color = c.fg;
         timeout = 0;
       };
+
+      focus_mode = {
+        appname = "focus-mode";
+        override_pause_level = 100;
+      };
     };
   };
 }

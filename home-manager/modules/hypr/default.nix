@@ -33,6 +33,7 @@ in
     ./kitty.nix
     ./ocr.nix
     ./satty.nix
+    ./focus.nix
     ./rofi.nix
     ./waybar.nix
     ./gtk.nix

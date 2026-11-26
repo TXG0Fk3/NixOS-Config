@@ -36,6 +36,7 @@ in
           "custom/nixos"
           "hyprland/workspaces"
           "network"
+          "custom/focus"
           "hyprland/submap"
         ];
         modules-center = [
@@ -139,6 +140,16 @@ in
             warning = 30;
             critical = 15;
           };
+        };
+
+        "custom/focus" = {
+          exec = "focus-mode status";
+          return-type = "json";
+          interval = 1;
+          signal = 10;
+          tooltip = false;
+          on-click = "focus-mode toggle";
+          on-click-right = "focus-mode next";
         };
 
         "custom/hyprsunset" = {
@@ -525,6 +536,24 @@ in
           padding: 2px 8px;
       }
 
+      #custom-focus {
+          background-color: ${c.bg};
+          color: ${c.fg};
+          border: 1px solid ${c.fg};
+          padding: 2px 10px;
+          margin-right: 6px;
+      }
+
+      #custom-focus.focus {
+          color: ${c.accent};
+          border-color: ${c.accent};
+      }
+
+      #custom-focus.break {
+          color: ${c.green};
+          border-color: ${c.green};
+      }
+
       #custom-hyprsunset,
       #custom-dunst {
           color: ${c.accent};
@@ -628,6 +657,7 @@ in
 
       /* Waybar 0.16 puts hover on the wrapper, not the named label: https://github.com/Alexays/Waybar/issues/5459 */
       box:hover > #custom-nixos,
+      box:hover > #custom-focus,
       box:hover > #custom-fps,
       box:hover > #custom-cpu,
       box:hover > #custom-gpu,
