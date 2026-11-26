@@ -134,6 +134,7 @@ in
           "NixOS Options"
           "Home Manager"
           "GitHub"
+          "Arch Wiki"
         ];
 
         engines = {
@@ -212,6 +213,21 @@ in
           "GitHub" = {
             urls = [ { template = "https://github.com/search?q={searchTerms}&type=code"; } ];
             definedAliases = [ "@gh" ];
+          };
+
+          "Arch Wiki" = {
+            urls = [
+              {
+                template = "https://wiki.archlinux.org/index.php";
+                params = [
+                  {
+                    name = "search";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = [ "@arch" ];
           };
         };
       };
