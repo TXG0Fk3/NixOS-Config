@@ -38,14 +38,6 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name  = "solanum",
-    match = { class = "org.gnome.Solanum" },
-
-    size  = {360, 420},
-    float = true,
-})
-
-hl.window_rule({
     name  = "file-roller",
     match = { class = "org.gnome.FileRoller" },
 
@@ -86,4 +78,6 @@ hl.window_rule({
 })
 
 ---- KEYBINDINGS ----
-hl.bind("ALT + Z", hl.dsp.exec_cmd("gsr-ui-cli toggle-show"))
+hl.bind("ALT + Z",            hl.dsp.exec_cmd("gsr-ui-cli toggle-show"))
+hl.bind("SUPER + F7",         hl.dsp.exec_cmd("kitty bluetui", { float = true, size = {800, 560} }))
+hl.bind("SUPER + SHIFT + F7", hl.dsp.exec_cmd("kitty nmtui",   { float = true, size = {512, 512} }))

@@ -14,6 +14,7 @@ in
 {
   imports = [
     ./gsr.nix
+    ./mime.nix
     (users + "/txg0fk3/common.nix")
     (home-modules + "/bottles.nix")
     (home-modules + "/flatpak.nix")
@@ -22,6 +23,7 @@ in
     (home-modules + "/kdeconnect.nix")
     (home-modules + "/librewolf.nix")
     (home-modules + "/prismlauncher.nix")
+    (home-modules + "/zathura.nix")
     inputs.sops-nix.homeManagerModules.sops
   ];
 
@@ -74,7 +76,6 @@ in
 
     # Media & Utilities
     gnome-calculator
-    gnome-solanum
     bluetui
     eartag
     file-roller
@@ -154,32 +155,4 @@ in
     container_home_prefix="$HOME/.local/share/distrobox"
     SHELL="/bin/bash"
   '';
-
-  # Mime
-  xdg.mimeApps = {
-    enable = true;
-
-    defaultApplications = {
-      "x-scheme-handler/terminal" = "kitty.desktop";
-      "x-scheme-handler/http" = "librewolf.desktop";
-      "x-scheme-handler/https" = "librewolf.desktop";
-      "application/pdf" = "librewolf.desktop";
-
-      "image/png" = "org.gnome.Loupe.desktop";
-      "image/jpeg" = "org.gnome.Loupe.desktop";
-      "image/webp" = "org.gnome.Loupe.desktop";
-      "image/gif" = "org.gnome.Loupe.desktop";
-
-      "video/mp4" = "org.gnome.Showtime.desktop";
-      "video/x-matroska" = "org.gnome.Showtime.desktop";
-
-      "application/zip" = "org.gnome.FileRoller.desktop";
-      "application/x-7z-compressed" = "org.gnome.FileRoller.desktop";
-      "application/vnd.rar" = "org.gnome.FileRoller.desktop";
-      "application/x-tar" = "org.gnome.FileRoller.desktop";
-      "application/x-compressed-tar" = "org.gnome.FileRoller.desktop";
-      "application/x-xz-compressed-tar" = "org.gnome.FileRoller.desktop";
-      "application/x-zstd-compressed-tar" = "org.gnome.FileRoller.desktop";
-    };
-  };
 }
