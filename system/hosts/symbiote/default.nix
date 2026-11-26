@@ -29,7 +29,6 @@
   programs.nh.flake = "github:TXG0Fk3/NixOS-Config";
   programs.zsh.shellAliases = {
     nr = "nh os boot";
-    ngc = "sudo nix-collect-garbage -d";
   };
 
   # Packages

@@ -94,7 +94,7 @@
     enableRedistributableFirmware = true;
   };
 
-  # Users.
+  # Users
   users.users.admin = {
     isNormalUser = true;
     uid = 1000;
@@ -107,7 +107,6 @@
   programs.zsh.shellAliases = {
     nr = "nh os boot";
     rb = "sudo systemctl reboot";
-    ngc = "sudo nix-collect-garbage -d";
     mc-on = "sudo systemctl start podman-crafty podman-playit";
     mc-off = "sudo systemctl stop podman-crafty podman-playit";
     media-on = "sudo systemctl start podman-jellyfin podman-qbittorrent radarr sonarr prowlarr";

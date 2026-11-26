@@ -12,7 +12,7 @@ in
     enable = lib.mkEnableOption "Enable Cloudflared service.";
 
     tunnelTokenFile = lib.mkOption {
-      type = lib.types.str;
+      type = lib.types.path;
       description = "Path to file containing TUNNEL_TOKEN environment variable";
     };
   };

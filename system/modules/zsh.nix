@@ -39,5 +39,8 @@
 
       fastfetch -c minimal
     '';
+    shellAliases = {
+      ngc = "nh clean all";
+    };
   };
 }

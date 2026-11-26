@@ -12,7 +12,7 @@ in
     enable = lib.mkEnableOption "Activate the Playit.gg agent.";
 
     secretKeyFile = lib.mkOption {
-      type = lib.types.str;
+      type = lib.types.path;
       description = "Path to file containing SECRET_KEY environment variable";
     };
   };
