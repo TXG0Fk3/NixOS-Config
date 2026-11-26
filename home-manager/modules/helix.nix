@@ -43,7 +43,7 @@ in
     ];
 
     settings = {
-      theme = "rice";
+      theme = "monosquare";
 
       editor = {
         cursorline = true;
@@ -136,7 +136,7 @@ in
       }
     ];
 
-    themes.rice = {
+    themes.monosquare = {
       # base
       "ui.background".bg = c.bg;
       "ui.text".fg = c.fg;

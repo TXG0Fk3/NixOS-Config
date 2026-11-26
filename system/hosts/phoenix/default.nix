@@ -41,7 +41,7 @@
     };
   };
 
-  # Sound.
+  # Sound
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -49,7 +49,7 @@
     alsa.enable = true;
   };
 
-  # Users.
+  # Users
   users.users.TXG0Fk3 = {
     isNormalUser = true;
     extraGroups = [

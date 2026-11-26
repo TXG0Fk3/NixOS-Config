@@ -80,7 +80,7 @@ hl.animation({ leaf = "zoomFactor",    enabled = true, speed = 2,   bezier = "sn
 
 hl.config({
     dwindle = {
-        preserve_split = true, -- You probably want this
+        preserve_split = true,
     },
 })
 
@@ -101,8 +101,8 @@ hl.config({
 ----  MISC  ----
 hl.config({
     misc = {
-        force_default_wallpaper = 1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
+        force_default_wallpaper = 1,
+        disable_hyprland_logo   = true,
     },
     render = {
         direct_scanout = 2,
@@ -122,7 +122,7 @@ hl.config({
 
         follow_mouse = 1,
 
-        sensitivity = -0.5, -- -1.0 - 1.0, 0 means no modification.
+        sensitivity = -0.5,
     },
 })
 
@@ -165,7 +165,7 @@ hl.bind(mainMod .. " + CONTROL + Up", hl.dsp.window.move({ into_group = "up" }))
 hl.bind(mainMod .. " + CONTROL + Right", hl.dsp.window.move({ into_group = "right" }))
 hl.bind(mainMod .. " + CONTROL + U", hl.dsp.window.move({ out_of_group = true }))
 
--- Walpaper
+-- Wallpaper
 hl.bind("SUPER + W", hl.dsp.exec_cmd([[
     wpppath=$(zenity --file-selection --title="Select a Wallpaper" --file-filter="Pictures | *.png *.jpg *.jpeg *.gif")
     wppdest="$HOME/.config/background"
@@ -180,7 +180,7 @@ hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("sh -c 'hyprshot -m window -z -o \"$(xd
 hl.bind("CONTROL + PRINT", hl.dsp.exec_cmd("sh -c 'hyprshot -m region -z -o \"$(xdg-user-dir PICTURES)/Screenshots\"'"))
 hl.bind("ALT + PRINT", hl.dsp.exec_cmd("screen-annotate"))
 
--- Move focus with mainMod + arrow keys
+-- Move focus
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
@@ -192,15 +192,14 @@ hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
 
--- Switch with mainMod + [0-9]
--- Move active window to a workspace with mainMod + SHIFT + [0-9]
+-- Workspaces
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
--- Example special workspace (scratchpad)
+-- Scratchpad
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
@@ -232,7 +231,7 @@ hl.define_submap("RESIZE", function()
     hl.bind(mainMod .. " + R", hl.dsp.submap("reset"))
 end)
 
--- Requires playerctl
+-- Media
 hl.bind("CONTROL + ALT + Q",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 hl.bind("CONTROL + ALT + W", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("CONTROL + ALT + E",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
@@ -264,8 +263,7 @@ hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd("volume-osd up"),   { locked = 
 
 
 ---- WINDOWS AND WORKSPACES ----
-local suppressMaximizeRule = hl.window_rule({
-    -- Ignore maximize requests from all apps. You'll probably like this.
+hl.window_rule({
     name  = "suppress-maximize-events",
     match = { class = ".*" },
 

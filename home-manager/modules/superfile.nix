@@ -9,7 +9,7 @@ in
     firstUseCheck = false;
 
     settings = {
-      theme = "rice";
+      theme = "monosquare";
       editor = "hx";
       dir_editor = "hx";
       cd_on_quit = true;
@@ -32,7 +32,7 @@ in
       border_right = "│";
     };
 
-    themes.rice = {
+    themes.monosquare = {
       code_syntax_highlight = "monokai";
 
       # borders
