@@ -74,7 +74,6 @@ in
 
     # Packages
     home.packages = with pkgs; [
-      awww
       hyprpicker
       hyprshot
       hyprsunset
@@ -112,7 +111,18 @@ in
     };
 
     # Wallpapers
-    services.awww.enable = true;
+    services.hyprpaper = {
+      enable = true;
+      settings = {
+        splash = false;
+        wallpaper = [
+          {
+            monitor = "";
+            path = "${config.xdg.configHome}/background";
+          }
+        ];
+      };
+    };
 
     # Polkit
     services.hyprpolkitagent.enable = true;

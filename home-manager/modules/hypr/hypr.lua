@@ -170,10 +170,10 @@ hl.bind(mainMod .. " + CONTROL + U", hl.dsp.window.move({ out_of_group = true })
 
 -- Wallpaper
 hl.bind("SUPER + W", hl.dsp.exec_cmd([[
-    wpppath=$(zenity --file-selection --title="Select a Wallpaper" --file-filter="Pictures | *.png *.jpg *.jpeg *.gif")
+    wpppath=$(zenity --file-selection --title="Select a Wallpaper" --file-filter="Pictures | *.png *.jpg *.jpeg *.webp")
     wppdest="$HOME/.config/background"
     if [ -n "$wpppath" ]; then
-        cp "$wpppath" "$wppdest" && awww img "$wppdest"
+        cp "$wpppath" "$wppdest" && hyprctl hyprpaper wallpaper ",$wppdest"
     fi
 ]]))
 
