@@ -6,13 +6,14 @@ hl.monitor({
     scale    = "1",
     vrr      = 2,
 })
-hl.monitor({
-    output   = "HDMI-A-1",
-    mode     = "1920x1080@100",
-    position = "-1080x-600",
-    scale    = "1",
+local secondary = {
+    output    = "HDMI-A-1",
+    mode      = "1920x1080@100",
+    position  = "-1080x-600",
+    scale     = "1",
     transform = 1,
-})
+}
+hl.monitor(secondary)
 
 ---- WINDOWS AND WORKSPACES ----
 for i = 1, 10 do
@@ -78,6 +79,13 @@ hl.window_rule({
 })
 
 ---- KEYBINDINGS ----
+local secondaryOff = string.format(
+    'hl.monitor({ output = \\"%s\\", disabled = true })',
+    secondary.output
+)
 hl.bind("ALT + Z",            hl.dsp.exec_cmd("gsr-ui-cli toggle-show"))
 hl.bind("SUPER + F7",         hl.dsp.exec_cmd("kitty bluetui", { float = true, size = {800, 560} }))
 hl.bind("SUPER + SHIFT + F7", hl.dsp.exec_cmd("kitty nmtui",   { float = true, size = {512, 512} }))
+hl.bind("SUPER + F8",         hl.dsp.exec_cmd(
+    "sh -c 'if hyprctl monitors | grep -q \"^Monitor " .. secondary.output .. " \"; then hyprctl eval \"" .. secondaryOff .. "\"; else hyprctl reload; fi'"
+))
