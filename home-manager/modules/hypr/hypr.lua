@@ -102,8 +102,10 @@ hl.config({
 ----  MISC  ----
 hl.config({
     misc = {
-        force_default_wallpaper = 1,
-        disable_hyprland_logo   = true,
+        force_default_wallpaper  = 0,
+        disable_hyprland_logo    = true,
+        disable_splash_rendering = true,
+        background_color         = rgba(colors.bg),
     },
     render = {
         direct_scanout = 2,
