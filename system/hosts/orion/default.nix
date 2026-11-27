@@ -38,11 +38,33 @@
       "rtw89_8852cu"
       "ntsync"
       "tcp_bbr"
+      "bfq"
     ];
     kernel.sysctl = {
+      # Memory & ZRAM
       "vm.page-cluster" = 0;
+      "vm.swappiness" = 150;
+      "vm.vfs_cache_pressure" = 50;
+      "vm.watermark_boost_factor" = 0;
+      "vm.watermark_scale_factor" = 125;
+
+      # Storage writeback
+      "vm.dirty_background_bytes" = 67108864;
+      "vm.dirty_bytes" = 268435456;
+
+      # Network
       "net.core.default_qdisc" = "fq";
+      "net.core.netdev_max_backlog" = 4096;
+      "net.core.rmem_max" = 16777216;
+      "net.core.wmem_max" = 16777216;
       "net.ipv4.tcp_congestion_control" = "bbr";
+      "net.ipv4.tcp_fastopen" = 3;
+      "net.ipv4.tcp_mtu_probing" = 1;
+      "net.ipv4.tcp_slow_start_after_idle" = 0;
+      "net.ipv4.tcp_wmem" = "4096 16384 16777216";
+
+      # Kernel
+      "kernel.nmi_watchdog" = 0;
     };
     extraModprobeConfig = ''
       options rtw89_core disable_ps_mode=y
@@ -85,6 +107,7 @@
   # Hardware
   hardware = {
     usb-modeswitch.enable = true;
+    amdgpu.overdrive.enable = true;
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -103,7 +126,10 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
-    alsa.enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
   };
 
   # Users
@@ -120,14 +146,20 @@
   # Flatpaks
   services.flatpak.enable = true;
 
-  # Packages
-  environment.systemPackages = with pkgs; [
-    # Virtualisation
-    distrobox
+  # Environment & Packages
+  environment = {
+    sessionVariables = {
+      AMD_VULKAN_ICD = "RADV";
+      MESA_SHADER_CACHE_MAX_SIZE = "12G";
+    };
+    systemPackages = with pkgs; [
+      # Virtualisation
+      distrobox
 
-    # Other
-    sbctl
-  ];
+      # Other
+      sbctl
+    ];
+  };
 
   # Virt-Manager
   programs.virt-manager.enable = true;
@@ -178,6 +210,7 @@
 
   # Services
   services = {
+    lact.enable = true;
     tailscale.enable = true;
   };
   systemd.services.NetworkManager-wait-online.enable = false;

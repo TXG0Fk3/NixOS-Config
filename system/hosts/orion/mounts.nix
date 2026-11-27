@@ -34,5 +34,13 @@
       enable = true;
       defaults.monitored = "-a -o on -s (S/../.././02|L/../../7/04)";
     };
+    udev.extraRules = ''
+      # NVMe SSDs
+      ACTION=="add|change", SUBSYSTEM=="block", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
+      # SATA/SAS SSDs
+      ACTION=="add|change", SUBSYSTEM=="block", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="adios"
+      # Rotational HDDs
+      ACTION=="add|change", SUBSYSTEM=="block", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
+    '';
   };
 }
