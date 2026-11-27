@@ -20,6 +20,8 @@ let
   '';
 in
 {
+  systemd.user.services.waybar.Unit.StartLimitIntervalSec = 0;
+
   programs.waybar = {
     enable = true;
     systemd.enable = true;

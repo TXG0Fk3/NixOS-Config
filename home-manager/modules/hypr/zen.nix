@@ -10,10 +10,13 @@ let
     systemctl="${pkgs.systemd}/bin/systemctl"
     dunstctl="${pkgs.dunst}/bin/dunstctl"
     dunstify="${pkgs.dunst}/bin/dunstify"
-    pkill="${pkgs.procps}/bin/pkill"
 
     is_active() {
       "$systemctl" --user is-active --quiet "$1"
+    }
+
+    apply_zen_hypr() {
+      hyprctl eval 'hl.config({ general = { gaps_in = 0, gaps_out = 0, border_size = 0 }, animations = { enabled = false } })' >/dev/null 2>&1 || true
     }
 
     enter_zen() {
@@ -34,7 +37,7 @@ let
       [ "$had_waybar" = 1 ] && "$systemctl" --user stop waybar.service 2>/dev/null || true
       [ "$had_hyprpaper" = 1 ] && "$systemctl" --user stop hyprpaper.service 2>/dev/null || true
 
-      hyprctl eval 'hl.config({ general = { gaps_in = 0, gaps_out = 0, border_size = 0 }, animations = { enabled = false } })' >/dev/null 2>&1 || true
+      apply_zen_hypr
 
       "$dunstctl" set-pause-level 60 2>/dev/null || true
       "$dunstify" -a "zen-mode" -r 2597 -u normal -t 2000 "ZEN / GAMING" "Enabled"
@@ -51,11 +54,12 @@ let
 
       hyprctl eval 'hl.config({ general = { gaps_in = 5, gaps_out = 10, border_size = 1 }, animations = { enabled = true } })' >/dev/null 2>&1 || true
 
+      "$dunstctl" set-pause-level "''${prev_pause:-0}" 2>/dev/null || true
+      "$systemctl" --user reset-failed waybar.service hyprpaper.service 2>/dev/null || true
+
       [ "$had_hyprpaper" = 1 ] && "$systemctl" --user start hyprpaper.service 2>/dev/null || true
       [ "$had_waybar" = 1 ] && "$systemctl" --user start waybar.service 2>/dev/null || true
 
-      "$dunstctl" set-pause-level "''${prev_pause:-0}" 2>/dev/null || true
-      "$pkill" -RTMIN+8 waybar 2>/dev/null || true
       "$dunstify" -a "zen-mode" -r 2597 -u low -t 2000 "ZEN / GAMING" "Disabled"
     }
 
@@ -72,6 +76,11 @@ let
         ;;
       off)
         [ -f "$state_file" ] && exit_zen
+        ;;
+      reapply)
+        if [ -f "$state_file" ]; then
+          apply_zen_hypr
+        fi
         ;;
       status)
         if [ -f "$state_file" ]; then

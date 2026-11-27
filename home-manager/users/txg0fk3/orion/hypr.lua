@@ -87,6 +87,6 @@ hl.bind("ALT + Z",            hl.dsp.exec_cmd("gsr-ui-cli toggle-show"))
 hl.bind("SUPER + F7",         hl.dsp.exec_cmd("kitty bluetui", { float = true, size = {800, 560} }))
 hl.bind("SUPER + SHIFT + F7", hl.dsp.exec_cmd("kitty nmtui",   { float = true, size = {512, 512} }))
 hl.bind("SUPER + F8",         hl.dsp.exec_cmd(
-    "sh -c 'if hyprctl monitors | grep -q \"^Monitor " .. secondary.output .. " \"; then hyprctl eval \"" .. secondaryOff .. "\"; else hyprctl reload; fi'"
+    "sh -c 'if hyprctl monitors | grep -q \"^Monitor " .. secondary.output .. " \"; then hyprctl eval \"" .. secondaryOff .. "\"; else hyprctl reload && zen-mode reapply; fi'"
 ))
 hl.bind("SUPER + F9",         hl.dsp.exec_cmd("sh -c 'if systemctl --user is-active --quiet syncthing.service; then systemctl --user stop syncthing.service; else systemctl --user start syncthing.service; fi && pkill -RTMIN+11 waybar'"))
