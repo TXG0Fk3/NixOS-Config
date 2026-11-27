@@ -48,6 +48,9 @@ in
           "privacy"
           "wireplumber"
           "battery"
+        ]
+        ++ lib.optionals config.services.syncthing.enable [ "custom/syncthing" ]
+        ++ [
           "custom/hyprsunset"
           "custom/dunst"
           "clock"
@@ -150,6 +153,14 @@ in
           tooltip = false;
           on-click = "focus-mode toggle";
           on-click-right = "focus-mode next";
+        };
+
+        "custom/syncthing" = {
+          exec = "if ! ${pkgs.systemd}/bin/systemctl --user is-active --quiet syncthing.service; then echo 'SYNC OFF'; fi";
+          interval = 5;
+          signal = 11;
+          tooltip = false;
+          on-click = "${pkgs.systemd}/bin/systemctl --user start syncthing.service && ${pkgs.procps}/bin/pkill -RTMIN+11 waybar";
         };
 
         "custom/hyprsunset" = {
@@ -475,6 +486,7 @@ in
       #tray,
       #wireplumber,
       #battery,
+      #custom-syncthing,
       #custom-hyprsunset,
       #custom-dunst,
       #clock {
@@ -558,6 +570,16 @@ in
       #custom-dunst {
           color: ${c.accent};
           border-color: ${c.accent};
+      }
+
+      #custom-syncthing {
+          color: ${c.red};
+          border-color: ${c.red};
+      }
+
+      #custom-syncthing:hover {
+          background-color: ${c.red};
+          color: ${c.bg};
       }
 
       #clock {

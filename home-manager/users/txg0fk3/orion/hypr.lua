@@ -89,3 +89,4 @@ hl.bind("SUPER + SHIFT + F7", hl.dsp.exec_cmd("kitty nmtui",   { float = true, s
 hl.bind("SUPER + F8",         hl.dsp.exec_cmd(
     "sh -c 'if hyprctl monitors | grep -q \"^Monitor " .. secondary.output .. " \"; then hyprctl eval \"" .. secondaryOff .. "\"; else hyprctl reload; fi'"
 ))
+hl.bind("SUPER + F9",         hl.dsp.exec_cmd("sh -c 'if systemctl --user is-active --quiet syncthing.service; then systemctl --user stop syncthing.service; else systemctl --user start syncthing.service; fi && pkill -RTMIN+11 waybar'"))
