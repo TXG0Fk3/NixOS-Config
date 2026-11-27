@@ -169,7 +169,7 @@ in
         clock = {
           format = "{:%d/%m/%Y  %H:%M}";
           on-click = "${pkgs.dunst}/bin/dunstctl set-paused toggle && ${pkgs.procps}/bin/pkill -RTMIN+8 waybar";
-          on-click-middle = "if ${pkgs.procps}/bin/pkill -x hyprsunset; then while ${pkgs.procps}/bin/pgrep -x hyprsunset >/dev/null; do ${pkgs.coreutils}/bin/sleep 0.01; done; else ${pkgs.hyprsunset}/bin/hyprsunset -t 3500 </dev/null >/dev/null 2>&1 & fi && ${pkgs.procps}/bin/pkill -RTMIN+9 waybar";
+          on-click-middle = "if ${pkgs.procps}/bin/pkill -x hyprsunset; then while ${pkgs.procps}/bin/pgrep -x hyprsunset >/dev/null; do ${pkgs.coreutils}/bin/sleep 0.01; done; else ${pkgs.hyprsunset}/bin/hyprsunset -t 3750 </dev/null >/dev/null 2>&1 & fi && ${pkgs.procps}/bin/pkill -RTMIN+9 waybar";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "year";
