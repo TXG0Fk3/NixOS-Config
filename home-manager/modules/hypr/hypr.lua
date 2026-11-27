@@ -1,11 +1,10 @@
 ---- LOOK AND FEEL ----
-local gapsIn, gapsOut, borderSize = 5, 10, 1
 hl.config({
     general = {
-        gaps_in  = gapsIn,
-        gaps_out = gapsOut,
+        gaps_in  = 5,
+        gaps_out = 10,
 
-        border_size = borderSize,
+        border_size = 1,
 
         col = {
             active_border   = rgba(colors.fg),
@@ -254,13 +253,7 @@ hl.bind(mainMod .. " + CONTROL + F1", hl.dsp.exec_cmd("focus-mode long-break"))
 hl.bind(mainMod .. " + F2",           hl.dsp.exec_cmd("sh -c 'dunstctl set-paused toggle && pkill -RTMIN+8 waybar'"))
 hl.bind(mainMod .. " + F3",           hl.dsp.exec_cmd("sh -c 'if pkill -x hyprsunset; then while pgrep -x hyprsunset >/dev/null; do sleep 0.01; done; else hyprsunset -t 3750 </dev/null >/dev/null 2>&1 & fi && pkill -RTMIN+9 waybar'"))
 hl.bind(mainMod .. " + F4",           hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
-local zenOff = string.format(
-    "hl.config({ general = { gaps_in = %d, gaps_out = %d, border_size = %d } })",
-    gapsIn, gapsOut, borderSize
-)
-hl.bind(mainMod .. " + SHIFT + F4",   hl.dsp.exec_cmd(
-    "sh -c 'if hyprctl getoption general:gaps_in | grep -q \"0 0 0 0\"; then hyprctl eval \"" .. zenOff .. "\"; else hyprctl eval \"hl.config({ general = { gaps_in = 0, gaps_out = 0, border_size = 0 } })\"; fi && pkill -SIGUSR1 waybar'"
-))
+hl.bind(mainMod .. " + SHIFT + F4",   hl.dsp.exec_cmd("zen-mode toggle"))
 
 -- Volume OSD
 hl.bind("CONTROL + ALT + A",     hl.dsp.exec_cmd("volume-osd down"), { locked = true, repeating = true })

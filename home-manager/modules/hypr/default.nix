@@ -34,6 +34,7 @@ in
     ./ocr.nix
     ./satty.nix
     ./focus.nix
+    ./zen.nix
     ./rofi.nix
     ./waybar.nix
     ./gtk.nix

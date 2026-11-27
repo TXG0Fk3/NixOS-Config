@@ -100,6 +100,11 @@ in
         appname = "focus-mode";
         override_pause_level = 100;
       };
+
+      zen_mode = {
+        appname = "zen-mode";
+        override_pause_level = 100;
+      };
     };
   };
 }
