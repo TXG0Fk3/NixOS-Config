@@ -41,6 +41,8 @@
       ACTION=="add|change", SUBSYSTEM=="block", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="adios"
       # Rotational HDDs
       ACTION=="add|change", SUBSYSTEM=="block", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
+      # Hide Windows SSD from Nautilus / udisks2
+      SUBSYSTEM=="block", ENV{ID_SERIAL_SHORT}=="50026B7784F18F1B", ENV{UDISKS_IGNORE}="1"
     '';
   };
 }
