@@ -13,6 +13,7 @@
           inherit (self) lib cachyosKernels;
         }
       );
+      mesaRigel = self.callPackage (system-modules + "/packages/mesa/mesaRigel.nix") { };
       dmemcg-booster = self.callPackage (system-modules + "/packages/dmemcg-booster.nix") { };
     })
   ];

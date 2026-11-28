@@ -111,6 +111,8 @@
     graphics = {
       enable = true;
       enable32Bit = true;
+      package = pkgs.mesaRigel;
+      package32 = pkgs.pkgsi686Linux.mesaRigel;
     };
 
     # Bluetooth
